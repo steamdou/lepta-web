@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind colors;
+
+@layer utilities {
+    body
+    { 
+        font-family:  -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji; 
+    }
+    
+    .max-w-screen-xs {
+        max-width: 380px;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    input:disabled
+    {
+        background-color: inherit !important;
+    }
+
+    .spinner {
+        display: inline-block;
+        animation: spin 2s linear infinite;
+    }
+
+    .flip-v {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+
+    .flip-h {
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
+    }
+
+    .text-2xs {
+        font-size: 0.65rem;
+        line-height: 1rem;
+    }
+
+    .max-w-2xs {
+        max-width: 15rem;
+    }
+}

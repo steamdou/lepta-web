@@ -1,0 +1,180 @@
+{
+    "id": "2409e25b-29c4-42d0-8371-e25175be5fbb",
+    "theme": {
+        "color": {
+            "50": "#f0f9ff",
+            "100": "#e0f2fe",
+            "200": "#bae6fd",
+            "300": "#7dd3fc",
+            "400": "#38bdf8",
+            "500": "#0ea5e9",
+            "600": "#0284c7",
+            "700": "#0369a1",
+            "800": "#075985",
+            "900": "#0c4a6e"
+        }
+    },
+    "site": {
+        "coverPhoto":"/images/cover.webp",
+        "supportSignUp": false,
+        "name": "Lepta",
+        "title": "Lepta - Become Smarter Everyday",
+        "image": "/home.webp",
+        "author": "Lepta",
+        "contactEmail": "info@lepta.cc",
+        "contactPhone": "1-604-763-2828",
+        "twitterName": "",
+        "facebookName": "",
+        "facebookDomainVerification": "",
+        "googleTagManagerId": "G-0JL8W0W4C0",
+        "bingVerifySite": "26902D2C3DB1BABA70DEC7D74D69B619",
+        "keywords": "",
+        "host":{
+            "lepta-us-prod-web.s3.us-east-1.amazonaws.com": "www.lepta.cc",
+            "localhost": "www.lepta.cc"
+        },
+        "social": [
+            {
+                "name": "LinkedIn",
+                "href": "#",
+                "icon": "/icons/social/linkedin-circled.svg"
+            },
+            {
+                "name": "Facebook",
+                "href": "#",
+                "icon": "/icons/social/facebook-circled.svg"
+            },
+            {
+                "name": "Twitter",
+                "href": "#",
+                "icon": "/icons/social/twitter-circled.svg"
+            },
+            {
+                "name": "GitHub",
+                "href": "#",
+                "icon": "/icons/social/github-circled.svg"
+            },
+            {
+                "name": "Instagram",
+                "href": "#",
+                "icon": "/icons/social/instagram.svg"
+            },
+            {
+                "name": "Discord",
+                "href": "#",
+                "icon": "/icons/social/discord.svg"
+            },
+            {
+                "name": "YouTube",
+                "href": "#",
+                "icon": "/icons/social/youtube.svg"
+            }
+        ],
+        "header": {
+            "navigation": [
+                {
+                    "title": "About Us",
+                    "href": "#"
+                }
+            ]
+        },
+        "footer": {
+            "slogan": "A platform that helps to build and operate a tokenized business",
+            "copyright": "2022 Lepta Team. All rights reserved.",
+            "columns": [
+                {
+                    "title": "Lepta Club",
+                    "items": [
+                        {
+                            "title": "Become a contributor",
+                            "href": "#"
+                        },
+                        {
+                            "title": "Become an ambassador",
+                            "href": "#"
+                        }
+                    ]
+                },
+                {
+                    "title": "About Lepta",
+                    "items": [
+                        {
+                            "title": "About",
+                            "href": "#"
+                        },
+                        {
+                            "title": "Privacy",
+                            "href": "#"
+                        },
+                        {
+                            "title": "Terms",
+                            "href": "#"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "app": {
+        "navigation": [
+            {
+                "id": "dashboard",
+                "type": "page",
+                "title": "Dashboard",
+                "icon": "/icons/web-analytics.svg",
+                "src": "/dashboard",
+                "slug": "dashboard"
+            },
+            {
+                "id": "achievements-pages",
+                "type": "page",
+                "title": "Pages",
+                "icon": "/icons/overview.svg",
+                "src": "/page/list",
+                "slug": "page"
+            },
+            {
+                "id": "achievements-cards",
+                "type": "page",
+                "title": "Cards",
+                "icon": "/icons/block.svg",
+                "src": "/card/list",
+                "slug": "card"
+            },
+            {
+                "id": "organization",
+                "type": "section",
+                "title": "Organization"
+            },
+            {
+                "id": "organization-users",
+                "type": "page",
+                "title": "Users",
+                "icon": "/icons/users.svg",
+                "src": "/user/list",
+                "slug": "user"
+            },
+            {
+                "id": "organization-sttings",
+                "type": "page",
+                "title": "Settings",
+                "icon": "/icons/settings.svg",
+                "src": "/settings",
+                "slug": "settings"
+            },
+            {
+                "id": "system",
+                "type": "section",
+                "title": "System"
+            },
+            {
+                "id": "system-platform",
+                "type": "platform",
+                "title": "Platform",
+                "icon": "/icons/cloud-access.svg",
+                "src": "/platform",
+                "slug": "platform"
+            }
+        ]
+    }
+}

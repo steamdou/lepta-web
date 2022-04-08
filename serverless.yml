@@ -1,0 +1,29 @@
+douhub:
+  component: "@sls-next/serverless-component@v3.6.0"
+  inputs:
+    runtime:
+      defaultLambda: "nodejs14.x"
+    bucketName: lepta-us-prod-web
+    bucketRegion: us-east-1
+    name:
+      defaultLambda: lepta-us-prod-web
+    roleArn: "arn:aws:iam::110064165845:role/lepta-us-prod-web"
+    memory: 512
+    cloudfront:
+      # if you want to use an existing cloudfront distribution, provide it here
+      distributionId: E1FYEWKOODZYGT
+      # this is the default cache behaviour of the cloudfront distribution
+      # the origin-request edge lambda associated to this cache behaviour does the pages server side rendering
+      defaults:
+        forward:
+          headers:
+            [
+              CloudFront-Is-Mobile-Viewer,
+              CloudFront-Is-Tablet-Viewer,
+              CloudFront-Viewer-Country,
+              CloudFront-Viewer-City,
+              CloudFront-Viewer-Time-Zone,
+              CloudFront-Viewer-Country-Region,
+              Accept-Language,
+              Referer
+            ]

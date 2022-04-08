@@ -1,0 +1,211 @@
+{
+    "id": "2409e25b-29c4-42d0-8371-e25175be5fbb",
+    "sender": {
+        "name": "Lepta Team",
+        "email": "customer.service@lepta.cc",
+        "mobile": "+18186167266",
+        "service": "ses"
+    },
+    "auth": {
+        "cognito": {
+            "mandatorySignIn": false,
+            "region": "us-east-1",
+            "userPoolId": "us-east-1_4UyzGkVyq",
+            "userPoolWebClientId": "2ca2f3lr58rkequoa36pr6s2il",
+            "userPoolLambdaClientId": "519tqselsbgnusmoe7jivg98d8"
+        },
+        "signUpLicenses": [
+            "Lepta.User"
+        ],
+        "passwordRules": {
+            "needLowerCaseLetter": true,
+            "needUpperCaseLetter": true,
+            "needDigit": true,
+            "needSepcialChar": true,
+            "minLen": 8
+        }
+    },
+    "entities": [
+        {
+            "entityName": "Organization",
+            "uiName": "Organization",
+            "uiCollectionName": "Organizations",
+            "slug": "organization"
+        },
+        {
+            "entityName": "User",
+            "uiName": "User",
+            "uiCollectionName": "Users",
+            "slug": "user",
+            "duplicationCheckPropName": "email",
+            "requiredFields": [
+                {
+                    "name": "email",
+                    "label": "Email"
+                }
+            ],
+            "apis": {
+                "search": "https://us-prod-user.douhub.io/v1/",
+                "data": "https://us-prod-user.douhub.io/v1/"
+            },
+            "searchProperties": {
+                "roles": {
+                    "type": "keyword"
+                }
+            },
+            "queries": [
+                {
+                    "title": "Organization Administrators",
+                    "id": "oa",
+                    "conditions": [
+                        {
+                            "attribute": "roles",
+                            "op": "array_contains",
+                            "value": "ORG-ADMIN"
+                        }
+                    ]
+                },
+                {
+                    "title": "User Administrators",
+                    "id": "ua",
+                    "conditions": [
+                        {
+                            "attribute": "roles",
+                            "op": "array_contains",
+                            "value": "USER-ADMIN"
+                        }
+                    ]
+                },
+                {
+                    "title": "Knowledge Managers",
+                    "id": "km",
+                    "conditions": [
+                        {
+                            "attribute": "roles",
+                            "op": "array_contains",
+                            "value": "KNOWLEDGE-MANAGER"
+                        }
+                    ]
+                }
+            ],
+            "statusCodes": [
+                {
+                    "title": "Created",
+                    "id": "created",
+                    "conditions": [
+                        {
+                            "attribute": "statusCode",
+                            "op": "=",
+                            "value": 0
+                        }
+                    ]
+                },
+                {
+                    "title": "Invited",
+                    "id": "invited",
+                    "conditions": [
+                        {
+                            "attribute": "statusCode",
+                            "op": "=",
+                            "value": 5
+                        }
+                    ]
+                },
+                {
+                    "title": "Active",
+                    "id": "active",
+                    "conditions": [
+                        {
+                            "attribute": "statusCode",
+                            "op": "=",
+                            "value": 10
+                        }
+                    ]
+                },
+                {
+                    "title": "Inactive",
+                    "id": "inactive",
+                    "conditions": [
+                        {
+                            "attribute": "statusCode",
+                            "op": "=",
+                            "value": -1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "entityName": "Tag",
+            "uiName": "Tag",
+            "uiCollectionName": "Tags",
+            "slug": "tag"
+        },
+        {
+            "entityName": "Category",
+            "uiName": "Category",
+            "uiCollectionName": "Categories",
+            "slug": "category"
+        },
+        {
+            "entityName": "Card",
+            "uiName": "Card",
+            "uiCollectionName": "Cards",
+            "slug": "card"
+        },
+        {
+            "entityName": "Page",
+            "uiName": "Page",
+            "uiCollectionName": "Pages",
+            "slug": "page"
+        }
+    ],
+    "cloudFront": {
+        "photo": "https://photo.lepta.cc/",
+        "video": "https://video.lepta.cc/",
+        "document": "https://document.lepta.cc/",
+        "video-stream": "https://video-stream.lepta.cc/",
+        "audio": "https://video-stream.lepta.cc/"
+    },
+    "apis": {
+        "context": "https://us-prod-context.douhub.io/v1/",
+        "realtime": "https://us-prod-realtime.douhub.io/v1/",
+        "chat": "https://us-prod-chat.douhub.io/v1/",
+        "file": "https://us-prod-file.douhub.io/v1/",
+        "search": "https://us-prod-search.douhub.io/v1/",
+        "auth": "https://us-prod-auth.douhub.io/v1/",
+        "page": "https://us-prod-page.douhub.io/v1/",
+        "message": "https://us-prod-message.douhub.io/v1/",
+        "web": "https://us-prod-web.douhub.io/v1/",
+        "data": "https://us-prod-data.douhub.io/v1/",
+        "platform": "https://us-prod-platform.douhub.io/v1/",
+        "organization": "https://us-prod-organization.douhub.io/v1/",
+        "user": "https://us-prod-user.douhub.io/v1/",
+        "project": "https://us-prod-project.douhub.io/v1/"
+    },
+    "keys": {
+        "recaptchaSiteKey": "6LeMCh4bAAAAAPH_u7vYy3V30GnCb59-3F4AKVnm"
+    },
+    "roles": [
+        {
+            "title": "Organization Administrator",
+            "value": "ORG-ADMIN"
+        },
+        {
+            "title": "User Administrator",
+            "value": "USER-ADMIN"
+        },
+        {
+            "title": "Knowledge Manager",
+            "value": "KNOWLEDGE-MANAGER"
+        },
+        {
+            "title": "Knowledge Author",
+            "value": "KNOWLEDGE-AUTHOR"
+        },
+        {
+            "title": "Knowledge Reader",
+            "value": "KNOWLEDGE-READER"
+        }
+    ]
+}
