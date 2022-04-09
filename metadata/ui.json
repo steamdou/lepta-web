@@ -1,5 +1,5 @@
 {
-    "id": "2409e25b-29c4-42d0-8371-e25175be5fbb",
+    "id": "84ab4deb-55e2-492e-adc0-d32df8276ff9",
     "theme": {
         "color": {
             "50": "#f0f9ff",
@@ -126,7 +126,7 @@
                 "slug": "dashboard"
             },
             {
-                "id": "achievements-pages",
+                "id": "pages",
                 "type": "page",
                 "title": "Pages",
                 "icon": "/icons/overview.svg",
@@ -134,7 +134,7 @@
                 "slug": "page"
             },
             {
-                "id": "achievements-cards",
+                "id": "cards",
                 "type": "page",
                 "title": "Cards",
                 "icon": "/icons/block.svg",

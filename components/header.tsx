@@ -83,11 +83,11 @@ const SiteHeader = observer((props: Record<string, any>) => {
           Contributor
         </a>
       </Link>
-      {/* <Link href="/auth/sign-in">
+      {solution?.site?.supportSignUp!=false && <Link href="/auth/sign-in">
         <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-xs font-medium text-white bg-green-600 hover:bg-green-700">
           Sign up
         </a>
-      </Link> */}
+      </Link>}
     </div>
   }
 

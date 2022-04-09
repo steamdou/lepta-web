@@ -14,10 +14,10 @@ const FooterDefault = (props: Record<string, any>) => {
                 <div className="flex flex-col flex-1 mb-12">
                     <Logo id="footer_logo" color="gray" text={site?.name} />
                     <div className="px-1">
-                    {isNonEmptyString(footer?.slogan) && <p className="text-gray-500 text-base my-6">
-                        {footer?.slogan}
-                    </p>}
-                    <SocialIconsSection data={site?.social} />
+                        {isNonEmptyString(footer?.slogan) && <p className="text-gray-500 text-base my-6">
+                            {footer?.slogan}
+                        </p>}
+                        <SocialIconsSection data={site?.social} />
                     </div>
                 </div>
                 <div className="flex flex-row">
@@ -30,7 +30,7 @@ const FooterDefault = (props: Record<string, any>) => {
                 </div>
             </div>
             <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:py-10 lg:px-8 border-t border-gray-100">
-                <p className="text-base text-gray-400 xl:text-center">&copy; {footer?.copyright}</p>
+                <p className="text-base text-gray-400 xl:text-center">&copy; {footer?.copyright ? footer?.copyright : site?.copyright}</p>
             </div>
         </footer>
     )
