@@ -142,6 +142,17 @@ const CardForm = (props: Record<string, any>) => {
             {
                 fields: [
                     {
+                        name: 'tags',
+                        label: "Tags",
+                        type: 'tags',
+                        placeholder: "Type the tags of the card here",
+                        alwaysShowLabel: true
+                    }
+                ]
+            },
+            {
+                fields: [
+                    {
                         name: 'content',
                         label: "Card Content",
                         type: 'html',

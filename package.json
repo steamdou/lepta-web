@@ -36,7 +36,7 @@
     "douhub-helper-util": "1.0.85",
     "douhub-ui-realtime": "1.0.28",
     "douhub-ui-store": "1.0.51",
-    "douhub-ui-web": "^1.4.99",
+    "douhub-ui-web": "^1.5.0",
     "douhub-ui-web-basic": "^1.0.14",
     "douhub-ui-web-platform": "^1.0.22",
     "lodash": "^4.17.21",

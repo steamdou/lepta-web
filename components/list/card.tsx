@@ -1,7 +1,7 @@
 import React from 'react';
 import { without } from 'lodash';
 import CardForm from '../form/card';
-import { DEFAULT_EDIT_COLUMN, DEFAULT_ACTION_COLUMN, DEFAULT_OPEN_IN_BROWSER_COLUMN, BaseList, ListCategoriesTags } from 'douhub-ui-web';
+import { DEFAULT_EDIT_COLUMN, DEFAULT_ACTION_COLUMN, DEFAULT_OPEN_IN_BROWSER_COLUMN, BaseList, ListColumnTags, ListCategoriesTags } from 'douhub-ui-web';
 import { _window } from 'douhub-ui-web-basic';
 import { hasRole, isNonEmptyString } from 'douhub-helper-util';
 import { observer } from 'mobx-react-lite';
@@ -28,10 +28,10 @@ const PageList = observer((props: Record<string, any>) => {
                 render: (v: string, data: Record<string, any>) => {
                     const text = data.highlight?.searchDisplay ? data.highlight?.searchDisplay : v;
                     const searchDetail = data.highlight?.searchContent ? data.highlight?.searchContent : [];
-
                     return <div className="flex flex-col items-start">
                         <div className="text-sm font-normal text-gray-900" dangerouslySetInnerHTML={{ __html: text }}></div>
                         {searchDetail.length > 0 && <div className="mt-1 text-xs font-light text-gray-900" dangerouslySetInnerHTML={{ __html: searchDetail[0] }}></div>}
+                        <ListColumnTags tags={data.tags} />
                     </div>
                 },
             },

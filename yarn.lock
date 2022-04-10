@@ -3296,10 +3296,10 @@ douhub-ui-web@^1.4.97:
     sortablejs "^1.14.0"
     uuid "^8.3.2"
 
-douhub-ui-web@^1.4.99:
-  version "1.4.99"
-  resolved "https://registry.yarnpkg.com/douhub-ui-web/-/douhub-ui-web-1.4.99.tgz#13248f4091e74ee25b7ac313995bb7ae69b1ee31"
-  integrity sha512-t5Twju9JytaQM1FMlSsYpYhIKTdM2AxnHsfjxIJYmoZAah4hJ2YNGE911aev87jdpRBCVdvVuIuuatPEh/h8Gw==
+douhub-ui-web@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/douhub-ui-web/-/douhub-ui-web-1.5.0.tgz#25a13a2383f7290344f4b9dc3c90826b43469492"
+  integrity sha512-8loZBadAbb5SjG2XIF0ogybnKI+6HQj3QBKVvzkGg/Dh9pA2buG5+mcDhWoXc2OgrRhWBShBtosO5UIVoYrDEQ==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"

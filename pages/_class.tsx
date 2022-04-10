@@ -10,7 +10,7 @@ function Class() {
     <div className="py-0 py-1 py-2 py-3 py-4 py-5 py-6 py-7 py-8" />
     <div className="pr-0 pr-1 pr-2 pr-3 pr-4 pr-5 pr-6 pr-7 pr-8" />
     <div className="pl-0 pl-1 pl-2 pl-3 pl-4 pl-5 pl-6 pl-7 pl-8" />
-    <div className="flex flex-col outline-none inline-flex flex-row justify-" />
+    <div className="flex flex-col outline-none inline-flex flex-row" />
     <div className="h-16 ounded-md rounded-lg rounded border" />
     <div className="w-full h-full border-transparent bg-white text-white" />
     <div className="font-thin	font-extralight	font-light font-normal font-medium font-semibold font-bold font-extrabold"/>
@@ -24,9 +24,13 @@ function Class() {
     <div className="justify-start justify-end justify-center justify-between  justify-around  justify-evenly"/>
     <div className="items-start items-end items-center items-evenly items-baseline"/>
     <div className="content-start content-end content-center content-between  content-around  content-evenly"/>
+    <div className="self-start self-end self-center self-stretch self-baseline"/>
+    <div className="leading-none"/>
+
+    <div className="bg-gray-50 bg-gray-100 bg-gray-200 bg-gray-300 bg-gray-500 bg-gray-600 bg-gray-700"/>
     
     <div className="w-16 w-56"/>
-    
+
   </div>
 }
 
