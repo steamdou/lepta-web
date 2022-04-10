@@ -1,16 +1,27 @@
 import React from 'react';
-import { getEntityBySlug } from 'douhub-helper-util';
+import { getEntityBySlug, hasAnyRole} from 'douhub-helper-util';
 import { DefaultList } from 'douhub-ui-web';
-import { _window} from 'douhub-ui-web-basic';
+import { _window, Nothing} from 'douhub-ui-web-basic';
 import dynamic from 'next/dynamic';
+import { useContextStore } from 'douhub-ui-store';
+import {find, isNil, isArray} from 'lodash';
 
 const Lists: Record<string, any> = {};
 let List = null;
 
-const UserMainArea = (props: Record<string, any>) => {
+const ListMainArea = (props: Record<string, any>) => {
     const { slug, height, search, query } = props;
     const solution = _window.solution;
     const entity = getEntityBySlug(solution, slug);
+
+    const contextStore = useContextStore();
+    const context = JSON.parse(contextStore.data);
+
+    const navigation = solution?.app?.navigation;
+    const nav = find(navigation, (n)=>{return n.slug==slug});
+
+    if (isNil(nav)) return <Nothing/>
+    if (isArray(nav.roles) && !hasAnyRole(context, nav.roles)) return <Nothing/>
 
     switch (entity?.entityName) {
          case 'Page':
@@ -49,4 +60,4 @@ const UserMainArea = (props: Record<string, any>) => {
 }
 
 
-export default UserMainArea;
+export default ListMainArea;

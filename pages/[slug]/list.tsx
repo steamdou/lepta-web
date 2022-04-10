@@ -36,7 +36,7 @@ const ListPage = (props: Record<string, any>) => {
                     <div className="p-8 text-red-700">There&apos;s no entity defined for the page.</div>
                 }
             </> :
-                <PageLoader />
+                <PageLoader  {...props}/>
             }
         </div>
     </PageBase>

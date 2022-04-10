@@ -144,36 +144,17 @@
             {
                 "id": "organization",
                 "type": "section",
-                "title": "Organization"
+                "title": "Organization",
+                "roles": ["USER-ADMIN","ORG-ADMIN"]
             },
             {
                 "id": "organization-users",
                 "type": "page",
                 "title": "Users",
+                "roles": ["USER-ADMIN","ORG-ADMIN"],
                 "icon": "/icons/users.svg",
                 "src": "/user/list",
                 "slug": "user"
-            },
-            {
-                "id": "organization-sttings",
-                "type": "page",
-                "title": "Settings",
-                "icon": "/icons/settings.svg",
-                "src": "/settings",
-                "slug": "settings"
-            },
-            {
-                "id": "system",
-                "type": "section",
-                "title": "System"
-            },
-            {
-                "id": "system-platform",
-                "type": "platform",
-                "title": "Platform",
-                "icon": "/icons/cloud-access.svg",
-                "src": "/platform",
-                "slug": "platform"
             }
         ]
     }

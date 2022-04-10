@@ -2,7 +2,7 @@
     "id": "84ab4deb-55e2-492e-adc0-d32df8276ff9",
     "sender": {
         "name": "Lepta Team",
-        "email": "customer.service@lepta.cc",
+        "email": "customer.service@douhub.com",
         "mobile": "+18186167266",
         "service": "ses"
     },
@@ -161,11 +161,11 @@
         }
     ],
     "cloudFront": {
-        "photo": "https://photo.lepta.cc/",
-        "video": "https://video.lepta.cc/",
-        "document": "https://document.lepta.cc/",
-        "video-stream": "https://video-stream.lepta.cc/",
-        "audio": "https://video-stream.lepta.cc/"
+        "photo": "https://photo.douhub.com/",
+        "video": "https://video.douhub.com/",
+        "document": "https://document.douhub.com/",
+        "video-stream": "https://video-stream.douhub.com/",
+        "audio": "https://video-stream.douhub.com/"
     },
     "apis": {
         "context": "https://us-prod-context.douhub.io/v1/",

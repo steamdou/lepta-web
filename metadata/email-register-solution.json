@@ -2,7 +2,7 @@
     "subject": "Solution Registration",
     "sender": {
         "fullName": "Lepta",
-        "email": "customer.service@lepta.cc"
+        "email": "customer.service@douhub.com"
     },
     "cc": ["gary.zhang@lepta.cc"],
     "htmlMessage": "<p>Hi [PH.FIRSTNAME]</p><p>We have received your application for a new solution. We will review and contact you as soon as possible.</p><br><br><p>Thanks,<br>The Lepta Team</p>"

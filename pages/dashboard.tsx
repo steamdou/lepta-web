@@ -29,7 +29,7 @@ const DashboardPage = (props: Record<string, any>) => {
                     LeftArea={DetaultLeftArea}
                     RightArea={null}
                 /></> :
-                <PageLoader />
+                <PageLoader {...props}/>
             }
         </div>
     </PageBase>
