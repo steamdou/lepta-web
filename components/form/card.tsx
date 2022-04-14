@@ -1,55 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { cloneDeep, isArray, isFunction, without } from 'lodash';
+import { cloneDeep,  isFunction, without } from 'lodash';
 import { getBaseDomain, isNonEmptyString, isObject, newGuid } from 'douhub-helper-util';
-import {  _window } from 'douhub-ui-web-basic';
-import { PreviewButton } from './page';
-import { FormBase, HtmlField } from 'douhub-ui-web';
+import { _window } from 'douhub-ui-web-basic';
+import { FormBase, FormPreviewButton} from 'douhub-ui-web';
 
 const DISPLAY_NAME = 'CardForm';
 
 const CardForm = (props: Record<string, any>) => {
 
     const [data, setData] = useState<Record<string, any>>({});
-    const [showPublishInfo, setShowPublishInfo] = useState('');
+    const [showPublishInfo, setShowPublishInfo] = useState<boolean>(false);
+    const [formVersion, setFormVersion] = useState<number>(0);
 
     useEffect(() => {
         const newData = isObject(props.data) ? cloneDeep(props.data) : {};
-        if (!isArray(newData.sections)) newData.sections = [];
-        //for backward compatibility, content will be put into sections
-        if (isNonEmptyString(newData.content) && newData.sections.length == 0) {
-            newData.sections = [{
-                type: "html",
-                wrapperStyle: { minHeight: 200 },
-                layoutClassName: "article",
-                placeholder: "Type the content of the card below",
-                value: newData.content
-            },
-            {
-                type: "html",
-                wrapperStyle: { minHeight: 200 },
-                layoutClassName: "article",
-                placeholder: "Type the content of the card below",
-                value: newData.content
-            }]
-        }
         setData(newData);
+        setFormVersion(1);
     }, [props.data]);
 
-    const onChange = (changedData: Record<string, any>) => {
-        const newData = changedData ? cloneDeep(changedData) : {};
-        setData(newData);
-        if (isFunction(props.onChange)) props.onChange(newData);
-    }
-
+  
     const url = getBaseDomain(`${_window.location}`).replace('/list', `/go/${data?.slug}`);
     const noteForPublish = `
         <p>You will need to publish your card for other people to find and read it online. </p>
         <p>Published card are readable for everybody on the Internet. Although you can unpublish it 
         by unselecting the 'Publish the card' checkbox at any time, the content may have been cached by search engines.</p>
         Below is the link you can share to the readers<br/> 
-        <a href="${url}">${url}</a>`
+        <a href="${url}">${url}</a>`;
 
-    const form = {
+    const CARD_FORM = {
         rows: without([
             {
                 fields: [
@@ -60,12 +38,15 @@ const CardForm = (props: Record<string, any>) => {
                         defaultValue: false,
                         size: 'small',
                         colStyle: { width: 'auto', minWidth: 150 },
-                        onClickInfo: () => { setShowPublishInfo(isNonEmptyString(showPublishInfo) ? '' : newGuid()) }
+                        onClickInfo: () => {
+                            setShowPublishInfo(!showPublishInfo);
+                            setFormVersion(formVersion + 1);
+                        }
                     },
                     {
                         name: 'previewButton',
                         type: 'custom',
-                        content: PreviewButton
+                        content: FormPreviewButton
                     }
                 ]
             },
@@ -75,7 +56,10 @@ const CardForm = (props: Record<string, any>) => {
                         name: 'publishTheCard',
                         type: 'alert-info',
                         description: noteForPublish,
-                        onClose: () => { setShowPublishInfo('') }
+                        onClose: () => {
+                            setShowPublishInfo(false);
+                            setFormVersion(formVersion + 1);
+                        }
                     }
                 ]
             } : null,
@@ -106,11 +90,11 @@ const CardForm = (props: Record<string, any>) => {
                         colStyle: { width: 'auto' }
                     }
                 ]
-            }, 
+            },
             {
                 fields: [
                     {
-                        name: 'content',
+                        name: 'contentSection',
                         title: "Content",
                         subTitle: "Please provide the content of the page below",
                         type: "section"
@@ -142,6 +126,18 @@ const CardForm = (props: Record<string, any>) => {
             {
                 fields: [
                     {
+                        name: 'categoryIds',
+                        label: "Categories",
+                        type: 'tree-multi-select',
+                        entityName: 'Card',
+                        placeholder: "Select categories",
+                        alwaysShowLabel: true
+                    }
+                ]
+            },
+            {
+                fields: [
+                    {
                         name: 'tags',
                         label: "Tags",
                         type: 'tags',
@@ -159,33 +155,81 @@ const CardForm = (props: Record<string, any>) => {
                         placeholder: "Type the content of the card here"
                     }
                 ]
-            }
+            },
+            {
+                fields: [
+                    {
+                        name: 'sourceSection',
+                        title: "Source of content",
+                        subTitle: "Please provide the source of the content below",
+                        type: "section"
+                    }
+                ]
+            },
+            {
+                fields: [
+                    {
+                        name: 'sourceType',
+                        type: 'picklist',
+                        label: 'Type',
+                        options: [
+                            { value: 'book', text: 'Book' },
+                            { value: 'article', text: 'Article' },
+                            { value: 'video', text: 'Video' },
+                            { value: 'audio', text: 'Audio' },
+                        ],
+                        alwaysShowLabel: true
+                    }
+                ]
+            },
+            data.sourceType == 'book' ? {
+                fields: [
+                    {
+                        label: 'Book of the source',
+                        name: 'sourceBookId',
+                        type: 'lookup',
+                        entityName: 'Book',
+                        placeholder: "Select a book",
+                        alwaysShowLabel: true
+                    }
+                ]
+            } : null,
+            data.sourceType != 'book' ? {
+                fields: [
+                    {
+                        label: 'Url of the source',
+                        name: 'sourceUrl',
+                        type: 'text',
+                        alwaysShowLabel: true
+                    }
+                ]
+            } : null
         ], null)
     }
 
-    const onChangeData = (field: Record<string, any>, value: any) => {
 
-        let newData: any = cloneDeep(data);
-        newData[field.name] = value;
-
-        if (isFunction(field.onChange)) {
-            newData = field.onChange(field, value, newData);
-        }
-
-        onChange(newData);
+    const onChange = (changedData: Record<string, any>) => {
+        const updateForm = changedData.sourceType!=data.sourceType;
+        const newData = changedData ? cloneDeep(changedData) : {};
+        setData(newData);
+        if (updateForm) setFormVersion(formVersion+1);
+        if (isFunction(props.onChange)) props.onChange(newData);
     }
 
-    const htmlField = {
-        name: 'test',
-        label: "Test",
-        type: 'html',
-        placeholder: "Type the test of the page here"
-    }
-
+    const field = {
+        label: 'Book of the source',
+        name: 'sourceBookId',
+        type: 'lookup',
+        entityName: 'Book',
+        placeholder: "Select a book",
+        alwaysShowLabel: true
+    };
     return <div className="flex flex-col w-full">
-        <FormBase {...props} data={data} form={{ ...form, id: showPublishInfo }} wrapperClassName="pb-1" onChange={onChange} />
-        <HtmlField {...htmlField} value={data.test} record={data}
-            onChange={(v: string) => onChangeData(htmlField, v)} />
+        <FormBase {...props}
+            data={data}
+            form={{ ...CARD_FORM, version: formVersion }}
+            wrapperClassName="pb-1"
+            onChange={onChange} />
     </div>
 };
 

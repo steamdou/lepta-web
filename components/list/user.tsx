@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { DEFAULT_EDIT_COLUMN, DEFAULT_ACTION_COLUMN, SendInvitationModal, Tooltip  } from 'douhub-ui-web';
+import { DEFAULT_EDIT_COLUMN, DEFAULT_ACTION_COLUMN, SendInvitationModal, Tooltip } from 'douhub-ui-web';
 
-import {   Avatar,SVG,  _window } from 'douhub-ui-web-basic';
+import { Avatar, SVG, _window } from 'douhub-ui-web-basic';
 import { shortenNumber, isObject, getRecordFullName, formatText, hasRole, isNonEmptyString } from 'douhub-helper-util';
 import ListHeaderUser from './list-header-user';
 import UserForm from '../form/user';
@@ -11,19 +11,19 @@ import { observer } from 'mobx-react-lite';
 import { useContextStore } from 'douhub-ui-store';
 
 // import ListBase from './list-base';
-import {ListBase} from 'douhub-ui-web';
+import { ListBase } from 'douhub-ui-web';
 
 const UserList = observer((props: Record<string, any>) => {
     const { entity, height, search, webQuery } = props;
-    const [toInviteUser, setToInviteUser] = useState<Record<string,any>|null>(null);
+    const [toInviteUser, setToInviteUser] = useState<Record<string, any> | null>(null);
 
     const contextStore = useContextStore();
     const context = JSON.parse(contextStore.data);
     const solution = _window.solution;
-    const allowCreate = hasRole(context, 'ORG-ADMIN') ||  hasRole(context, 'USER-MANAGER');
+    const allowCreate = hasRole(context, 'ORG-ADMIN') || hasRole(context, 'USER-MANAGER');
     const recordForMembership = context.recordByMembership;
-    const deleteButtonLabel = isNonEmptyString(recordForMembership?.id)?'Remove':'Deactivate';
-    const deleteConfirmationMessage = isNonEmptyString(recordForMembership?.id)?'Remove the user from this project?':'Deactivate the user?';
+    const deleteButtonLabel = isNonEmptyString(recordForMembership?.id) ? 'Remove' : 'Deactivate';
+    const deleteConfirmationMessage = isNonEmptyString(recordForMembership?.id) ? 'Remove the user from this project?' : 'Deactivate the user?';
 
 
     const columns = (
@@ -32,25 +32,23 @@ const UserList = observer((props: Record<string, any>) => {
     ) => {
         return [
             {
-                title:  'Name',
+                title: 'Name',
                 dataIndex: 'fullName',
                 id: 'fullName',
                 render: (v: string, user: Record<string, any>) => {
                     const fullName = getRecordFullName(user);
                     let roles: any = [];
-                    const userRoles = isArray(user.roles)? `,${user.roles.join(',')},`:'';
-                    if (userRoles)
-                    {
-                        roles = without(map(solution.roles, (r:any)=>
-                        {
-                            return userRoles.indexOf(`,${r.value},`)>=0?
+                    const userRoles = isArray(user.roles) ? `,${user.roles.join(',')},` : '';
+                    if (userRoles) {
+                        roles = without(map(solution.roles, (r: any) => {
+                            return userRoles.indexOf(`,${r.value},`) >= 0 ?
                                 <Tooltip key={r.value} color="#999999" placement='top' title={r.title}>
                                     <span className="rounded-sm bg-gray-100 mr-1 px-1 text-2xs mt-1 leading-none" >{formatText(r.title, 'initials').replace(/[ ]/gi, '')}</span>
                                 </Tooltip>
-                                :null;
-                        }),null)
+                                : null;
+                        }), null)
                     }
-                   
+
                     return <div className="flex w-full overflow-hidden items-center">
                         <div className="flex-shrink-0 h-10 w-10 mr-4">
                             <Avatar data={user} />
@@ -60,7 +58,7 @@ const UserList = observer((props: Record<string, any>) => {
                             {(user.email || user.mobile) && <div className="text-xs text-gray-500">
                                 {user.email}{user.mobile ? `,${user.mobile}` : ''}
                             </div>}
-                            {roles.length>0 && <div className="w-full flex">{roles}</div>}
+                            {roles.length > 0 && <div className="w-full flex">{roles}</div>}
                         </div>
                     </div>
                 },
@@ -116,7 +114,7 @@ const UserList = observer((props: Record<string, any>) => {
             },
             DEFAULT_EDIT_COLUMN(onClick, entity),
             DEFAULT_ACTION_COLUMN(onClick, entity, [{ title: "Invite", action: "invite" }],
-                {deleteButtonLabel, deleteConfirmationMessage})
+                { deleteButtonLabel, deleteConfirmationMessage })
         ]
     };
 
@@ -124,7 +122,7 @@ const UserList = observer((props: Record<string, any>) => {
         switch (action) {
             case 'invite':
                 {
-                    setToInviteUser({...record});
+                    setToInviteUser({ ...record });
                 }
         }
     }
@@ -139,7 +137,6 @@ const UserList = observer((props: Record<string, any>) => {
                 statusId={webQuery.status}
                 search={search}
                 recordForMembership={recordForMembership}
-                onRemoveSearch={props.onRemoveSearch}
                 onClickRecord={onClickRecord}
                 selectionType="checkbox"
                 width={500}
@@ -148,14 +145,14 @@ const UserList = observer((props: Record<string, any>) => {
                 entity={entity}
                 columns={columns}
                 Form={UserForm}
-                deleteButtonLabel = {deleteButtonLabel}
-                deleteConfirmationMessage= {deleteConfirmationMessage}
+                deleteButtonLabel={deleteButtonLabel}
+                deleteConfirmationMessage={deleteConfirmationMessage}
             />
             <SendInvitationModal
                 emailTemplate={ACTIVATE_WITHOUT_PASSWOR_EMAIL_TEMPLATE}
                 onSubmitSucceed={() => { }}
-                users={toInviteUser?[toInviteUser]:[]}
-                show={isObject(toInviteUser)?true:false}
+                users={toInviteUser ? [toInviteUser] : []}
+                show={isObject(toInviteUser) ? true : false}
                 onClose={() => { setToInviteUser(null) }} />
         </>
     )

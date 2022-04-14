@@ -42,7 +42,7 @@ const SiteHeader = observer((props: Record<string, any>) => {
   useEffect(() => {
     getCurrentPoolUser(solution)
       .then((curUser: Record<string, any> | null) => {
-        setUser(curUser?curUser:{});
+        setUser(curUser ? curUser : {});
       });
   }, [])
 
@@ -83,7 +83,7 @@ const SiteHeader = observer((props: Record<string, any>) => {
           Contributor
         </a>
       </Link>
-      {solution?.site?.supportSignUp!=false && <Link href="/auth/sign-in">
+      {solution?.site?.supportSignUp != false && <Link href="/auth/sign-in">
         <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-xs font-medium text-white bg-green-600 hover:bg-green-700">
           Sign up
         </a>
@@ -107,10 +107,10 @@ const SiteHeader = observer((props: Record<string, any>) => {
       <Popover className="relative bg-white border border-gray-200 border-t-0 border-r-0 border-l-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-center pb-4 pt-4 md:justify-start md:space-x-10 w-full">
-            <Logo id="header_logo" iconSize={32} color={color} text={solution?.site?.name} onClick={onClickLogo} />
-            {renderMenuDesktopView()}
-               <div className="visible flex-1 flex px-5 px-3 justify-center lg:ml-6 lg:justify-end">
-              <div className="max-w-lg w-full lg:max-w-xs">
+            <Logo id="header_logo" textClassName="hidden sm:block" iconSize={32} color={color} text={solution?.site?.name} onClick={onClickLogo} />
+            <div className="hidden sm:block">{renderMenuDesktopView()}</div>
+            <div className="visible flex-1 flex px-5 px-3 lg:ml-6">
+              <div className="max-w-xl w-full">
                 <label htmlFor="search" className="sr-only">
                   Search
                 </label>

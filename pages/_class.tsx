@@ -30,7 +30,9 @@ function Class() {
     <div className="bg-gray-50 bg-gray-100 bg-gray-200 bg-gray-300 bg-gray-500 bg-gray-600 bg-gray-700"/>
     
     <div className="w-16 w-56"/>
-
+    <div className="z-10 z-20 z-30 z-40 z-50"/>
+    <div className="float-left float-none float-right absolute fixed block whitespace-nowrap"/>
+    
   </div>
 }
 

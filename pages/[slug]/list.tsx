@@ -1,7 +1,8 @@
 import React from 'react';
 import { getServerSidePropsForPage, PageBase, PageLoader } from 'douhub-ui-web';
 import { useCurrentContext } from 'douhub-ui-web-basic';
-import { DetaultLeftArea, PageBase as AppPageBase } from 'douhub-ui-web-platform';
+import { DetaultLeftArea } from 'douhub-ui-web-platform';
+import { PageBase as AppPageBase } from 'douhub-ui-web-platform';
 import Header from '../../components/areas/header';
 import { settings } from '../../settings';
 import 'antd/dist/antd.css';
@@ -19,16 +20,18 @@ const ListPage = (props: Record<string, any>) => {
     const { solution, slug } = props;
     const entity = getEntityBySlug(solution, slug);
     const context = useCurrentContext(solution, { signInUrl: '/auth/sign-in' });
-
+    const sidePaneKey = entity && `sidePane-${entity.entityName}-${entity.entityType}`;
     return <PageBase solution={solution} >
         <div className="h-full flex flex-col">
             {context ? <>
                 {isObject(entity) && <Header
                     {...props}
+                    sidePaneKey={sidePaneKey}
                     searchPlaceholder={`Search ${entity?.uiCollectionName ? entity.uiCollectionName.toLowerCase() + ' ...' : '...'}`} />
                 }
                 {isObject(entity) ? <AppPageBase
                     {...props}
+                    sidePaneKey={sidePaneKey}
                     MainArea={MainArea}
                     LeftArea={DetaultLeftArea}
                     RightArea={null}

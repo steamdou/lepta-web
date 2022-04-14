@@ -1,20 +1,17 @@
 import React from 'react';
 import { without } from 'lodash';
-import Form from '../form/page';
-import { DEFAULT_EDIT_COLUMN, DEFAULT_ACTION_COLUMN, DEFAULT_OPEN_IN_BROWSER_COLUMN } from 'douhub-ui-web';
-
+import Form from '../form/book';
+import { DEFAULT_EDIT_COLUMN, DEFAULT_ACTION_COLUMN, DEFAULT_OPEN_IN_BROWSER_COLUMN, BaseList, ListTags } from 'douhub-ui-web';
 import { _window } from 'douhub-ui-web-basic';
 import { hasRole, isNonEmptyString } from 'douhub-helper-util';
 import { observer } from 'mobx-react-lite';
 import { useContextStore } from 'douhub-ui-store';
 // import ListCategoriesTags from './list-categories-tags';
-import { ListCategoriesTags } from 'douhub-ui-web';
+// import ListBase from './list-base';
 
-// import BaseList from './_base';
-import { BaseList } from 'douhub-ui-web';
+const SourceList = observer((props: Record<string, any>) => {
 
-const PageList = observer((props: Record<string, any>) => {
-    const { entity, height, search, webQuery } = props;
+    const { height, entity } = props;
     const contextStore = useContextStore();
     const context = JSON.parse(contextStore.data);
 
@@ -32,10 +29,10 @@ const PageList = observer((props: Record<string, any>) => {
                 render: (v: string, data: Record<string, any>) => {
                     const text = data.highlight?.searchDisplay ? data.highlight?.searchDisplay : v;
                     const searchDetail = data.highlight?.searchContent ? data.highlight?.searchContent : [];
-
                     return <div className="flex flex-col items-start">
                         <div className="text-sm font-normal text-gray-900" dangerouslySetInnerHTML={{ __html: text }}></div>
                         {searchDetail.length > 0 && <div className="mt-1 text-xs font-light text-gray-900" dangerouslySetInnerHTML={{ __html: searchDetail[0] }}></div>}
+                        <ListTags tags={data.tags} />
                     </div>
                 },
             },
@@ -49,7 +46,7 @@ const PageList = observer((props: Record<string, any>) => {
         switch (action) {
             case 'open-in-browser':
                 {
-                    _window.open(`/read/${record.slug}`)
+                   if (isNonEmptyString(record.url)) _window.open(record.url)
                 }
         }
     }
@@ -57,18 +54,17 @@ const PageList = observer((props: Record<string, any>) => {
     return (
         <BaseList
             {...props}
-            ListCategoriesTags={ListCategoriesTags}
+            // ListBase={ListBase}
+            // ListCategoriesTags={ListCategoriesTags}
             allowUpload={false}
             allowCreate={allowCreate}
-            webQuery={webQuery}
-            search={search}
             onClickRecord={onClickRecord}
             selectionType="checkbox"
             height={height}
             entity={entity}
             columns={columns}
             Form={Form}
-            maxFormWidth={1000}
+            maxFormWidth={700}
             view="grid"
             showViewToggleButton={true}
         />
@@ -76,4 +72,4 @@ const PageList = observer((props: Record<string, any>) => {
 })
 
 
-export default PageList;
+export default SourceList;

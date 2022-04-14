@@ -1,40 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { cloneDeep, isArray, isFunction, without } from 'lodash';
 import { getBaseDomain, isNonEmptyString, isObject, newGuid } from 'douhub-helper-util';
-import { FormBase } from 'douhub-ui-web';
+import { FormBase, FormPreviewButton } from 'douhub-ui-web';
 // import FormBase from './base';
-import { callAPI, _window } from 'douhub-ui-web-basic';
+import {  _window } from 'douhub-ui-web-basic';
 import SectionsField from './sections';
 
 const DISPLAY_NAME = 'PageForm';
-
-export const PreviewButton = (props: Record<string, any>) => {
-    const { data } = props;
-    const solution = _window.solution;
-    const [doing, setDoing] = useState('');
-
-    const onClick = () => 
-    {
-        if (data.isGlobal) return _window.open(`/read/${data.slug}`);
-
-        setDoing('Creating link ...');
-        callAPI(solution, `${solution.apis.data}token`, { id: data.id }, 'POST')
-            .then((r: any) => {
-                 _window.open(`/read/${data.slug}?token=${r.result}`)
-            })
-            .catch((error) => {
-                console.error({ error });
-            })
-            .finally(()=>{
-                setDoing('');
-            })
-    }
-
-    return  <button onClick={onClick} style={{height: 22}}
-            className="flex flex-col cursor-pointer whitespace-nowrap inline-flexitems-center justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-2xs font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 ">
-            {isNonEmptyString(doing)?doing:'Preview'}
-        </button>
-}
 
 const PageForm = (props: Record<string, any>) => {
 
@@ -93,12 +65,12 @@ const PageForm = (props: Record<string, any>) => {
                         defaultValue: false,
                         size: 'small',
                         colStyle: { width: 'auto', minWidth: 150 },
-                        onClickInfo: () => { setShowPublishInfo(isNonEmptyString(showPublishInfo)?'':newGuid()) }
+                        onClickInfo: () => { setShowPublishInfo(isNonEmptyString(showPublishInfo) ? '' : newGuid()) }
                     },
                     {
                         name: 'previewButton',
                         type: 'custom',
-                        content: PreviewButton
+                        content: FormPreviewButton
                     }
                 ]
             },
@@ -120,7 +92,7 @@ const PageForm = (props: Record<string, any>) => {
                         groupValue: 'daily',
                         type: 'checkbox',
                         size: 'small',
-                        colStyle: {width: 'auto'},
+                        colStyle: { width: 'auto' },
                         value: data?.updateFrequency,
                     },
                     {
@@ -129,7 +101,7 @@ const PageForm = (props: Record<string, any>) => {
                         groupValue: 'weekly',
                         type: 'checkbox',
                         size: 'small',
-                        colStyle: {width: 'auto'},
+                        colStyle: { width: 'auto' },
                         value: data?.updateFrequency,
                     },
                     {
@@ -138,11 +110,11 @@ const PageForm = (props: Record<string, any>) => {
                         groupValue: 'monthly',
                         type: 'checkbox',
                         size: 'small',
-                        colStyle: {width: 'auto'},
+                        colStyle: { width: 'auto' },
                         value: data?.updateFrequency,
                     }
                 ]
-            }, 
+            },
             {
                 fields: [
                     {

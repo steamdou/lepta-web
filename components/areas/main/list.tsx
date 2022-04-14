@@ -1,16 +1,18 @@
 import React from 'react';
-import { getEntityBySlug, hasAnyRole} from 'douhub-helper-util';
+import { getEntityBySlug, hasAnyRole } from 'douhub-helper-util';
 import { DefaultList } from 'douhub-ui-web';
-import { _window, Nothing} from 'douhub-ui-web-basic';
+import { _window, Nothing } from 'douhub-ui-web-basic';
 import dynamic from 'next/dynamic';
 import { useContextStore } from 'douhub-ui-store';
-import {find, isNil, isArray} from 'lodash';
+import { find, isNil, isArray } from 'lodash';
 
 const Lists: Record<string, any> = {};
 let List = null;
 
 const ListMainArea = (props: Record<string, any>) => {
-    const { slug, height, search, query } = props;
+
+
+    const { slug, height, search, query, tags, categories, sidePaneKey } = props;
     const solution = _window.solution;
     const entity = getEntityBySlug(solution, slug);
 
@@ -18,15 +20,21 @@ const ListMainArea = (props: Record<string, any>) => {
     const context = JSON.parse(contextStore.data);
 
     const navigation = solution?.app?.navigation;
-    const nav = find(navigation, (n)=>{return n.slug==slug});
+    const nav = find(navigation, (n) => { return n.slug == slug });
 
-    if (isNil(nav)) return <Nothing/>
-    if (isArray(nav.roles) && !hasAnyRole(context, nav.roles)) return <Nothing/>
+    if (isNil(nav)) return <Nothing />
+    if (isArray(nav.roles) && !hasAnyRole(context, nav.roles)) return <Nothing />
 
     switch (entity?.entityName) {
-         case 'Page':
+        case 'Page':
             {
                 if (!Lists[slug]) Lists[slug] = dynamic(() => import("../../list/page"), { ssr: false });
+                List = Lists[slug];
+                break;
+            }
+        case 'Book':
+            {
+                if (!Lists[slug]) Lists[slug] = dynamic(() => import("../../list/book"), { ssr: false });
                 List = Lists[slug];
                 break;
             }
@@ -51,7 +59,11 @@ const ListMainArea = (props: Record<string, any>) => {
     return (
         <List
             onRemoveSearch={props.onRemoveSearch}
+            onRemoveTag={props.onRemoveTag}
+            sidePaneKey={sidePaneKey}
             search={search}
+            tags={tags}
+            categories={categories}
             height={height}
             entity={entity}
             webQuery={query}

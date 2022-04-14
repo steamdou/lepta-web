@@ -116,15 +116,8 @@
         }
     },
     "app": {
+        "defaultSrc": "/page/list",
         "navigation": [
-            {
-                "id": "dashboard",
-                "type": "page",
-                "title": "Dashboard",
-                "icon": "/icons/web-analytics.svg",
-                "src": "/dashboard",
-                "slug": "dashboard"
-            },
             {
                 "id": "pages",
                 "type": "page",
@@ -140,6 +133,14 @@
                 "icon": "/icons/block.svg",
                 "src": "/card/list",
                 "slug": "card"
+            },
+            {
+                "id": "books",
+                "type": "book",
+                "title": "Books",
+                "icon": "/icons/course.svg",
+                "src": "/book/list",
+                "slug": "book"
             },
             {
                 "id": "organization",

@@ -33,6 +33,12 @@
             "slug": "organization"
         },
         {
+            "entityName": "Book",
+            "uiName": "Book",
+            "uiCollectionName": "Books",
+            "slug": "book"
+        },
+        {
             "entityName": "User",
             "uiName": "User",
             "uiCollectionName": "Users",
