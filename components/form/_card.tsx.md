@@ -4,6 +4,9 @@ import { getBaseDomain, isNonEmptyString, isObject, newGuid } from 'douhub-helpe
 import { _window } from 'douhub-ui-web-basic';
 import { FormBase, FormPreviewButton} from 'douhub-ui-web';
 
+// import { HtmlField} from 'douhub-ui-web';
+// import HtmlField from './html';
+
 const DISPLAY_NAME = 'CardForm';
 
 const CardForm = (props: Record<string, any>) => {
@@ -152,7 +155,8 @@ const CardForm = (props: Record<string, any>) => {
                         name: 'content',
                         label: "Card Content",
                         type: 'html',
-                        placeholder: "Type the content of the card here"
+                        placeholder: "Type the content of the card here",
+                        alwaysShowLabel: true
                     }
                 ]
             },
@@ -217,14 +221,20 @@ const CardForm = (props: Record<string, any>) => {
     }
 
     const field = {
-        label: 'Book of the source',
-        name: 'sourceBookId',
-        type: 'lookup',
-        entityName: 'Book',
-        placeholder: "Select a book",
-        alwaysShowLabel: true
-    };
+                name: 'content',
+                label: "Card Content",
+                type: 'html',
+                placeholder: "Type the content of the card here",
+                alwaysShowLabel: true
+            };
+
+    // const onChangeData = (field, v)=>{
+    //     console.log({field, v})
+    // }
+
+
     return <div className="flex flex-col w-full">
+        {/* <HtmlField {...field} value={data.content} record={data} onChange={(v: string) => onChangeData(field, v)}/> */}
         <FormBase {...props}
             data={data}
             form={{ ...CARD_FORM, version: formVersion }}

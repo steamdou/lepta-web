@@ -11,7 +11,7 @@ douhub:
     memory: 512
     cloudfront:
       # if you want to use an existing cloudfront distribution, provide it here
-      distributionId: E1FYEWKOODZYGT
+      distributionId: E2J6L41W0FQTIO
       # this is the default cache behaviour of the cloudfront distribution
       # the origin-request edge lambda associated to this cache behaviour does the pages server side rendering
       defaults:

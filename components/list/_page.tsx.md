@@ -14,7 +14,7 @@ import { ListCategoriesTags } from 'douhub-ui-web';
 import { BaseList } from 'douhub-ui-web';
 
 const PageList = observer((props: Record<string, any>) => {
-    const { entity, height, search, webQuery } = props;
+    const { entity } = props;
     const contextStore = useContextStore();
     const context = JSON.parse(contextStore.data);
 
@@ -60,11 +60,7 @@ const PageList = observer((props: Record<string, any>) => {
             ListCategoriesTags={ListCategoriesTags}
             allowUpload={false}
             allowCreate={allowCreate}
-            webQuery={webQuery}
-            search={search}
             onClickRecord={onClickRecord}
-            selectionType="checkbox"
-            height={height}
             entity={entity}
             columns={columns}
             Form={Form}

@@ -11,7 +11,7 @@ import { useContextStore } from 'douhub-ui-store';
 
 const SourceList = observer((props: Record<string, any>) => {
 
-    const { height, entity } = props;
+    const { entity } = props;
     const contextStore = useContextStore();
     const context = JSON.parse(contextStore.data);
 
@@ -56,11 +56,8 @@ const SourceList = observer((props: Record<string, any>) => {
             {...props}
             // ListBase={ListBase}
             // ListCategoriesTags={ListCategoriesTags}
-            allowUpload={false}
             allowCreate={allowCreate}
             onClickRecord={onClickRecord}
-            selectionType="checkbox"
-            height={height}
             entity={entity}
             columns={columns}
             Form={Form}

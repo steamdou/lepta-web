@@ -1,18 +1,21 @@
-import React from 'react';
-import { getEntityBySlug, hasAnyRole } from 'douhub-helper-util';
+import React, {useEffect, useState} from 'react';
 import { DefaultList } from 'douhub-ui-web';
-import { _window, Nothing } from 'douhub-ui-web-basic';
+import { _window, Nothing} from 'douhub-ui-web-basic';
 import dynamic from 'next/dynamic';
-import { useContextStore } from 'douhub-ui-store';
 import { find, isNil, isArray } from 'lodash';
+import { getEntityBySlug, hasAnyRole, isNonEmptyString, newGuid } from 'douhub-helper-util';
+import { useContextStore } from 'douhub-ui-store';
+import { observer } from 'mobx-react-lite';
 
-const Lists: Record<string, any> = {};
-let List = null;
+let List:any = null;
+if (!_window.lists) 
+{
+    console.log('Init - _window.lists');
+    _window.lists={};
+}
+const ListMainArea = observer((props: Record<string, any>) => {
 
-const ListMainArea = (props: Record<string, any>) => {
-
-
-    const { slug, height, search, query, tags, categories, sidePaneKey } = props;
+    const { slug } = props;
     const solution = _window.solution;
     const entity = getEntityBySlug(solution, slug);
 
@@ -22,54 +25,47 @@ const ListMainArea = (props: Record<string, any>) => {
     const navigation = solution?.app?.navigation;
     const nav = find(navigation, (n) => { return n.slug == slug });
 
-    if (isNil(nav)) return <Nothing />
-    if (isArray(nav.roles) && !hasAnyRole(context, nav.roles)) return <Nothing />
 
-    switch (entity?.entityName) {
-        case 'Page':
-            {
-                if (!Lists[slug]) Lists[slug] = dynamic(() => import("../../list/page"), { ssr: false });
-                List = Lists[slug];
-                break;
-            }
-        case 'Book':
-            {
-                if (!Lists[slug]) Lists[slug] = dynamic(() => import("../../list/book"), { ssr: false });
-                List = Lists[slug];
-                break;
-            }
-        case 'User':
-            {
-                if (!Lists[slug]) Lists[slug] = dynamic(() => import("../../list/user"), { ssr: false });
-                List = Lists[slug];
-                break;
-            }
-        case 'Card':
-            {
-                if (!Lists[slug]) Lists[slug] = dynamic(() => import("../../list/card"), { ssr: false });
-                List = Lists[slug];
-                break;
-            }
-        default:
-            {
-                List = DefaultList;
-            }
+    if (isNil(nav)) List = Nothing
+    if (isArray(nav.roles) && !hasAnyRole(context, nav.roles)) List = Nothing
+
+    if (isNil(List))
+    {
+        switch (slug?.toLowerCase()) {
+            case 'page':
+                {
+                    if (!_window.lists[slug]) _window.lists[slug] = dynamic(() => import("./pages"), { ssr: false });
+                    List = _window.lists[slug];
+                    break;
+                }
+            case 'user':
+                {
+                    if (!_window.lists[slug]) _window.lists[slug] = dynamic(() => import("./users"), { ssr: false });
+                    List = _window.lists[slug];
+                    break;
+                }
+            case 'book':
+                {
+                    if (!_window.lists[slug]) _window.lists[slug] = dynamic(() => import("./books"), { ssr: false });
+                    List = _window[slug];
+                    break;
+                }
+            case 'card':
+                {
+                    if (!_window.lists[slug]) _window.lists[slug] = dynamic(() => import("./cards"), { ssr: false });
+                    List = _window.lists[slug];
+                    break;
+                }
+            default:
+                {
+                    List = DefaultList;
+                    break;
+                }
+        }
     }
-
-    return (
-        <List
-            onRemoveSearch={props.onRemoveSearch}
-            onRemoveTag={props.onRemoveTag}
-            sidePaneKey={sidePaneKey}
-            search={search}
-            tags={tags}
-            categories={categories}
-            height={height}
-            entity={entity}
-            webQuery={query}
-        />
-    )
-}
+   
+    return <List {...props} entity={entity}/>
+});
 
 
 export default ListMainArea;
