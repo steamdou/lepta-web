@@ -5,8 +5,8 @@ import Class from './_class';
 
 function App(appProps: AppProps) {
   return <>
-  <AppBase {...appProps} />
-  <Class/>
+    <AppBase {...appProps} />
+    <Class />
   </>
 }
 

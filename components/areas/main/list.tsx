@@ -25,6 +25,7 @@ const ListMainArea = observer((props: Record<string, any>) => {
     const navigation = solution?.app?.navigation;
     const nav = find(navigation, (n) => { return n.slug == slug });
 
+   
 
     if (isNil(nav)) List = Nothing
     if (isArray(nav.roles) && !hasAnyRole(context, nav.roles)) List = Nothing

@@ -11,6 +11,8 @@ import solutionUI from '../../metadata/ui.json';
 import { getEntityBySlug } from 'douhub-helper-util';
 import { isObject } from 'lodash';
 import MainArea from '../../components/areas/main/list';
+import RightArea from '../../components/areas/right/default';
+import Chat from '../../components/areas/right/chat';
 
 export const getServerSideProps = async (props: Record<string, any>): Promise<Record<string, any>> => {
     return await getServerSidePropsForPage({ settings, solution: { ...solutionProfile, ...solutionUI }, ...props });
@@ -31,10 +33,11 @@ const ListPage = (props: Record<string, any>) => {
                 }
                 {isObject(entity) ? <AppPageBase
                     {...props}
+                    entity={entity}
                     sidePaneKey={sidePaneKey}
                     MainArea={MainArea}
                     LeftArea={DetaultLeftArea}
-                    RightArea={null}
+                    RightArea={Chat}
                 /> :
                     <div className="p-8 text-red-700">There&apos;s no entity defined for the page.</div>
                 }
