@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import { DefaultList } from 'douhub-ui-web';
+import { DefaultList, ListBase } from 'douhub-ui-web';
 import { _window, Nothing} from 'douhub-ui-web-basic';
 import dynamic from 'next/dynamic';
 import { find, isNil, isArray } from 'lodash';
 import { getEntityBySlug, hasAnyRole, isObject} from 'douhub-helper-util';
 import { useContextStore } from 'douhub-ui-store';
 import { observer } from 'mobx-react-lite';
-import UsersList from './users';
+// import ListBase from './list-base';
 
 let List:any = null;
 if (!_window.lists) 
@@ -37,7 +37,6 @@ const ListMainArea = observer((props: Record<string, any>) => {
     switch (slug?.toLowerCase()) {
         case 'page':
             {
-                console.log(1);
                 if (!_window.lists[slug]) _window.lists[slug] = dynamic(() => import("./pages"), { ssr: false });
                 List = _window.lists[slug];
                 break;
@@ -67,7 +66,7 @@ const ListMainArea = observer((props: Record<string, any>) => {
             }
     }
     
-    return showNothing?<Nothing/>:<List {...props} entity={entity}/>
+    return showNothing?<Nothing/>:<List {...props} entity={entity} ListBase={ListBase}/>
 });
 
 

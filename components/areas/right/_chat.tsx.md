@@ -263,7 +263,7 @@ const ChatPart = observer((props: Record<string, any>) => {
         console.log({ error });
     }
 
-    const realtimeSession = useRealtimeSession("List", roomId, onChatMessage, onChatError);
+    useRealtimeSession("List", roomId, onChatMessage, onChatError);
 
     const retrieveMessages = (toRefresh: boolean) => {
         if (!isNonEmptyString(roomId)) return setError('Please provide a room name.')
