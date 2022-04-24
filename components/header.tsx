@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
 import { Popover, Transition } from '@headlessui/react';
-import { isObject, isNonEmptyString } from 'douhub-helper-util';
+import { isNonEmptyString } from 'douhub-helper-util';
 import Link from 'next/link';
 import { SearchIcon } from '@heroicons/react/solid';
 import { observer } from 'mobx-react-lite';
@@ -79,12 +79,12 @@ const SiteHeader = observer((props: Record<string, any>) => {
     if (!isEmpty(user)) return null;
     return <div className="flex items-center justify-end flex-1 mr-3">
       <Link href="/auth/sign-in">
-        <a className="cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-gray-100 rounded-md shadow-sm text-xs font-medium bg-gray-50 hover:bg-gray-100">
+        <a className="cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-gray-100 rounded-md shadow text-xs font-medium bg-gray-50 hover:shadow-lg">
           Contributor
         </a>
       </Link>
       {solution?.site?.supportSignUp != false && <Link href="/auth/sign-in">
-        <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-xs font-medium text-white bg-green-600 hover:bg-green-700">
+        <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow text-xs font-medium text-white bg-green-600 hover:shadow-lg">
           Sign up
         </a>
       </Link>}
@@ -94,9 +94,9 @@ const SiteHeader = observer((props: Record<string, any>) => {
   const renderDashboardButton = () => {
     if (isNil(user) || isEmpty(user)) return null;
     return <div className="flex items-center justify-end flex-1">
-      <Link href="/dashboard">
-        <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-xs font-medium text-white bg-blue-600 hover:bg-blue-700">
-          Dashboard
+      <Link href="/card/list">
+        <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow text-xs font-medium text-white bg-sky-600 hover:bg-sky-500 hover:shadow-lg hover:text-white">
+          Manage Cards
         </a>
       </Link>
     </div>

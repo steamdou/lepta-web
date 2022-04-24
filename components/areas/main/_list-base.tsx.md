@@ -2,7 +2,7 @@ import {
     DEFAULT_COLUMNS, AlertField,
     Notification, DefaultForm,
     ListCategoriesTags, ListFilters, ListFormHeader,
-    Splitter as SplitterInternal, ListTable, LIST_CSS, ListFormResizer,
+    Splitter as SplitterInternal, ListTable, LIST_CSS,
     ListHeader, ListCard
 } from 'douhub-ui-web';
 import { notification as antNotification } from 'antd';
@@ -14,6 +14,7 @@ import { getRecordDisplay, isObject, isNonEmptyString, newGuid, setWebQueryValue
 import { without, throttle, debounce, isNumber, map, isFunction, isArray, find, isNil, each, cloneDeep } from 'lodash';
 import { useRouter } from 'next/router';
 import ReactResizeDetector from 'react-resize-detector';
+import ListFormResizer from './list-resizer';
 // import { ListHeader } from 'douhub-ui-web';
 import StackGrid from "react-stack-grid";
 
@@ -22,8 +23,6 @@ const NonSplitter = (props: Record<string, any>) => {
         {props.children}
     </div>
 }
-
-
 
 const DefaultNoData = (props: Record<string, any>) => {
 
@@ -121,7 +120,7 @@ const ListBase = observer((props: Record<string, any>) => {
     const showSidePane = sidePaneKey && envData[sidePaneKey] && !hideListCategoriesTags && !currentRecord;
     const currentRecordChanged = isObject(oriCurrentRecord) && isObject(currentRecord) && JSON.stringify(oriCurrentRecord) != JSON.stringify(currentRecord);
 
-    console.log({ giveRoomToRightArea, lgScreen, openRightDrawer, currentFormWidth, areaWidth })
+    console.log({oriTitle: oriCurrentRecord?.title, curTitle: currentRecord?.title})
 
     useEffect(() => {
         const newEnvData = cloneDeep(envData);
@@ -135,17 +134,15 @@ const ListBase = observer((props: Record<string, any>) => {
         setOriCurrentRecord(null)
     }, [entity.entityName, entity.entityType]);
 
-     
+
     useEffect(() => {
 
         const cacheValue = getLocalStorage(viewCacheKey);
-        console.log({cacheView: cacheValue})
-        if (isNil(cacheValue)) 
-        {
+
+        if (isNil(cacheValue)) {
             setView(props.view == 'grid' ? 'grid' : 'table');
         }
-        else
-        {
+        else {
             setView(cacheValue);
         }
     }, [props.view])
@@ -401,7 +398,7 @@ const ListBase = observer((props: Record<string, any>) => {
                         });
                     }
                     else {
-                        updateCurrentRecord(record, true);
+                        updateCurrentRecord(record, action);
                     }
                     break;
                 }
@@ -498,7 +495,7 @@ const ListBase = observer((props: Record<string, any>) => {
 
     }
 
-   
+
 
     const renderGrid = () => {
         if (view == 'table' || currentRecord) return null;
@@ -580,7 +577,7 @@ const ListBase = observer((props: Record<string, any>) => {
                     });
                 }
                 setResult(newResult);
-                updateCurrentRecord(newRecord);
+                updateCurrentRecord(newRecord, 'save');
                 if (closeForm) onClickCloseForm();
             })
             .catch((error: any) => {
@@ -597,14 +594,29 @@ const ListBase = observer((props: Record<string, any>) => {
             })
     }
 
-    const updateCurrentRecord = (newRecord: Record<string, any> | null, init?: boolean) => {
+    const updateCurrentRecord = (newRecord: Record<string, any> | null, type?: 'edit' | 'create' | 'save') => {
         if (!isNil(newRecord)) {
             const newCurrentRecord = cloneDeep(newRecord);
             newCurrentRecord.display = getRecordDisplay(newCurrentRecord);
             envStore.setValue('currentRecord', newCurrentRecord);
             setCurrentRecord(newCurrentRecord);
-            if (init) {
-                setOriCurrentRecord(isNonEmptyString(newCurrentRecord?._rid) ? cloneDeep(newCurrentRecord) : {});
+            console.log({type})
+            switch (type) {
+                case 'create':
+                    {
+                        setOriCurrentRecord({});
+                        break;
+                    }
+                case 'edit':
+                    {
+                        setOriCurrentRecord(newCurrentRecord);
+                        break;
+                    }
+                case 'save':
+                    {
+                        setOriCurrentRecord(newCurrentRecord);
+                        break;
+                    }
             }
         }
         else {
@@ -656,12 +668,11 @@ const ListBase = observer((props: Record<string, any>) => {
         </div>
     }
 
-    const onChangeView = (newView: string)=>{
+    const onChangeView = (newView: string) => {
         setLocalStorage(viewCacheKey, newView);
         setView(newView);
     }
 
-    console.log({view})
 
     const renderListSection = () => {
         return <div
@@ -739,7 +750,7 @@ const ListBase = observer((props: Record<string, any>) => {
                     defaultWidth={formWidth > areaWidth ? areaWidth : formWidth}
                     className="absolute top-0 right-0"
                     style={{
-                        height, maxWidth: maxFormWidth, minWidth: FORM_RESIZER_MIN_WIDTH,
+                        height, maxWidth: maxFormWidth, minWidth: FORM_RESIZER_MIN_WIDTH + 100,
                         borderLeft: '100px solid rgba(255, 255, 255, 0.6)', borderImage: 'linear-gradient(to left,#ffffff,transparent) 10 100%',
                         right: giveRoomToRightArea
                     }}>
@@ -756,7 +767,7 @@ const ListBase = observer((props: Record<string, any>) => {
                             onClickDeleteRecord={onClickDeleteRecordFromForm}
                         />
                         {isObject(currentRecord) && <div className="list-form-body w-full flex flex-row px-8 pt-4 pb-20 overflow-hidden overflow-y-auto"
-                            style={{ borderTop: 'solid 1rem #ffffff', marginTop: 70, height: height - formHeightAdjust }}>
+                            style={{ borderTop: 'solid 1rem #ffffff', height: height - formHeightAdjust }}>
                             <ListForm
                                 entity={entity}
                                 wrapperClassName="pb-20"

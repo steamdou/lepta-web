@@ -1,39 +1,35 @@
-import { map } from 'lodash';
+import { getRecordAbstract, isNonEmptyString, shortenString } from 'douhub-helper-util';
+import { isArray } from 'lodash';
+import { _window, Tags } from 'douhub-ui-web-basic';
 
-const post = {
-  title: 'Boost your conversion rate',
-  href: '#',
-  category: { name: 'Knowlede of the day', href: '#', color: 'bg-indigo-100 text-indigo-800' },
-  description:
-    'Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat massa dictumst amet. Sapien tortor lacus arcu.',
-  date: 'Mar 16, 2020',
-  datetime: '2020-03-16',
-  author: {
-    name: 'Paul York',
-    href: '#',
-    imageUrl:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-  },
-  readingTime: '6 min',
-}
+const Highlights = (props: Record<string, any>) => {
 
-const Highlights = () => {
-  return (
-    <div key={post.title} className="w-full lg:max-w-lg bg-white p-12 rounded-lg">
+  const data = isArray(props.data) ? props.data : [];
+  const post = data.length > 0 ? data[0] : {};
+
+  const themeColor = _window.solution?.theme?.color;
+  const color = themeColor && isNonEmptyString(themeColor["500"]) ? themeColor["500"] : 'black';
+
+  return !post ? <></> :
+    <div key={post.title} className="w-full relative lg:max-w-lg bg-white p-8 lg:p-12 rounded-lg pl-0">
+      <span
+        className="absolute top-0 left-0 inline-flex items-center p-3 text-sm font-medium bg-orange-100"
+      >
+        Knowlede of the day
+      </span>
       <div>
-        <a href={post.category.href} className="inline-block">
-          <span
-            className={post.category.color + 'inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium'}
-          >
-            {post.category.name}
-          </span>
-        </a>
+        <div className="inline-block"></div>
       </div>
-      <a href={post.href} className="block mt-4">
-        <p className="text-xl font-semibold text-gray-900">{post.title}</p>
-        <p className="mt-3 text-base text-gray-500">{post.description}</p>
-      </a>
-      <div className="mt-6 flex items-center">
+      <div className="flex flex-col mt-4">
+        <div className="text-xl font-semibold text-gray-900 mb-2">{post.title}</div>
+        {isArray(post.tags) && post.tags.length > 0 && <div className="w-full">
+                <Tags tags={post.tags} wrapperClassName="mt-1" tooltipColor={color}/>
+            </div>}
+        <div className="mt-3 text-base text-gray-500">{
+          isNonEmptyString(post.description) ? shortenString(post.description, 128) : getRecordAbstract(post, 128, true)
+        }</div>
+      </div>
+      {/* <div className="mt-6 flex items-center">
         <div className="flex-shrink-0">
           <a href={post.author.href}>
             <span className="sr-only">{post.author.name}</span>
@@ -49,10 +45,9 @@ const Highlights = () => {
             <span aria-hidden="true">&middot;</span>
             <span>{post.readingTime} read</span>
           </div>
-        </div>
-      </div>
+        </div> 
+      </div>*/}
     </div>
-  )
 }
 
 export default Highlights;

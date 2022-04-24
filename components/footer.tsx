@@ -21,10 +21,10 @@ const FooterDefault = (props: Record<string, any>) => {
                     </div>
                 </div>
                 <div className="flex flex-row">
-                    <div className="mr-16">
+                    <div className="mr-8">
                         <FooterColumnSection data={footer?.columns[0]} />
                     </div>
-                    <div className="ml-8 mr-16">
+                    <div className="mx-8">
                         <FooterColumnSection data={footer?.columns[1]} />
                     </div>
                 </div>

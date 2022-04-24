@@ -4,7 +4,10 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
     './controls/**/*.{js,ts,jsx,tsx}',
-    './node_modules/douhub-ui-web/build/**/*.{js,ts,jsx,tsx}'
+    './node_modules/douhub-ui-web/build/**/*.{js,ts,jsx,tsx}',
+    './node_modules/douhub-ui-web-basic/build/**/*.{js,ts,jsx,tsx}',
+    './node_modules/douhub-ui-web-platform/build/**/*.{js,ts,jsx,tsx}',
+    './node_modules/douhub-ui-web-premium/build/**/*.{js,ts,jsx,tsx}'
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {

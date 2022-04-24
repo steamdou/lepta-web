@@ -1,17 +1,21 @@
 
-import UseCases from './controls/highlights'
+import Highlights from './controls/highlights'
 import Introduction from './controls/introduction';
+import {isArray} from 'lodash';
 
 const PrimarySection = (props: Record<string, any>) => {
 
-    return <div className="bg-white pb-8">
-    <div className="pt-12 pb-12 lg:relative">
-      <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
+    const highlights = isArray(props.highlights)?props.highlights:[];
+    console.log({NNN:highlights})
+
+    return <div className="bg-white pb-0 md:pb-8">
+    <div className="py-4 lg:py-12 lg:relative">
+      <div className="mx-auto px-4 sm:px-8 lg:px-12 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
        <Introduction/>
       </div>
 
-      <div className="px-6 sm:mx-auto sm:max-w-3xl">
-        <div className="py-12 sm:relative sm:px-0 sm:mt-12 sm:py-16 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+      <div className="px-4 sm:px-8 sm:mx-auto max-w-3xl">
+        <div className="py-12 pb-0 sm:pb-4 md:pb-12 sm:relative px-0 sm:mt-12 sm:py-16 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
           <div className="hidden sm:block">
             <div className="absolute inset-y-0 left-1/2 w-screen bg-gray-50 rounded-l-3xl lg:left-80 lg:right-0 lg:w-full" />
             <svg
@@ -37,7 +41,7 @@ const PrimarySection = (props: Record<string, any>) => {
             </svg>
           </div>
           <div className="relative sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:px-8  xl:px-12">
-            <UseCases/>
+            <Highlights data={highlights}/>
           </div>
         </div>
       </div>

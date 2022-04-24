@@ -83,7 +83,7 @@ const Introduction = () => {
             />
           </div>
         </div>
-        <div className="mt-2 sm:mt-0 sm:ml-3 ml-1">
+        <div className="mt-2 sm:mt-0 ml-0 sm:ml-3">
           <button
             disabled={isNonEmptyString(doing)}
             onClick={onSubmit}
