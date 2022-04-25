@@ -1,3 +1,4 @@
+import React from 'react';
 import { getRecordAbstract, isNonEmptyString, shortenString } from 'douhub-helper-util';
 import { isArray } from 'lodash';
 import { _window, Tags } from 'douhub-ui-web-basic';
@@ -11,23 +12,24 @@ const Highlights = (props: Record<string, any>) => {
   const color = themeColor && isNonEmptyString(themeColor["500"]) ? themeColor["500"] : 'black';
 
   return !post ? <></> :
-    <div key={post.title} className="w-full relative lg:max-w-lg bg-white p-8 lg:p-12 rounded-lg pl-0">
-      <span
-        className="absolute top-0 left-0 inline-flex items-center p-3 text-sm font-medium bg-orange-100"
-      >
-        Knowlede of the day
-      </span>
-      <div>
-        <div className="inline-block"></div>
-      </div>
-      <div className="flex flex-col mt-4">
-        <div className="text-xl font-semibold text-gray-900 mb-2">{post.title}</div>
-        {isArray(post.tags) && post.tags.length > 0 && <div className="w-full">
-                <Tags tags={post.tags} wrapperClassName="mt-1" tooltipColor={color}/>
-            </div>}
-        <div className="mt-3 text-base text-gray-500">{
-          isNonEmptyString(post.description) ? shortenString(post.description, 128) : getRecordAbstract(post, 128, true)
-        }</div>
+    <div key={post.title} className="w-full relative hidden lg:max-w-lg bg-white sm:block sm:p-8 lg:p-12 rounded-lg">
+      <img src={post.media} className="hidden blog w-full ml-8 mb-4 md:block float-right" style={{ maxWidth: "40%"}}/>
+      <div className="w-full">
+        <div className="inline-flex items-center px-3 py-2 text-xs mb-6 font-medium bg-orange-100">
+          Knowlede of the day
+        </div>
+        <div className="flex flex-col">
+          <div className="text-xl font-semibold text-gray-900 mb-2">{post.title}</div>
+          {isArray(post.tags) && post.tags.length > 0 && <div className="w-full mb-2">
+            <Tags tags={post.tags} wrapperClassName="mt-1" tooltipColor={color} />
+          </div>}
+        </div>
+        <div className="mt-2">
+          <p className="text-base text-gray-600">
+            {
+              isNonEmptyString(post.description) ? shortenString(post.description, 128) : getRecordAbstract(post, 128, true)
+            }</p>
+        </div>
       </div>
       {/* <div className="mt-6 flex items-center">
         <div className="flex-shrink-0">

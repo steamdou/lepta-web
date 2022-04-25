@@ -1,7 +1,7 @@
 import StackGrid from "react-stack-grid";
 import { useEffect, useState } from "react";
-import { isArray, map, throttle } from "lodash";
-import { getRecordMedia, getRecordAbstract, getRecordDisplay, isNonEmptyString } from 'douhub-helper-util'
+import { isArray, map, throttle, without } from "lodash";
+import { getRecordMedia, getRecordAbstract, getRecordDisplay, isNonEmptyString, newGuid } from 'douhub-helper-util'
 import { Card, _window } from 'douhub-ui-web-basic';
 import ReactResizeDetector from 'react-resize-detector';
 
@@ -31,7 +31,7 @@ const Grid = (props: Record<string, any>) => {
     const [data, setData] = useState<Record<string, any>[]>([]);
     const filterByTags: any[] = [];
     const filterByCategories: any[] = [];
-
+    const [refreshGrid, setRefreshGrid] = useState('');
     const themeColor = _window.solution?.theme?.color;
     const color = themeColor && isNonEmptyString(themeColor["500"]) ? themeColor["500"] : 'black';
 
@@ -48,6 +48,7 @@ const Grid = (props: Record<string, any>) => {
 
     const onResizeDetector = (width?: number) => {
         setWidth(width ? width : 0);
+        setTimeout(onRefreshGrid, 500);
     }
 
     const guterWidth = 30;
@@ -59,17 +60,23 @@ const Grid = (props: Record<string, any>) => {
 
     const colWidth = getGridColumnWidth();
 
+    const onRefreshGrid = (src: string)=>{
+        setRefreshGrid(newGuid());
+    }
+
     return (
-        <div className="w-full ">
+        <div className="w-full flex flex-col">
             <div className="mx-auto w-full max-w-7xl">
                 <StackGrid
+                    enableSSR={true}
                     itemComponent="div"
                     gutterWidth={guterWidth}
                     gutterHeight={guterWidth}
                     columnWidth={colWidth}
                     style={{ marginTop: guterWidth, marginBottom: guterWidth, paddingLeft: guterWidth / 2, paddingRight: guterWidth / 2 }}
-                    className="w-full">
-                    {map(data, (item, i) => {
+                    className={`w-full grid-${refreshGrid}`}
+                    >
+                    {without(map(data, (item, i) => {
                         const media = getRecordMedia(item);
                         const display = getRecordDisplay(item);
                         let content = '';
@@ -81,7 +88,8 @@ const Grid = (props: Record<string, any>) => {
                             content = getRecordAbstract(item, 128, true);
                         }
 
-                        return <Card key={i}
+                        return i==0 && width<500?null: <Card key={i}
+                            onLoadImage={onRefreshGrid}
                             tooltipColor={color}
                             media={media}
                             item={item}
@@ -89,7 +97,7 @@ const Grid = (props: Record<string, any>) => {
                             categories={filterByCategories}
                             display={display}
                             content={content} />
-                    })}
+                    }),null)}
                 </StackGrid>
                 <ReactResizeDetector onResize={throttle(onResizeDetector, 300)} />
             </div>

@@ -195,23 +195,30 @@
     "roles": [
         {
             "title": "Organization Administrator",
-            "value": "ORG-ADMIN"
+            "value": "ORG-ADMIN",
+            "entityName": "Platform",
+            "allowChangeRoles": true
         },
         {
             "title": "User Administrator",
-            "value": "USER-ADMIN"
+            "value": "USER-ADMIN",
+            "entityName": "Platform",
+            "allowChangeRoles": true
         },
         {
             "title": "Knowledge Manager",
-            "value": "KNOWLEDGE-MANAGER"
+            "value": "KNOWLEDGE-MANAGER",
+            "entityName": "Platform"
         },
         {
             "title": "Knowledge Author",
-            "value": "KNOWLEDGE-AUTHOR"
+            "value": "KNOWLEDGE-AUTHOR",
+            "entityName": "Platform"
         },
         {
             "title": "Knowledge Reader",
-            "value": "KNOWLEDGE-READER"
+            "value": "KNOWLEDGE-READER",
+            "entityName": "Platform"
         }
     ]
 }

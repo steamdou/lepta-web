@@ -37,7 +37,7 @@ const Home = (props: Record<string, any>) => {
         if (isArray(data) && data.length>0)
         {
             setHeightlights([cloneDeep(data[0])]);
-            setData(cloneDeep(data.slice(1)));
+            setData(props.data);
         }
     }, [props.data])
    

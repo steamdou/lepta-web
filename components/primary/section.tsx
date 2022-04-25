@@ -6,8 +6,7 @@ import {isArray} from 'lodash';
 const PrimarySection = (props: Record<string, any>) => {
 
     const highlights = isArray(props.highlights)?props.highlights:[];
-    console.log({NNN:highlights})
-
+   
     return <div className="bg-white pb-0 md:pb-8">
     <div className="py-4 lg:py-12 lg:relative">
       <div className="mx-auto px-4 sm:px-8 lg:px-12 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
