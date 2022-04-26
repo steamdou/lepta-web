@@ -1,6 +1,6 @@
 import StackGrid from "react-stack-grid";
 import { useEffect, useState } from "react";
-import { isArray, map, throttle, without } from "lodash";
+import { isArray, map, throttle, without, debounce } from "lodash";
 import { getRecordMedia, getRecordAbstract, getRecordDisplay, isNonEmptyString, newGuid } from 'douhub-helper-util'
 import { Card, _window } from 'douhub-ui-web-basic';
 import ReactResizeDetector from 'react-resize-detector';
@@ -48,7 +48,7 @@ const Grid = (props: Record<string, any>) => {
 
     const onResizeDetector = (width?: number) => {
         setWidth(width ? width : 0);
-        setTimeout(onRefreshGrid, 500);
+        setRefreshGrid(newGuid());
     }
 
     const guterWidth = 30;
@@ -60,9 +60,9 @@ const Grid = (props: Record<string, any>) => {
 
     const colWidth = getGridColumnWidth();
 
-    const onRefreshGrid = (src: string)=>{
+    const onRefreshGrid = debounce(() => {
         setRefreshGrid(newGuid());
-    }
+    }, 200);
 
     return (
         <div className="w-full flex flex-col">
@@ -74,7 +74,7 @@ const Grid = (props: Record<string, any>) => {
                     gutterHeight={guterWidth}
                     columnWidth={colWidth}
                     style={{ marginTop: guterWidth, marginBottom: guterWidth, paddingLeft: guterWidth / 2, paddingRight: guterWidth / 2 }}
-                    className={`w-full grid-${refreshGrid}`}
+                    className={`w-full stack-grid-${refreshGrid}`}
                     >
                     {without(map(data, (item, i) => {
                         const media = getRecordMedia(item);
@@ -88,7 +88,7 @@ const Grid = (props: Record<string, any>) => {
                             content = getRecordAbstract(item, 128, true);
                         }
 
-                        return i==0 && width<500?null: <Card key={i}
+                        return i==0 && width>500?null: <Card key={i}
                             onLoadImage={onRefreshGrid}
                             tooltipColor={color}
                             media={media}

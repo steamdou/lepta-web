@@ -3250,26 +3250,6 @@ douhub-ui-web-basic@^1.0.19:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web-basic@^1.0.23:
-  version "1.0.23"
-  resolved "https://registry.yarnpkg.com/douhub-ui-web-basic/-/douhub-ui-web-basic-1.0.23.tgz#ebb197f52a4a9ece3e59c0e93e5fef989dc809b6"
-  integrity sha512-ofidRC89DMZWo+/hOkrFtsC7IsCv2tIEbmPevX8Z1eQqYqEessZxHi1LGTpbvyn2xqtC6a6B4UkXGhVAPUnbLg==
-  dependencies:
-    "@aws-amplify/auth" "^4.3.19"
-    "@headlessui/react" "^1.4.3"
-    antd "^4.18.4"
-    douhub-helper-util "1.0.85"
-    douhub-ui-store "1.0.53"
-    lodash "^4.17.21"
-    marked "^4.0.7"
-    next "12.1.0"
-    nookies "^2.5.2"
-    react "^17.0.2"
-    react-dom "^17.0.2"
-    react-imask "^6.4.2"
-    react-svg "^14.1.9"
-    uuid "^8.3.2"
-
 douhub-ui-web-basic@^1.0.25:
   version "1.0.25"
   resolved "https://registry.yarnpkg.com/douhub-ui-web-basic/-/douhub-ui-web-basic-1.0.25.tgz#f8e1411f6d2f9db1520de193653a5d7286ae9f08"
@@ -3310,20 +3290,20 @@ douhub-ui-web-basic@^1.0.5:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web-platform@^1.0.72:
-  version "1.0.72"
-  resolved "https://registry.yarnpkg.com/douhub-ui-web-platform/-/douhub-ui-web-platform-1.0.72.tgz#1c81baf92c95fc6c4b1c0e4626d8fedf202278d4"
-  integrity sha512-kfQmx0A2a+S68EGbZznV3mWRN2IDa725mCc72QbNOv627y0/N7OJco78AxMHjJcUOeRABmSmGeCvk8RJeHgO3A==
+douhub-ui-web-platform@^1.0.74:
+  version "1.0.74"
+  resolved "https://registry.yarnpkg.com/douhub-ui-web-platform/-/douhub-ui-web-platform-1.0.74.tgz#ea810ce3c0d75ddc653a0bb945c743874f1684fb"
+  integrity sha512-wNLmnjW1PlHh/8KQYCHypIXb1EdTQ1eCB9nYp3LsImGMLd3Naa3xMy/Tl76uNxyBLIxV4cl05Nb9CwovH/HXFw==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
     antd "4.19.3"
     axios "^0.25.0"
-    douhub-helper-util "1.0.85"
+    douhub-helper-util "1.0.86"
     douhub-ui-realtime "^1.0.28"
     douhub-ui-store "1.0.53"
-    douhub-ui-web "^1.5.88"
-    douhub-ui-web-basic "^1.0.23"
+    douhub-ui-web "^1.5.99"
+    douhub-ui-web-basic "^1.0.25"
     lodash "^4.17.21"
     marked "^4.0.7"
     nookies "^2.5.2"
@@ -3334,10 +3314,10 @@ douhub-ui-web-platform@^1.0.72:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web-premium@^1.0.33:
-  version "1.0.33"
-  resolved "https://registry.yarnpkg.com/douhub-ui-web-premium/-/douhub-ui-web-premium-1.0.33.tgz#e979566c45df8cdd3056791ed769c92f43ea6077"
-  integrity sha512-BuqKkWmBUVOMvcC0NMrkdcVdllDK9U0j09/4mkv++YhG8ccOUSLwkj86/1/d9uoP7/vVHctZSgz2u86SC1PlLA==
+douhub-ui-web-premium@^1.0.42:
+  version "1.0.42"
+  resolved "https://registry.yarnpkg.com/douhub-ui-web-premium/-/douhub-ui-web-premium-1.0.42.tgz#ad52e0615d9ed7f1c8cc6f7152c0f20bb382f9ba"
+  integrity sha512-tGQZ5fzefNiffRdTQlcBeCg1diQ0ZSRaH1OM1+bT/tNQs3dhq8zgYe3e8NHzQjVoVtvBCWNrgF5LyUznKweXpQ==
   dependencies:
     "@headlessui/react" "^1.4.4"
     antd "4.19.3"
@@ -3345,8 +3325,8 @@ douhub-ui-web-premium@^1.0.33:
     douhub-helper-util "1.0.86"
     douhub-ui-realtime "^1.0.28"
     douhub-ui-store "1.0.53"
-    douhub-ui-web "^1.5.91"
-    douhub-ui-web-basic "^1.0.23"
+    douhub-ui-web "^1.5.100"
+    douhub-ui-web-basic "^1.0.25"
     lodash "^4.17.21"
     marked "^4.0.7"
     nookies "^2.5.2"
@@ -3357,10 +3337,10 @@ douhub-ui-web-premium@^1.0.33:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web@^1.5.88, douhub-ui-web@^1.5.91:
-  version "1.5.91"
-  resolved "https://registry.yarnpkg.com/douhub-ui-web/-/douhub-ui-web-1.5.91.tgz#3cd8f17038532ab34e007f17b5fd26f0752c6aea"
-  integrity sha512-pESeEi58Szt+OF0ZfdjzGX0dXPalx0u/Vh8K8AtE9mdH+QLzZ93qlq8Axq9h0/OfuZCBkAtntxM286k5w5+NhQ==
+douhub-ui-web@^1.5.100:
+  version "1.5.100"
+  resolved "https://registry.yarnpkg.com/douhub-ui-web/-/douhub-ui-web-1.5.100.tgz#00f3e99677fbb29d625d39b09c6f1e82866a6696"
+  integrity sha512-i98HxyyG6PeP+HsLsflsU1ghV9/o4WFXJE2Yxtk9CxeOUoVp5RGmiUxx8BYyHqywp2GUd/yDdohxDcV9y7OTHA==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
@@ -3382,10 +3362,53 @@ douhub-ui-web@^1.5.88, douhub-ui-web@^1.5.91:
     "@tiptap/starter-kit" "2.0.0-beta.176"
     antd "4.19.3"
     axios "^0.25.0"
-    douhub-helper-util "1.0.85"
+    douhub-helper-util "1.0.86"
     douhub-ui-realtime "^1.0.28"
     douhub-ui-store "1.0.53"
-    douhub-ui-web-basic "^1.0.23"
+    douhub-ui-web-basic "^1.0.25"
+    lodash "^4.17.21"
+    marked "^4.0.7"
+    next "^12.1.0"
+    nookies "^2.5.2"
+    react "^17.0.2"
+    react-dom "^17.0.2"
+    react-imask "^6.4.2"
+    react-resize-detector "^7.0.0"
+    react-sortablejs "^6.1.1"
+    react-stack-grid "^0.7.1"
+    react-svg "^14.1.9"
+    sortablejs "^1.14.0"
+    uuid "^8.3.2"
+
+douhub-ui-web@^1.5.99:
+  version "1.5.99"
+  resolved "https://registry.yarnpkg.com/douhub-ui-web/-/douhub-ui-web-1.5.99.tgz#95cff92574b5a91c32dd06d5fcbedf363436e22c"
+  integrity sha512-zzB3v3Nk/gm+S/1BRL9D5PMQZ4aCde3dZnY6oqX57GSj5MafvQqcRTyLqhHp7svnhwVgTmxsIRD+HGFUJ0lLCg==
+  dependencies:
+    "@aws-amplify/auth" "^4.4.3"
+    "@headlessui/react" "^1.4.3"
+    "@tiptap/extension-bold" "^2.0.0-beta.25"
+    "@tiptap/extension-code" "^2.0.0-beta.20"
+    "@tiptap/extension-code-block-lowlight" "^2.0.0-beta.68"
+    "@tiptap/extension-color" "^2.0.0-beta.9"
+    "@tiptap/extension-document" "^2.0.0-beta.15"
+    "@tiptap/extension-dropcursor" "^2.0.0-beta.25"
+    "@tiptap/extension-highlight" "^2.0.0-beta.33"
+    "@tiptap/extension-image" "^2.0.0-beta.24"
+    "@tiptap/extension-link" "^2.0.0-beta.23"
+    "@tiptap/extension-paragraph" "^2.0.0-beta.23"
+    "@tiptap/extension-placeholder" "2.0.0-beta.47"
+    "@tiptap/extension-text" "^2.0.0-beta.15"
+    "@tiptap/extension-text-style" "^2.0.0-beta.23"
+    "@tiptap/extension-typography" "^2.0.0-beta.19"
+    "@tiptap/react" "2.0.0-beta.107"
+    "@tiptap/starter-kit" "2.0.0-beta.176"
+    antd "4.19.3"
+    axios "^0.25.0"
+    douhub-helper-util "1.0.86"
+    douhub-ui-realtime "^1.0.28"
+    douhub-ui-store "1.0.53"
+    douhub-ui-web-basic "^1.0.25"
     lodash "^4.17.21"
     marked "^4.0.7"
     next "^12.1.0"
