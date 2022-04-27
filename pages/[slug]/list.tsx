@@ -2,7 +2,7 @@ import React from 'react';
 import { getServerSidePropsForPage, PageBase, PageLoader } from 'douhub-ui-web';
 import { Nothing, useCurrentContext } from 'douhub-ui-web-basic';
 import { DetaultLeftArea } from 'douhub-ui-web-platform';
-import { PageBase as AppPageBase, ChatRightArea } from 'douhub-ui-web-platform';
+import { PageBase as AppPageBase } from 'douhub-ui-web-platform';
 import Header from '../../components/areas/header';
 import { settings } from '../../settings';
 import 'antd/dist/antd.css';
@@ -13,6 +13,9 @@ import { isObject } from 'lodash';
 import MainArea from '../../components/areas/main/list';
 import { observer } from 'mobx-react-lite';
 import { useEnvStore } from 'douhub-ui-store';
+
+// import { ChatRightArea } from 'douhub-ui-web-platform';
+import ChatRightArea from './chat';
 
 export const getServerSideProps = async (props: Record<string, any>): Promise<Record<string, any>> => {
     return await getServerSidePropsForPage({ settings, solution: { ...solutionProfile, ...solutionUI }, ...props });
@@ -28,8 +31,8 @@ const ListPage = observer((props: Record<string, any>) => {
     const rightAreaProps = {
         roomId: isNonEmptyString(envData?.currentRecord?.id)? `${entityName}-${envData?.currentRecord?.id}` :
         `${entityName}-${solution.id}`,
-        subTitle: isNonEmptyString(envData?.currentRecord?.id) ? `Room / ${entity && entity.uiName}` : 'Room',
-        title: isNonEmptyString(envData?.currentRecord?.id) ? getRecordDisplay(envData?.currentRecord) : entity && entity.uiCollectionName
+        subTitle: `Chat Room / ${entity && entity.uiName}`,
+        title: isNonEmptyString(envData?.currentRecord?.id) ? getRecordDisplay(envData?.currentRecord) : 'Public'
     }
 
     const sidePaneKey = entity && `sidePane-${entity.entityName}-${entity.entityType}`;
