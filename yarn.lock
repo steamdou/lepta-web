@@ -3290,10 +3290,10 @@ douhub-ui-web-basic@^1.0.5:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web-platform@^1.0.76:
-  version "1.0.76"
-  resolved "https://registry.yarnpkg.com/douhub-ui-web-platform/-/douhub-ui-web-platform-1.0.76.tgz#ae96b8c57014929026c75edcf19a3ead79349982"
-  integrity sha512-nTdtsRafBegdjk+suM5OOJe8wkOelYXNg3MWxHeXSvK8V9VCqqQw3cSvRDeFdpBSz+B8qcPOutnS5v+xawXDHg==
+douhub-ui-web-platform@^1.0.78:
+  version "1.0.78"
+  resolved "https://registry.yarnpkg.com/douhub-ui-web-platform/-/douhub-ui-web-platform-1.0.78.tgz#1eb73512484001e205179da29318bfbbfdde4038"
+  integrity sha512-7J15CKvx/yRPzOmbkkOIu3mFDNkqFPlMB6n3dyjvjnnLapNcLjIyiK0mRNnnuCqoKIy6pfbVTHPYOd2V43M5zQ==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
@@ -3302,7 +3302,7 @@ douhub-ui-web-platform@^1.0.76:
     douhub-helper-util "1.0.86"
     douhub-ui-realtime "^1.0.28"
     douhub-ui-store "1.0.53"
-    douhub-ui-web "^1.5.100"
+    douhub-ui-web "^1.5.102"
     douhub-ui-web-basic "^1.0.25"
     lodash "^4.17.21"
     marked "^4.0.7"
@@ -3314,10 +3314,10 @@ douhub-ui-web-platform@^1.0.76:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web-premium@^1.0.44:
-  version "1.0.44"
-  resolved "https://registry.yarnpkg.com/douhub-ui-web-premium/-/douhub-ui-web-premium-1.0.44.tgz#9ba5fca4addb1623fcc521ef16869d38047f818b"
-  integrity sha512-ZODUDwjaRDej3Nyxv542tQYtaWbSemgWLmva6bl70Gjz8V9x47hh0KRTfMC8UxOYiDiNBrlIxPNfjMVJSkj0FQ==
+douhub-ui-web-premium@^1.0.47:
+  version "1.0.47"
+  resolved "https://registry.yarnpkg.com/douhub-ui-web-premium/-/douhub-ui-web-premium-1.0.47.tgz#a04587f58d1505036ce276d6dbc6d0e195142a81"
+  integrity sha512-DvrwrarveiGFnwxCPsmA+FPaEy9PY7pfw5yIVgUD2zBJRQ4hWYYkMX4QxiZggtNPR3WRmgo7KQF6XWw9CTy8ng==
   dependencies:
     "@headlessui/react" "^1.4.4"
     antd "4.19.3"
@@ -3325,7 +3325,7 @@ douhub-ui-web-premium@^1.0.44:
     douhub-helper-util "1.0.86"
     douhub-ui-realtime "^1.0.28"
     douhub-ui-store "1.0.53"
-    douhub-ui-web "^1.5.100"
+    douhub-ui-web "^1.5.103"
     douhub-ui-web-basic "^1.0.25"
     lodash "^4.17.21"
     marked "^4.0.7"
@@ -3337,10 +3337,10 @@ douhub-ui-web-premium@^1.0.44:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web@^1.5.100:
-  version "1.5.100"
-  resolved "https://registry.yarnpkg.com/douhub-ui-web/-/douhub-ui-web-1.5.100.tgz#00f3e99677fbb29d625d39b09c6f1e82866a6696"
-  integrity sha512-i98HxyyG6PeP+HsLsflsU1ghV9/o4WFXJE2Yxtk9CxeOUoVp5RGmiUxx8BYyHqywp2GUd/yDdohxDcV9y7OTHA==
+douhub-ui-web@^1.5.102, douhub-ui-web@^1.5.103:
+  version "1.5.103"
+  resolved "https://registry.yarnpkg.com/douhub-ui-web/-/douhub-ui-web-1.5.103.tgz#290f2acd70c559aa5da56228dcc1260052282339"
+  integrity sha512-+5Fk2ibKEXF9ICFFD1dJmIpWgif7tCahej47H8KJpWdegOey0mu0j1pwXY0eA1JiVHYxk6aK40iYv4m6TDWm/w==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"

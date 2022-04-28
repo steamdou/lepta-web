@@ -14,8 +14,8 @@ import MainArea from '../../components/areas/main/list';
 import { observer } from 'mobx-react-lite';
 import { useEnvStore } from 'douhub-ui-store';
 
-// import { ChatRightArea } from 'douhub-ui-web-platform';
-import ChatRightArea from './chat';
+import { ChatRightArea } from 'douhub-ui-web-platform';
+// import ChatRightArea from './chat';
 
 export const getServerSideProps = async (props: Record<string, any>): Promise<Record<string, any>> => {
     return await getServerSidePropsForPage({ settings, solution: { ...solutionProfile, ...solutionUI }, ...props });
