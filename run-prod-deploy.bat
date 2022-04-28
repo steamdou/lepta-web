@@ -1,0 +1,2 @@
+set AWS_PROFILE=bandup
+serverless
