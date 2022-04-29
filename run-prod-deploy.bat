@@ -1,2 +1,4 @@
 set AWS_PROFILE=bandup
-serverless
+call run-tsc.bat
+call yarn build
+call serverless
