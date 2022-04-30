@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { isFunction, isArray, map, each, without, isNil } from 'lodash';
-import { Tags, _window } from 'douhub-ui-web-basic';
- import { BasicModal } from 'douhub-ui-web';
-// import BasicModal from './basic';
+import { Tags, _window, BasicModal } from 'douhub-ui-web-basic';
 import { observer } from 'mobx-react-lite';
 import { useEnvStore } from 'douhub-ui-store';
 import { isNonEmptyString } from 'douhub-helper-util';

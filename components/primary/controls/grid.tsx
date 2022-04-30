@@ -2,7 +2,7 @@ import StackGrid from "react-stack-grid";
 import { useEffect, useState } from "react";
 import { isArray, map, throttle, without, debounce, isFunction } from "lodash";
 import { getRecordMedia, getRecordAbstract, getRecordDisplay, isNonEmptyString, newGuid } from 'douhub-helper-util'
-import { Card, _window } from 'douhub-ui-web-basic';
+import { Card, _window, Tooltip } from 'douhub-ui-web-basic';
 import ReactResizeDetector from 'react-resize-detector';
 
 // const post = {
@@ -93,6 +93,7 @@ const Grid = (props: Record<string, any>) => {
                         }
 
                         return i==0 && width>500?null: <Card key={i}
+                            Tooltip={Tooltip}
                             onClick={onClickCard}
                             onLoadImage={onRefreshGrid}
                             tooltipColor={color}
