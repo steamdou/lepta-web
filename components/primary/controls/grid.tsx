@@ -1,6 +1,6 @@
 import StackGrid from "react-stack-grid";
 import { useEffect, useState } from "react";
-import { isArray, map, throttle, without, debounce } from "lodash";
+import { isArray, map, throttle, without, debounce, isFunction } from "lodash";
 import { getRecordMedia, getRecordAbstract, getRecordDisplay, isNonEmptyString, newGuid } from 'douhub-helper-util'
 import { Card, _window } from 'douhub-ui-web-basic';
 import ReactResizeDetector from 'react-resize-detector';
@@ -64,6 +64,10 @@ const Grid = (props: Record<string, any>) => {
         setRefreshGrid(newGuid());
     }, 200);
 
+    const onClickCard = (clickedCard:any)=>{
+        if (isFunction(props.onClickCard)) props.onClickCard(clickedCard);
+    }
+
     return (
         <div className="w-full flex flex-col">
             <div className="mx-auto w-full max-w-7xl">
@@ -89,6 +93,7 @@ const Grid = (props: Record<string, any>) => {
                         }
 
                         return i==0 && width>500?null: <Card key={i}
+                            onClick={onClickCard}
                             onLoadImage={onRefreshGrid}
                             tooltipColor={color}
                             media={media}
