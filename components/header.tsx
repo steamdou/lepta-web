@@ -36,12 +36,12 @@ const SiteHeader = observer((props: Record<string, any>) => {
         if (!isEmpty(user)) return null;
         return <div className="flex items-center justify-end flex-1 mr-3">
             <Link href="/auth/sign-in">
-                <a className="cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-gray-100 rounded-md shadow text-xs font-medium bg-gray-50 hover:shadow-lg">
-                    Contributor
+                <a className="cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-base font-medium text-white bg-sky-600 hover:bg-sky-500 hover:shadow-lg">
+                    Sign In
         </a>
             </Link>
-            {solution?.site?.supportSignUp != false && <Link href="/auth/sign-in">
-                <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow text-xs font-medium text-white bg-green-600 hover:shadow-lg">
+            {solution?.site?.supportSignUp != false && <Link href="/auth/sign-up">
+                <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-base font-medium text-white bg-green-600 hover:bg-green-500 hover:shadow-lg">
                     Sign up
         </a>
             </Link>}
@@ -52,7 +52,7 @@ const SiteHeader = observer((props: Record<string, any>) => {
         if (isNil(user) || isEmpty(user)) return null;
         return <div className="flex items-center justify-end flex-1">
             <Link href="/card/list">
-                <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow text-xs font-medium text-white bg-sky-600 hover:bg-sky-500 hover:shadow-lg hover:text-white">
+                <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow text-base font-medium text-white bg-sky-600 hover:bg-sky-500 hover:shadow-lg hover:text-white">
                     Manage Cards
         </a>
             </Link>
@@ -70,7 +70,7 @@ const SiteHeader = observer((props: Record<string, any>) => {
                             <div className="max-w-xl w-full">
                                 <label htmlFor="search" className="sr-only">
                                     Search
-                </label>
+                                </label>
                                 <div className="relative">
                                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                         <SearchIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -78,7 +78,7 @@ const SiteHeader = observer((props: Record<string, any>) => {
                                     <input
                                         id="search"
                                         name="search"
-                                        className="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-gray-50 text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 sm:text-sm"
+                                        className="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-gray-50 text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900"
                                         placeholder="Search"
                                         type="search"
                                     />

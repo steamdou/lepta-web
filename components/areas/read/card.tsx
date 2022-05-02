@@ -18,7 +18,7 @@ export const FullCard = (props: Record<string, any>) => {
                 tags={tags}
                 textClassName="text-base"
                 tagClassName="bg-gray-100"
-                tagStyle={{ padding: 20 }}
+                tagStyle={{ padding: 20, marginBottom: 10, marginRight: 10 }}
                 selectedTags={tags}
                 tooltipColor={color} />
         </div>}

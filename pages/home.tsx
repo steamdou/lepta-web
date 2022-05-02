@@ -14,8 +14,7 @@ import { callAPIBase, Nothing } from 'douhub-ui-web-basic';
 import { useEffect, useState } from 'react';
 import { cloneDeep, isArray, isNil, isEmpty } from 'lodash';
 import { getMemoryCache, setMemoryCache } from 'douhub-helper-util';
- import ReadCardModal from '../components/areas/read/card-modal';
-
+import ReadCardModal from '../components/areas/read/card-modal';
 export const getServerSideProps = async (props: Record<string, any>): Promise<Record<string, any>> => {
 
     const { query } = props;
@@ -25,7 +24,6 @@ export const getServerSideProps = async (props: Record<string, any>): Promise<Re
         console.log('Home Page Reload')
         result = await callAPIBase(`${solutionProfile.apis.data}query`, {
             query: {
-                attributes
                 scope: 'global', entityName: 'Card', orderBy: [{
                     attribute: 'isGlobalOrderBy', type: 'desc'
                 }]
@@ -55,6 +53,7 @@ const Home = (props: Record<string, any>) => {
     }, [props.data])
 
     const onClickCard = (newCurrentCard: any) => {
+        console.log(newCurrentCard)
         setCurrentRecord(newCurrentCard);
     }
 
@@ -69,14 +68,15 @@ const Home = (props: Record<string, any>) => {
         Header={Header}
         Footer={Footer}
     >
-        <PrimarySection highlights={highlights} />
+        <PrimarySection highlights={highlights}  onClickCard={onClickCard}/>
+        <h2 className="sr-only">Latest Knowledge Cards</h2>
         <Grid data={data} onClickCard={onClickCard} />
         <TestimonialCenter />
         {/* <ThreeColumnsPublicationsSection 
         title="Case Studies - For entrepreneurs and learners"
         content = "Cases studies expose us to real business dilemmas and decisions. Concepts are recalled better when they are set in a case, much as people remember words better when used in context. "
         /> */}
-         {!isEmpty(currentRecord) && <ReadCardModal record={currentRecord} onClose={onCloseModal} />}
+         {!isEmpty(currentRecord) && <ReadCardModal record={currentRecord} onClose={onCloseModal} show={true}/>}
     </PageBase>
 };
 

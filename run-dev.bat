@@ -1,2 +1,2 @@
-call yarn tsc
+call run-tsc.bat
 call yarn dev

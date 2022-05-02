@@ -1,2 +1,2 @@
-call rmdir build /S /Q
-call yarn tsc
+rm -rf build
+yarn tsc

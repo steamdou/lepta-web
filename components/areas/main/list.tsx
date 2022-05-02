@@ -6,8 +6,8 @@ import { find, isNil, isArray } from 'lodash';
 import { getEntityBySlug, hasAnyRole, isObject } from 'douhub-helper-util';
 import { useContextStore } from 'douhub-ui-store';
 import { observer } from 'mobx-react-lite';
-// import { ListBase } from 'douhub-ui-web';
- import ListBase from './list-base';
+import { ListBase } from 'douhub-ui-web';
+//import ListBase from './list-base';
 
 let List: any = null;
 if (!_window.lists) {

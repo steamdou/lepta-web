@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { isFunction, isArray, map, each, without, isNil } from 'lodash';
-import { Tags, _window, BasicModal } from 'douhub-ui-web-basic';
+import { Tags, _window, } from 'douhub-ui-web-basic';
 import { observer } from 'mobx-react-lite';
 import { useEnvStore } from 'douhub-ui-store';
 import { isNonEmptyString } from 'douhub-helper-util';
 import { FullCard } from './card';
+//import BasicModal from './modal';
+import {BasicModal} from 'douhub-ui-web-basic';
 
 const ReadCardModal = observer((props: Record<string, any>) => {
 
@@ -25,23 +27,20 @@ const ReadCardModal = observer((props: Record<string, any>) => {
     }
 
     const renderContent = () => {
-        return <div className={`w-full flex flex-row text-left p-2`}>
+        return <div className={`w-full flex flex-row text-left`}>
             <FullCard record={record} wrapperStyle={{ padding: 0 }} />
         </div>
     }
 
     return <>
         <BasicModal
-            titleClassName={"hidden"}
             onClose={onClose}
             overlayClosable={true}
-            title="Card"
             show={isNonEmptyString(showModal)}
             showCloseIcon={true}
-            contentHeightAdjust={-140}
             contentStyle={{ margin: 0 }}
+            maxWidth={900}
             content={renderContent()}
-            style={{ width: width * 0.8, height: height * 0.9, maxWidth: 900 }}
         />
     </>
 })

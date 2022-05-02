@@ -6,7 +6,7 @@ import {
     Splitter as SplitterInternal, ListTable, LIST_CSS, ListFormResizer
 } from 'douhub-ui-web';
 import { notification as antNotification } from 'antd';
-import { SVG, hasErrorType, getLocalStorage, _window, CSS, _track, callAPI, setLocalStorage, Card as ICard } from 'douhub-ui-web-basic';
+import { SVG, hasErrorType, getLocalStorage, _window, CSS, _track, callAPI, setLocalStorage } from 'douhub-ui-web-basic';
 import { observer } from 'mobx-react-lite';
 import { useEnvStore, useContextStore } from 'douhub-ui-store';
 import React, { useEffect, useState } from 'react';
@@ -16,10 +16,12 @@ import { useRouter } from 'next/router';
 import ReactResizeDetector from 'react-resize-detector';
 import { ListHeader as IListHeader } from 'douhub-ui-web';
 // import IListHeader from './list-header';
+import ICard from './card';
 import StackGrid from "react-stack-grid";
 
 const MESSAGE_TITLE_RECORD_CHANGED = 'Record has been changed';
 const MESSAGE_CONTENT_RECORD_CHANGED = 'Please save or cancel the changes to the current record in the edit form.';
+
 
 
 const NonSplitter = (props: Record<string, any>) => {
@@ -68,10 +70,9 @@ const FORM_RESIZER_MIN_WIDTH = 400;
 
 const ListBase = observer((props: Record<string, any>) => {
 
-    const { height, entity, search, tags, categories, hideListCategoriesTags,
+    const { height, entity, search, tags, categories, hideListCategoriesTags, cardLayout,
         selectionType, FormFields,
         allowCreate, allowUpload, recordForMembership, lgScreen } = props;
-
     const ListFormHeader = props.ListFormHeader ? props.ListFormHeader : IListFormHeader;
     const ListHeader = props.ListHeader ? props.ListHeader : IListHeader;
 
@@ -159,8 +160,15 @@ const ListBase = observer((props: Record<string, any>) => {
 
     const guterWidth = 20;
 
+    const getCardSize = () => {
+        switch (cardLayout) {
+            case 'image-left': return 400;
+            default: return 250;
+        }
+    }
+
     const getGridColumnWidth = () => {
-        let count = width < 500 ? 1 : Math.floor(width / 250);
+        let count = width < 500 ? 1 : Math.floor(width / getCardSize());
         return (width - guterWidth * (count + 1)) / count;
     }
 
@@ -545,6 +553,7 @@ const ListBase = observer((props: Record<string, any>) => {
 
                     return <Card
                         key={i}
+                        layout={cardLayout}
                         onLoadImage={onRefreshGrid}
                         media={media}
                         item={item}
