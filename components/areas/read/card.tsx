@@ -11,8 +11,8 @@ export const FullCard = (props: Record<string, any>) => {
     const color = themeColor && isNonEmptyString(themeColor["500"]) ? themeColor["500"] : 'black';
 
     return <div className="flex-1 flex flex-col mb-12 p-8" style={wrapperStyle}>
-        {isNonEmptyString(media) && <img className="w-full block" src={media} alt="" />}
-        <div className="w-full text-4xl text-gray-900 my-6 font-bold leading-snug" dangerouslySetInnerHTML={{ __html: title }} />
+        {isNonEmptyString(media) && <img src={media} alt="" />}
+        <h1 className="w-full text-gray-900 " dangerouslySetInnerHTML={{ __html: title }} />
         {isArray(tags) && tags.length > 0 && <div className="w-full mb-6">
             <Tags
                 tags={tags}
@@ -31,8 +31,7 @@ const ReadCard = (props: Record<string, any>) => {
 
     const { record, wrapperStyle } = props;
 
-
-    return <div className={`mx-auto w-full flex flex-row pt-6 max-w-4xl`} >
+    return <div className={`read-card mx-auto w-full flex flex-row pt-6 max-w-4xl`} >
         <FullCard record={record} wrapperStyle={wrapperStyle} />
     </div>
 }

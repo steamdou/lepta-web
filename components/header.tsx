@@ -36,12 +36,12 @@ const SiteHeader = observer((props: Record<string, any>) => {
         if (!isEmpty(user)) return null;
         return <div className="flex items-center justify-end flex-1 mr-3">
             <Link href="/auth/sign-in">
-                <a className="cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-base font-medium text-white bg-sky-600 hover:bg-sky-500 hover:shadow-lg">
+                <a className="cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-sm font-medium text-white bg-sky-500 hover:bg-sky-400 hover:shadow-lg">
                     Sign In
         </a>
             </Link>
             {solution?.site?.supportSignUp != false && <Link href="/auth/sign-up">
-                <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-base font-medium text-white bg-green-600 hover:bg-green-500 hover:shadow-lg">
+                <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-sm font-medium text-white bg-green-500 hover:bg-green-400 hover:shadow-lg">
                     Sign up
         </a>
             </Link>}
@@ -52,7 +52,7 @@ const SiteHeader = observer((props: Record<string, any>) => {
         if (isNil(user) || isEmpty(user)) return null;
         return <div className="flex items-center justify-end flex-1">
             <Link href="/card/list">
-                <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow text-base font-medium text-white bg-sky-600 hover:bg-sky-500 hover:shadow-lg hover:text-white">
+                <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-sm font-medium text-white bg-sky-500 hover:bg-sky-400 hover:shadow-lg hover:text-white">
                     Manage Cards
         </a>
             </Link>

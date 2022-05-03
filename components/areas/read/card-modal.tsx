@@ -12,8 +12,6 @@ const ReadCardModal = observer((props: Record<string, any>) => {
 
     const { record } = props;
     const [showModal, setShowModal] = useState('');
-    const envStore = useEnvStore();
-    const { height, width } = envStore;
 
     useEffect(() => {
         if (isNonEmptyString(record?.id)) setShowModal(record?.id);
@@ -27,7 +25,7 @@ const ReadCardModal = observer((props: Record<string, any>) => {
     }
 
     const renderContent = () => {
-        return <div className={`w-full flex flex-row text-left`}>
+        return <div className={`read-card w-full flex flex-row text-left`}>
             <FullCard record={record} wrapperStyle={{ padding: 0 }} />
         </div>
     }
