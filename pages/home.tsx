@@ -10,18 +10,21 @@ import { settings } from '../settings';
 import solutionProfile from '../metadata/solution.json';
 import solutionUI from '../metadata/ui.json';
 import TestimonialCenter from '../components/testimonial';
-import { callAPIBase, Nothing } from 'douhub-ui-web-basic';
+import { callAPIBase, _track } from 'douhub-ui-web-basic';
 import { useEffect, useState } from 'react';
 import { cloneDeep, isArray, isNil, isEmpty } from 'lodash';
-import { getMemoryCache, setMemoryCache } from 'douhub-helper-util';
+import { getMemoryCache, setMemoryCache, isNonEmptyString } from 'douhub-helper-util';
 import ReadCardModal from '../components/areas/read/card-modal';
 export const getServerSideProps = async (props: Record<string, any>): Promise<Record<string, any>> => {
 
     const { query } = props;
-    const cacheKey = 'home-page';
-    let result = getMemoryCache(cacheKey);
-    if (isNil(result) || query.cache == 'false') {
-        console.log('Home Page Reload')
+    const cacheKey = query.cache != 'false'? 'home-page':'';
+    const cacheExpireMinutes = 60;
+    let result = isNonEmptyString(cacheKey)?getMemoryCache(cacheKey):null;
+
+    if (isNil(result)) {
+        if (_track) console.log('Home Page Reload');
+    
         result = await callAPIBase(`${solutionProfile.apis.data}query`, {
             query: {
                 scope: 'global', entityName: 'Card', orderBy: [{
@@ -30,7 +33,7 @@ export const getServerSideProps = async (props: Record<string, any>): Promise<Re
             }
         }, 'POST', { solutionId: solutionProfile.id });
 
-        setMemoryCache(cacheKey, result, 30); //cache for 30 mins
+        setMemoryCache(cacheKey, result, cacheExpireMinutes); //cache for 30 mins
     }
     else {
         console.log('Home Page From Cache');
@@ -40,6 +43,8 @@ export const getServerSideProps = async (props: Record<string, any>): Promise<Re
 }
 
 const Home = (props: Record<string, any>) => {
+
+    const {solution} = props;
     const [highlights, setHeightlights] = useState<any[]>([]);
     const [data, setData] = useState<any[]>([]);
     const [currentRecord, setCurrentRecord] = useState<Record<string, any>>({});
@@ -68,9 +73,12 @@ const Home = (props: Record<string, any>) => {
         Header={Header}
         Footer={Footer}
     >
-        <PrimarySection highlights={highlights}  onClickCard={onClickCard}/>
+        <PrimarySection highlights={highlights} solution={solution} onClickCard={onClickCard}/>
         <h2 className="sr-only">Latest Knowledge Cards</h2>
-        <Grid data={data} onClickCard={onClickCard} />
+        <Grid 
+            data={data} 
+            srUrlTemplate={`/read/card/`}
+            onClickCard={onClickCard} />
         <TestimonialCenter />
         {/* <ThreeColumnsPublicationsSection 
         title="Case Studies - For entrepreneurs and learners"

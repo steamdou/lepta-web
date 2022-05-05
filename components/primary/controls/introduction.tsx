@@ -6,7 +6,7 @@ import  RecaptchaField from 'douhub-ui-web/build/cjs/fields/recaptcha';
 
 const RECAPTCHA_ID = 'introduction-subscribe-beta';
 
-const Introduction = () => {
+const Introduction = (props:Record<string,any>) => {
 
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
@@ -14,8 +14,8 @@ const Introduction = () => {
   const [doing, setDoing] = useState('');
   const [showRecaptcha, setShowRecaptcha] = useState(false);
 
-  const solution = _window.solution;
-  const site = solution.site;
+  const solution = props.solution;
+  const site = solution?.site;
 
   const onChangeEmail = (e: any) => {
     const text = e.target.value;
@@ -61,7 +61,7 @@ const Introduction = () => {
   return <div>
     <div className="mt-16">
       <div className="mt-6">
-        <h1 className="sr-only">{site.title}</h1>
+        <h1 className="sr-only">{site?.title}</h1>
         <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
           Get smarter with our daily newsletters
         </h2>

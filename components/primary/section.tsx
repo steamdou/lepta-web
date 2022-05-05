@@ -5,6 +5,8 @@ import { isArray, isFunction } from 'lodash';
 
 const PrimarySection = (props: Record<string, any>) => {
 
+    const {solution} = props;
+
     const highlights = isArray(props.highlights) ? props.highlights : [];
 
     const onClickCard = (clickedCard: any) => {
@@ -15,7 +17,7 @@ const PrimarySection = (props: Record<string, any>) => {
     return <div className="bg-white pb-0 md:pb-8">
         <div className="py-4 lg:py-12 lg:relative">
             <div className="mx-auto px-4 sm:px-8 lg:px-12 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
-                <Introduction />
+                <Introduction solution={solution}/>
             </div>
 
             <div className="px-4 sm:px-8 sm:mx-auto max-w-3xl">

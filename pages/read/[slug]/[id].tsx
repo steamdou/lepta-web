@@ -8,25 +8,32 @@ import Grid from '../../../components/primary/controls/grid';
 import { settings } from '../../../settings';
 
 import solutionProfile from '../../../metadata/solution.json';
-import solutionUI from '../../../metadata/ui.json';
+import solutionUIProfile from '../../../metadata/ui.json';
 import { callAPIBase } from 'douhub-ui-web-basic';
 import { useEffect, useState } from 'react';
 import { isEmpty, isArray } from 'lodash';
 import 'antd/dist/antd.css';
-import { getEntityBySlug, isObject, isEmail } from 'douhub-helper-util';
+import { getEntityBySlug, isObject, isNonEmptyString, getRecordDisplay, getRecordAbstract, getRecordMedia } from 'douhub-helper-util';
 import ReadCard from '../../../components/areas/read/card';
 import ReadCardModal from '../../../components/areas/read/card-modal';
 
 export const getServerSideProps = async (props: Record<string, any>): Promise<Record<string, any>> => {
 
-    const { query } = props;
-    const entity = getEntityBySlug(solutionProfile, query?.slug);
+    const { query, resolvedUrl } = props;
+    const solution: Record<string,any> = solutionProfile;
+    const solutionUI: Record<string,any> = solutionUIProfile;
+    const entity = getEntityBySlug(solution, query?.slug);
+    const recordSlug = query?.id;
+
     let result: Record<string, any> = {};
 
     if (entity) {
         const { entityName, entityType } = entity;
-        result = await callAPIBase(`${solutionProfile.apis.data}query-plus`, {
-            slug: query?.id,
+        const cacheKey = query.cache != 'false' ? `read-${entityName}-${recordSlug}` : '';
+        const cacheExpireMinutes = 60;
+        result = await callAPIBase(`${solution.apis.data}query-plus`, {
+            cacheExpireMinutes, cacheKey,
+            slug: recordSlug,
             entityName, entityType,
             recordToken: query.token,
             query: {
@@ -34,12 +41,33 @@ export const getServerSideProps = async (props: Record<string, any>): Promise<Re
                     attribute: 'isGlobalOrderBy', type: 'desc'
                 }]
             }
-        }, 'POST', { solutionId: solutionProfile.id });
+        }, 'POST', { solutionId: solution.id });
     }
-    return await getServerSidePropsForPage({ settings, solution: { ...solutionProfile, ...solutionUI }, ...props, pageProps: { data: result.data, record: result.record } });
+
+    const {data, record } = result;
+
+    return await getServerSidePropsForPage({
+        settings,
+        solution: { ...solution, ...solutionUI },
+        ...props,
+        pageProps: {
+            data, record, entity,
+            headProps: {
+                type: 'article',
+                url: resolvedUrl,
+                title: `${getRecordDisplay(record)} - ${solutionUI?.site?.name}`,
+                description: getRecordAbstract(record, 128, true),
+                image: getRecordMedia(record)
+            }
+        },
+
+    });
 }
 
-const Read = (props: Record<string, any>) => {
+const Read = (props: Record<string, any>) => 
+{
+    const {entity} = props;
+
     const [data, setData] = useState<any[]>([])
     const [pageRrecord, setPageRecord] = useState<Record<string, any>>({});
     const [currentRecord, setCurrentRecord] = useState<Record<string, any>>({});
@@ -70,7 +98,12 @@ const Read = (props: Record<string, any>) => {
         Header={Header}
         Footer={Footer}>
         {!isEmpty(pageRrecord) && <ReadCard record={pageRrecord} />}
-        <Grid data={data} onClickCard={onClickCard} />
+        <h2 className="sr-only">Related Knowledge Cards</h2>
+        <Grid 
+        data={data} 
+        onClickCard={onClickCard}
+        srUrlTemplate={`/read/${entity.slug}/`}
+        />
         {!isEmpty(currentRecord) && <ReadCardModal record={currentRecord} onClose={onCloseModal} />}
     </PageBase>
 };

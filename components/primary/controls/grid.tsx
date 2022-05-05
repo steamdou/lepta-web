@@ -92,7 +92,9 @@ const Grid = (props: Record<string, any>) => {
                             content = getRecordAbstract(item, 128, true);
                         }
 
-                        return i==0 && width>500?null: <Card key={i}
+                        return i==0 && width>500?null: <Card 
+                            key={i}
+                            srOnlyUrl={`${props.srUrlTemplate}${item.slug}`}
                             Tooltip={Tooltip}
                             onClick={onClickCard}
                             onLoadImage={onRefreshGrid}
