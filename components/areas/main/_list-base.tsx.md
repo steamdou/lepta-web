@@ -6,7 +6,7 @@ import {
     Splitter as SplitterInternal, ListTable, LIST_CSS, ListFormResizer
 } from 'douhub-ui-web';
 import { notification as antNotification } from 'antd';
-import { SVG, hasErrorType, getLocalStorage, _window, CSS, _track, callAPI, setLocalStorage } from 'douhub-ui-web-basic';
+import { SVG, hasErrorType, getLocalStorage, _window, CSS, _track, callAPI, setLocalStorage, Card as ICard } from 'douhub-ui-web-basic';
 import { observer } from 'mobx-react-lite';
 import { useEnvStore, useContextStore } from 'douhub-ui-store';
 import React, { useEffect, useState } from 'react';
@@ -16,13 +16,11 @@ import { useRouter } from 'next/router';
 import ReactResizeDetector from 'react-resize-detector';
 import { ListHeader as IListHeader } from 'douhub-ui-web';
 // import IListHeader from './list-header';
-import ICard from './card';
+// import ICard from './card';
 import StackGrid from "react-stack-grid";
 
 const MESSAGE_TITLE_RECORD_CHANGED = 'Record has been changed';
 const MESSAGE_CONTENT_RECORD_CHANGED = 'Please save or cancel the changes to the current record in the edit form.';
-
-
 
 const NonSplitter = (props: Record<string, any>) => {
     return <div className="flex flex-row w-full">
@@ -243,6 +241,8 @@ const ListBase = observer((props: Record<string, any>) => {
         setCurrentFormWidth(width ? width : 0);
     }
 
+    const apiCallTrigger = JSON.stringify({queryId, statusId, loadingType, entityName:entity?.entityName, entityType:entity?.entityType, tags, categories, search});
+
     useEffect(() => {
         if (loadingType) {
             setLoading(loadingType.name);
@@ -283,6 +283,8 @@ const ListBase = observer((props: Record<string, any>) => {
                 query.categoryIds = map(categories, (category: any) => { return category.id });
             }
 
+            console.log({apiCallTrigger})
+            
             callAPI(solution, apiEndpoint, { query }, 'post')
                 .then((r: any) => {
                     switch (loadingType.name) {
@@ -291,7 +293,7 @@ const ListBase = observer((props: Record<string, any>) => {
                                 const newResult = {
                                     count: result?.count + r.count,
                                     continuation: r.continuation,
-                                    data: [...result?.data, ...r.data]
+                                    data: [...(result?result.data:{}), ...r.data]
                                 }
                                 setResult(cloneDeep(newResult));
                                 break;
@@ -314,7 +316,7 @@ const ListBase = observer((props: Record<string, any>) => {
                     setLoading('');
                 })
         }
-    }, [queryId, statusId, loadingType, entity?.entityName, entity?.entityType, tags, categories])
+    }, [apiCallTrigger])
 
     const onClickCreateRecord = () => {
         if (currentRecordChanged) {
@@ -824,6 +826,5 @@ const ListBase = observer((props: Record<string, any>) => {
         </div>
     </>
 });
-
 
 export default ListBase
