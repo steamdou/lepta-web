@@ -11,10 +11,10 @@ const FooterDefault = (props: Record<string, any>) => {
     return (
         <footer className="bg-white mt-8 border-t border-gray-200" aria-labelledby="footer-heading">
             <div className="flex flex-col max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex-row">
-                <div className="flex flex-col flex-1 mb-12">
-                    <Logo id="footer_logo" color="gray" text={site?.name} />
+                <div className="flex flex-col flex-1 mb-12 mr-4">
+                    <Logo id="footer_logo" color="gray" text={site?.name}  textStyle={{ fontSize: 20, height: 32, lineHeight: 1.5 }}/>
                     <div className="px-1">
-                        {isNonEmptyString(footer?.slogan) && <p className="text-gray-500 text-base my-6">
+                        {isNonEmptyString(footer?.slogan) && <p className="text-gray-500 text-lg my-6">
                             {footer?.slogan}
                         </p>}
                         <SocialIconsSection data={site?.social} />

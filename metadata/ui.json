@@ -2,6 +2,7 @@
     "id": "84ab4deb-55e2-492e-adc0-d32df8276ff9",
     "theme": {
         "color": {
+            "name": "sky",
             "50": "#f0f9ff",
             "100": "#e0f2fe",
             "200": "#bae6fd",
@@ -80,7 +81,7 @@
             ]
         },
         "footer": {
-            "slogan": "A platform that helps to build and operate a tokenized business",
+            "slogan": "A platform that helps you learn more and become smarter",
             "copyright": "2022 Lepta Team. All rights reserved.",
             "columns": [
                 {

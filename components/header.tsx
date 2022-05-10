@@ -2,9 +2,7 @@ import { Fragment, useState, useEffect } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { isNonEmptyString } from 'douhub-helper-util';
 import Link from 'next/link';
-import { SearchIcon } from '@heroicons/react/solid';
 import { observer } from 'mobx-react-lite';
-import { useEnvStore } from 'douhub-ui-store';
 import { useRouter } from 'next/router';
 import { getCurrentPoolUser, _window, SVG } from 'douhub-ui-web-basic';
 
@@ -64,7 +62,7 @@ const SiteHeader = observer((props: Record<string, any>) => {
             <Popover className="relative bg-white border border-gray-200 border-t-0 border-r-0 border-l-0">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <div className="flex justify-between items-center pb-4 pt-4 md:justify-start md:space-x-10 w-full">
-                        <Logo id="header_logo" textClassName="hidden sm:block" iconSize={32} color={color} text={solution?.site?.name} onClick={onClickLogo} />
+                        <Logo id="header_logo" textClassName="hidden sm:block" iconSize={32} color={color} text={solution?.site?.name} onClick={onClickLogo} textStyle={{fontSize:20, height:32, lineHeight:1.5}}/>
                         {/* <div className="hidden sm:block">{renderMenuDesktopView()}</div> */}
                         <div className="visible flex-1 flex px-5 px-3 lg:ml-6">
                             <div className="max-w-xl w-full">
@@ -72,13 +70,13 @@ const SiteHeader = observer((props: Record<string, any>) => {
                                     Search
                                 </label>
                                 <div className="relative">
-                                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                        <SearchIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                                    <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
+                                        <SVG src="/icons/search.svg" style={{width: 20}}/>
                                     </div>
                                     <input
                                         id="search"
                                         name="search"
-                                        className="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-gray-50 text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900"
+                                        className="block w-full pl-10 pr-3 py-2 text-lg border border-transparent rounded-md leading-5 bg-gray-50 text-gray-500 placeholder-gray-500 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900"
                                         placeholder="Search"
                                         type="search"
                                     />
