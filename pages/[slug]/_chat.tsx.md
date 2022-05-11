@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { map, isArray, delay, each, cloneDeep, isEmpty, orderBy, uniqBy, find, isFunction } from 'lodash';
 import { observer } from 'mobx-react-lite';
-import { useEnvStore } from 'douhub-ui-store';
 import { useRouter } from 'next/router';
 import { useRealtimeSession } from 'douhub-ui-realtime';
 import { useContextStore } from 'douhub-ui-store';
@@ -32,7 +31,6 @@ const CSS_CHAT_RIGHT_AREA = `
 }
 `;
 
-
 const Footer = (props: Record<string, any>) => {
 
     const { ready, roomId, entity, currentRecord } = props;
@@ -41,7 +39,6 @@ const Footer = (props: Record<string, any>) => {
     const [sending, setSending] = useState(false);
     const [error, setError] = useState('');
     const [returnToSubmit, setReturnToSubmit] = useState(true);
-
 
     const onSubmit = () => {
 
@@ -206,7 +203,7 @@ const Message = (props: Record<string, any>) => {
 
 export const ChatRightArea = observer((props: Record<string, any>) => {
 
-    const { roomId, messageLayout, title, subTitle, entity, currentRecord } = props;
+    const {hidden, roomId, messageLayout, title, subTitle, entity, currentRecord, hideHeader, height } = props;
     const solution = _window.solution;
     const router = useRouter();
     const [messages, setMessages] = useState<Array<Record<string, any>>>([]);
@@ -218,8 +215,6 @@ export const ChatRightArea = observer((props: Record<string, any>) => {
     const context = JSON.parse(contextStore.data);
     const [ready, setReady] = useState(false);
     const [error, setError] = useState('asd as asd asd ');
-    const envStore = useEnvStore(props.envStore);
-    const height = envStore.height - 64;
     const groupMessage = messageLayout == 'group';
     const me = context?.user;
 
@@ -257,12 +252,21 @@ export const ChatRightArea = observer((props: Record<string, any>) => {
         console.log({ error });
     }
 
-    useRealtimeSession("List", roomId, onChatMessage, onChatError);
+    useRealtimeSession("List", hidden?null:roomId, onChatMessage, onChatError);
 
     const retrieveMessages = (toRefresh: boolean) => {
         if (!isNonEmptyString(roomId)) return setError('Please provide a room name.')
         setError('');
-        callAPI(solution, `${solution.apis.chat}retrieve-messages`, { roomId, pageSize: 100, order: 'desc', create: true }, 'GET')
+
+        const query:Record<string,any> = { 
+            roomId, pageSize: 100, 
+            order: 'desc', 
+            create: true, 
+            regardingEntityName: entity.entityName}
+        if (isNonEmptyString(entity.entityType))  query.regardingEntityType = entity.entityType;
+        if (isNonEmptyString(currentRecord?.id))  query.regardingId = currentRecord?.id;
+      
+        callAPI(solution, `${solution.apis.chat}retrieve-messages`, query, 'GET')
             .then((messages: any) => {
                 setMessages(orderBy(messages, (m) => {
                     return (new Date(m.data.ownedOn)).getTime();
@@ -280,12 +284,12 @@ export const ChatRightArea = observer((props: Record<string, any>) => {
     }
 
     useEffect(() => {
-        if (isNonEmptyString(refresh)) retrieveMessages(true);
-    }, [refresh])
+        if (isNonEmptyString(refresh) && !hidden) retrieveMessages(true);
+    }, [refresh, hidden])
 
     useEffect(() => {
-        retrieveMessages(false);
-    }, [me?.id, roomId])
+        if (!hidden) retrieveMessages(false);
+    }, [me?.id, roomId, hidden])
 
     const processMessage = (messages: Array<Record<string, any>>): Array<Record<string, any>> => {
 
@@ -336,7 +340,7 @@ export const ChatRightArea = observer((props: Record<string, any>) => {
     return (
         <div className="flex-1 flex flex-col h-screen overflow-hidden w-full" style={{ height }}>
             <CSS id="chat-right-area-css" content={CSS_CHAT_RIGHT_AREA} />
-            <div style={{ height: 68 }}
+            {hideHeader!==true && <div style={{ height: 68 }}
                 className="chat-room-header relative bg-gray-50 w-full flex flex-row pl-5 pr-8 py-3 border border-0 border-b">
                 {isNonEmptyString(title) && <div className="flex-1 truncate mr-4">
                     <p className="pb-0 mb-0 text-xs uppercase">{subTitle ? subTitle : 'Room'}</p>
@@ -352,7 +356,7 @@ export const ChatRightArea = observer((props: Record<string, any>) => {
                         <SVG src="/icons/close.svg" color="#333333" style={{ width: 12 }} />
                     </div>
                 </Tooltip>
-            </div>
+            </div>}
             <div ref={messagesElem} className="flex-1 overflow-y-auto">
                 <div className="chat-room-body flex flex-col justify-end space-y-4 p-5" style={{ minHeight: '100%' }}>
                     {renderMessages()}

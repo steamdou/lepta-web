@@ -28,11 +28,12 @@ const ListPage = observer((props: Record<string, any>) => {
     const envStore = useEnvStore();
     const envData = JSON.parse(envStore.data);
     const entityName = entity && entity.entityName;
+    const currentRecord = envData?.currentRecord;
     const rightAreaProps = {
-        roomId: isNonEmptyString(envData?.currentRecord?.id)? `${entityName}-${envData?.currentRecord?.id}` :
+        roomId: isNonEmptyString(currentRecord?.id)? `${entityName}-${currentRecord?.id}` :
         `${entityName}-${solution.id}`,
         subTitle: `Chat Room / ${entity && entity.uiName}`,
-        title: isNonEmptyString(envData?.currentRecord?.id) ? getRecordDisplay(envData?.currentRecord) : 'Public'
+        title: isNonEmptyString(currentRecord?.id) ? getRecordDisplay({ ...(currentRecord ? currentRecord : {}), highlight: {} }) : 'General'
     }
 
     const sidePaneKey = entity && `sidePane-${entity.entityName}-${entity.entityType}`;
