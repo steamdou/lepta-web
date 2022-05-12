@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { isFunction, isArray, map, each, without, isNil } from 'lodash';
 import { Tags, _window, } from 'douhub-ui-web-basic';
 import { observer } from 'mobx-react-lite';
-import { useEnvStore } from 'douhub-ui-store';
 import { isNonEmptyString } from 'douhub-helper-util';
 import { FullCard } from './card';
 //import BasicModal from './modal';
@@ -10,13 +9,12 @@ import {BasicModal} from 'douhub-ui-web-basic';
 
 const ReadCardModal = observer((props: Record<string, any>) => {
 
-    const { record } = props;
+    const { record, buttons } = props;
     const [showModal, setShowModal] = useState('');
 
     useEffect(() => {
         if (isNonEmptyString(record?.id)) setShowModal(record?.id);
     }, [record])
-
 
 
     const onClose = () => {
@@ -32,6 +30,7 @@ const ReadCardModal = observer((props: Record<string, any>) => {
 
     return <>
         <BasicModal
+            buttons={buttons}
             onClose={onClose}
             overlayClosable={true}
             show={isNonEmptyString(showModal)}

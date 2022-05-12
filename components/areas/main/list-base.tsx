@@ -15,8 +15,6 @@ import { without, throttle, debounce, isNumber, map, isFunction, isArray, find, 
 import { useRouter } from 'next/router';
 import ReactResizeDetector from 'react-resize-detector';
 import { ListHeader as IListHeader } from 'douhub-ui-web';
-// import IListHeader from './list-header';
-// import ICard from './card';
 import StackGrid from "react-stack-grid";
 
 const MESSAGE_TITLE_RECORD_CHANGED = 'Record has been changed';
@@ -73,10 +71,12 @@ const ListBase = observer((props: Record<string, any>) => {
         allowCreate, allowUpload, recordForMembership, lgScreen } = props;
     const ListFormHeader = props.ListFormHeader ? props.ListFormHeader : IListFormHeader;
     const ListHeader = props.ListHeader ? props.ListHeader : IListHeader;
-
+    const envStore = useEnvStore();
+    const envData = JSON.parse(envStore.data);
+   
     const contextStore = useContextStore();
     const context = JSON.parse(contextStore.data);
-
+    const currentRecord = envData.currentRecord;
     const router = useRouter();
     const solution = _window.solution;
     const defaultFormWidth = isNumber(props.defaultFormWidth) ? props.defaultFormWidth : FORM_RESIZER_MIN_WIDTH;
@@ -89,8 +89,6 @@ const ListBase = observer((props: Record<string, any>) => {
     const formWidthCacheKey = `list-form-width-${entity?.entityName}-${entity?.entityType}`;
     const viewCacheKey = `list-view-${entity?.entityName}-${entity?.entityType}`;
     const sidePaneKey = props.sidePaneKey ? props.sidePaneKey : `sidePane-${entity?.entityName}-${entity?.entityType}`;
-    const envStore = useEnvStore();
-    const envData = JSON.parse(envStore.data);
     const openRightDrawer = envData.openRightDrawer;
     const [loading, setLoading] = useState('');
     const [loadingType, setLoadingType] = useState({ name: 'first', pageNumber: 1 });
@@ -100,7 +98,6 @@ const ListBase = observer((props: Record<string, any>) => {
     const [width, setWidth] = useState(0);
     const [result, setResult] = useState<Record<string, any> | null>(null);
     const [notification, setNotification] = useState<{ id: string, message: string, description: string, type: string } | null>(null);
-    const [currentRecord, setCurrentRecord] = useState<Record<string, any> | null>(null);
     const [oriCurrentRecord, setOriCurrentRecord] = useState<Record<string, any> | null>(null);
     const [selectedRecords, setSelectedRecords] = useState<Record<string, any>>([]);
     const [predefinedFormWidth, setPredefinedFormWidth] = useState(defaultFormWidth);
@@ -127,6 +124,7 @@ const ListBase = observer((props: Record<string, any>) => {
     const formWidth = predefinedFormWidth < maxFormWidth ? predefinedFormWidth : maxFormWidth;
     const giveRoomToRightArea = !lgScreen && openRightDrawer ? (areaWidth - 370 - currentFormWidth > 0 ? 370 : areaWidth - currentFormWidth) : 0;
 
+
     const showSidePane = sidePaneKey && envData[sidePaneKey] && !hideListCategoriesTags && !currentRecord;
     const currentRecordChanged = isObject(oriCurrentRecord) && isObject(currentRecord) && JSON.stringify(oriCurrentRecord) != JSON.stringify(currentRecord);
 
@@ -138,7 +136,6 @@ const ListBase = observer((props: Record<string, any>) => {
         delete newEnvData.categories;
         newEnvData.openRightDrawer = false;
         envStore.setData(newEnvData);
-        setCurrentRecord(null);
         setOriCurrentRecord(null)
     }, [entity.entityName, entity.entityType]);
 
@@ -166,7 +163,7 @@ const ListBase = observer((props: Record<string, any>) => {
     }
 
     const getGridColumnWidth = () => {
-        let count = width < 500 ? 1 : Math.floor(width / getCardSize());
+        const count = width < 500 ? 1 : Math.floor(width / getCardSize());
         return (width - guterWidth * (count + 1)) / count;
     }
 
@@ -283,8 +280,6 @@ const ListBase = observer((props: Record<string, any>) => {
                 query.categoryIds = map(categories, (category: any) => { return category.id });
             }
 
-            console.log({apiCallTrigger})
-            
             callAPI(solution, apiEndpoint, { query }, 'post')
                 .then((r: any) => {
                     switch (loadingType.name) {
@@ -402,9 +397,6 @@ const ListBase = observer((props: Record<string, any>) => {
                     })
                 });
                 setNotification({ id: newGuid(), message: 'Error', description: `Sorry, it was failed to delete the ${entity.uiName}.`, type: 'error' });
-            })
-            .finally(() => {
-
             })
     }
 
@@ -633,7 +625,6 @@ const ListBase = observer((props: Record<string, any>) => {
             const newCurrentRecord = cloneDeep(newRecord);
             newCurrentRecord.display = getRecordDisplay(newCurrentRecord);
             envStore.setValue('currentRecord', newCurrentRecord);
-            setCurrentRecord(newCurrentRecord);
             switch (type) {
                 case 'create':
                     {
@@ -655,7 +646,6 @@ const ListBase = observer((props: Record<string, any>) => {
         else {
             envStore.setValue('currentRecord', null);
             setOriCurrentRecord(null);
-            setCurrentRecord(null);
         }
 
     }
@@ -695,7 +685,8 @@ const ListBase = observer((props: Record<string, any>) => {
     }
 
     const renderListCategoriesTags = () => {
-        return <div className={`w-full h-full absolute xl:relative z-10 border-r xl:border-0 drop-shadow-md xl:drop-shadow-none  overflow-hidden ${showSidePane ? '' : 'hidden'}`}
+        //className={`w-full h-full absolute xl:relative z-10 border-r xl:border-0 drop-shadow-md xl:drop-shadow-none  overflow-hidden ${showSidePane ? '' : 'hidden'}`}
+        return <div className={`w-full h-full overflow-hidden ${showSidePane ? '' : 'hidden'}`}
             style={supportSlitter ? {} : { width: 320 }}>
             <CurrentListCategoriesTags height={height} entityName={entity.entityName} entityType={entity.entityType} onClickClose={onClickCloseListCategoriesTags} />
         </div>
