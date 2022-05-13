@@ -4,9 +4,6 @@ module.exports = {
       locales: ['en-us', 'en-ca', 'en', 'fr', 'zh'],
       defaultLocale: 'en-us',
     },
-    publicRuntimeConfig: {
-      track: process.env.TRACK
-    },
     async redirects() {
       return [
         {

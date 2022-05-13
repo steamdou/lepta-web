@@ -5,7 +5,7 @@ import '../styles/app.css';
 
 function App(appProps: AppProps) {
     return <>
-        <div className="sr-only text-sky-600 bg-sky-700 border-sky-500 ring-sky-500 focus:ring-sky-500 focus:border-sky-500 hover:bg-sky-500 hover:bg-sky-700" />
+        <div className="hidden text-sky-600 bg-sky-700 border-sky-500 ring-sky-500 focus:ring-sky-500 focus:border-sky-500 hover:bg-sky-500 hover:bg-sky-700" />
         <AppBase {...appProps} />
     </>
 }

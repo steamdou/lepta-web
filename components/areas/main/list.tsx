@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { DefaultList } from 'douhub-ui-web';
 import { _window, Nothing } from 'douhub-ui-web-basic';
 import dynamic from 'next/dynamic';
-import { find, isNil, isArray } from 'lodash';
+import { find, isArray } from 'lodash';
 import { getEntityBySlug, hasAnyRole, isObject } from 'douhub-helper-util';
 import { useContextStore } from 'douhub-ui-store';
 import { observer } from 'mobx-react-lite';

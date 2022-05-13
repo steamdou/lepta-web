@@ -1,5 +1,6 @@
-import React from 'react';
-import { SubmitEmailSection } from 'douhub-ui-web';
+import React, {useState, useEffect} from 'react';
+import dynamic from 'next/dynamic';
+let SubmitEmailSection:any = null;
 
 const Introduction = (props: Record<string, any>) => {
 
@@ -7,6 +8,12 @@ const Introduction = (props: Record<string, any>) => {
     const site = solution?.site;
     const themeColor = solution?.theme?.color;
     const colorName = themeColor.name;
+    const [loadingSubmitEmailSection, setLoadingSubmitEmailSection] = useState(true);
+
+    useEffect(() => {
+        SubmitEmailSection = dynamic(() => import("./submit-email"), { ssr: false });
+        setLoadingSubmitEmailSection(false);
+    }, [])
 
     return <div>
         <div className="mt-16">
@@ -22,7 +29,7 @@ const Introduction = (props: Record<string, any>) => {
             <div className="mt-12 ">
                 <p className="inline text-base font-semibold tracking-tight text-sky-600">Sign up for our daily updates.</p>
             </div>
-            <SubmitEmailSection
+            {!loadingSubmitEmailSection && <SubmitEmailSection
                 colorName={colorName}
                 recaptchaId="introduction-subscribe-beta"
                 apiEndpoint={`${solution.apis.platform}subscribe-beta-access`}
@@ -31,11 +38,10 @@ const Introduction = (props: Record<string, any>) => {
                 errorMessage="Sorry, we can not submit your request at the moment, please try again later or email to support@douhub.com."
                 buttonText="Subscribe"
                 privacyPolicyUrl="#"
-            />
+            />}
         </div>
     </div>
 }
 
 
-Introduction.displayName = 'Sections.Primary.Controls.Introduction';
 export default Introduction;

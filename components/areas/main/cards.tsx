@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { _window } from 'douhub-ui-web-basic';
 import { CardList } from 'douhub-ui-web-premium';
-import { Notification } from 'douhub-ui-web';
+import { Notification, ListBase } from 'douhub-ui-web';
 import ReadCardModal from '../../areas/read/card-modal';
-import ListBase from './list-base';
+// import ListBase from './list-base';
 import { useEnvStore, useContextStore } from 'douhub-ui-store';
 import { newGuid } from 'douhub-helper-util';
 const ListMainArea = (props: Record<string, any>) => {
@@ -18,8 +18,15 @@ const ListMainArea = (props: Record<string, any>) => {
         setCurrentRecord(null);
     }
 
-    const onClickRecord = (newCurrentCard: Record<string, any>) => {
-        setCurrentRecord(newCurrentCard);
+    const onClickRecord = (newCurrentCard: Record<string, any>, action: string) => {
+        switch (action) {
+            case 'read':
+                {
+                    setCurrentRecord(newCurrentCard);
+                    break;
+                }
+        }
+
     }
 
     const onClickEditCard = () => {
@@ -47,17 +54,16 @@ const ListMainArea = (props: Record<string, any>) => {
     return (
         <>
             <CardList {...props} onClickRecord={onClickRecord} ListBase={ListBase} />
-            {notification && <Notification {...notification} />}
-            {currentRecord && <ReadCardModal 
-            
-            record={currentRecord} 
-            onClose={onCloseModal} 
-            show={true} buttons={
-                [
-                    { text: "Edit Card", onClick: onClickEditCard },
-                    { type: "cancel", text: "Close", onClick: () => { setCurrentRecord(null) } }
-                ]
-            } />}
+            {notification && <Notification id={notification.id} {...notification} />}
+            {currentRecord && <ReadCardModal
+                record={currentRecord}
+                onClose={onCloseModal}
+                show={true} buttons={
+                    [
+                        { text: "Edit Card", onClick: onClickEditCard },
+                        { type: "cancel", text: "Close", onClick: () => { setCurrentRecord(null) } }
+                    ]
+                } />}
         </>
     )
 }

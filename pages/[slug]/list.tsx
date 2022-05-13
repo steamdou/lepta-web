@@ -1,7 +1,7 @@
 import React from 'react';
 import { getServerSidePropsForPage, PageBase, PageLoader } from 'douhub-ui-web';
 import { Nothing, useCurrentContext } from 'douhub-ui-web-basic';
-import { DetaultLeftArea } from 'douhub-ui-web-platform';
+import { DefaultLeftArea } from 'douhub-ui-web-platform';
 import { PageBase as AppPageBase } from 'douhub-ui-web-platform';
 import Header from '../../components/areas/header';
 import { settings } from '../../settings';
@@ -50,7 +50,7 @@ const ListPage = observer((props: Record<string, any>) => {
                     entity={entity}
                     sidePaneKey={sidePaneKey}
                     MainArea={MainArea}
-                    LeftArea={DetaultLeftArea}
+                    LeftArea={DefaultLeftArea}
                     RightArea={isNonEmptyString(entityName)?ChatRightArea:Nothing}
                     rightAreaProps={rightAreaProps}
                 /> :

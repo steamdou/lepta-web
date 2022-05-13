@@ -14,7 +14,7 @@ const PrimarySection = (props: Record<string, any>) => {
     }
 
 
-    return <div className="bg-white pb-0 md:pb-8">
+    return <div className="bg-white pb-0 md:pb-12">
         <div className="py-4 lg:py-12 lg:relative">
             <div className="mx-auto px-4 sm:px-8 lg:px-12 lg:max-w-7xl lg:grid lg:grid-cols-2 lg:gap-24">
                 <Introduction solution={solution}/>
@@ -54,5 +54,4 @@ const PrimarySection = (props: Record<string, any>) => {
 
 }
 
-PrimarySection.displayName = 'Sections.PrimarySection';
 export default PrimarySection;

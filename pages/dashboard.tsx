@@ -1,6 +1,6 @@
 import React from 'react';
 import { getServerSidePropsForPage, PageBase, PageLoader } from 'douhub-ui-web';
-import { DefaultMainArea, DetaultLeftArea, PageBase as AppPageBase } from 'douhub-ui-web-platform';
+import { DefaultMainArea, DefaultLeftArea, PageBase as AppPageBase } from 'douhub-ui-web-platform';
 
 import { useCurrentContext, _window } from 'douhub-ui-web-basic';
 import Header from '../components/areas/header';
@@ -26,7 +26,7 @@ const DashboardPage = (props: Record<string, any>) => {
                     context={context}
                     slug="dashboard"
                     MainArea={DefaultMainArea}
-                    LeftArea={DetaultLeftArea}
+                    LeftArea={DefaultLeftArea}
                     RightArea={null}
                 /></> :
                 <PageLoader {...props}/>

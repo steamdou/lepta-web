@@ -1184,10 +1184,10 @@
     "@babel/runtime" "^7.11.2"
     "@lingui/core" "^3.13.2"
 
-"@next/env@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@next/env/-/env-12.1.0.tgz"
-  integrity sha512-nrIgY6t17FQ9xxwH3jj0a6EOiQ/WDHUos35Hghtr+SWN/ntHIQ7UpuvSi0vaLzZVHQWaDupKI+liO5vANcDeTQ==
+"@next/env@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/env/-/env-12.1.6.tgz#5f44823a78335355f00f1687cfc4f1dafa3eca08"
+  integrity sha512-Te/OBDXFSodPU6jlXYPAXpmZr/AkG6DCATAxttQxqOWaq6eDFX25Db3dK0120GZrSZmv4QCe9KsZmJKDbWs4OA==
 
 "@next/eslint-plugin-next@12.0.7":
   version "12.0.7"
@@ -1196,60 +1196,65 @@
   dependencies:
     glob "7.1.7"
 
-"@next/swc-android-arm64@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@next/swc-android-arm64/-/swc-android-arm64-12.1.0.tgz#865ba3a9afc204ff2bdeea49dd64d58705007a39"
-  integrity sha512-/280MLdZe0W03stA69iL+v6I+J1ascrQ6FrXBlXGCsGzrfMaGr7fskMa0T5AhQIVQD4nA/46QQWxG//DYuFBcA==
+"@next/swc-android-arm-eabi@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/swc-android-arm-eabi/-/swc-android-arm-eabi-12.1.6.tgz#79a35349b98f2f8c038ab6261aa9cd0d121c03f9"
+  integrity sha512-BxBr3QAAAXWgk/K7EedvzxJr2dE014mghBSA9iOEAv0bMgF+MRq4PoASjuHi15M2zfowpcRG8XQhMFtxftCleQ==
 
-"@next/swc-darwin-arm64@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.1.0.tgz#08e8b411b8accd095009ed12efbc2f1d4d547135"
-  integrity sha512-R8vcXE2/iONJ1Unf5Ptqjk6LRW3bggH+8drNkkzH4FLEQkHtELhvcmJwkXcuipyQCsIakldAXhRbZmm3YN1vXg==
+"@next/swc-android-arm64@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/swc-android-arm64/-/swc-android-arm64-12.1.6.tgz#ec08ea61794f8752c8ebcacbed0aafc5b9407456"
+  integrity sha512-EboEk3ROYY7U6WA2RrMt/cXXMokUTXXfnxe2+CU+DOahvbrO8QSWhlBl9I9ZbFzJx28AGB9Yo3oQHCvph/4Lew==
 
-"@next/swc-darwin-x64@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-12.1.0.tgz#fcd684497a76e8feaca88db3c394480ff0b007cd"
-  integrity sha512-ieAz0/J0PhmbZBB8+EA/JGdhRHBogF8BWaeqR7hwveb6SYEIJaDNQy0I+ZN8gF8hLj63bEDxJAs/cEhdnTq+ug==
+"@next/swc-darwin-arm64@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.1.6.tgz#d1053805615fd0706e9b1667893a72271cd87119"
+  integrity sha512-P0EXU12BMSdNj1F7vdkP/VrYDuCNwBExtRPDYawgSUakzi6qP0iKJpya2BuLvNzXx+XPU49GFuDC5X+SvY0mOw==
 
-"@next/swc-linux-arm-gnueabihf@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@next/swc-linux-arm-gnueabihf/-/swc-linux-arm-gnueabihf-12.1.0.tgz#9ec6380a27938a5799aaa6035c205b3c478468a7"
-  integrity sha512-njUd9hpl6o6A5d08dC0cKAgXKCzm5fFtgGe6i0eko8IAdtAPbtHxtpre3VeSxdZvuGFh+hb0REySQP9T1ttkog==
+"@next/swc-darwin-x64@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-12.1.6.tgz#2d1b926a22f4c5230d5b311f9c56cfdcc406afec"
+  integrity sha512-9FptMnbgHJK3dRDzfTpexs9S2hGpzOQxSQbe8omz6Pcl7rnEp9x4uSEKY51ho85JCjL4d0tDLBcXEJZKKLzxNg==
 
-"@next/swc-linux-arm64-gnu@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-12.1.0.tgz#7f4196dff1049cea479607c75b81033ae2dbd093"
-  integrity sha512-OqangJLkRxVxMhDtcb7Qn1xjzFA3s50EIxY7mljbSCLybU+sByPaWAHY4px97ieOlr2y4S0xdPKkQ3BCAwyo6Q==
+"@next/swc-linux-arm-gnueabihf@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/swc-linux-arm-gnueabihf/-/swc-linux-arm-gnueabihf-12.1.6.tgz#c021918d2a94a17f823106a5e069335b8a19724f"
+  integrity sha512-PvfEa1RR55dsik/IDkCKSFkk6ODNGJqPY3ysVUZqmnWMDSuqFtf7BPWHFa/53znpvVB5XaJ5Z1/6aR5CTIqxPw==
 
-"@next/swc-linux-arm64-musl@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-12.1.0.tgz#b445f767569cdc2dddee785ca495e1a88c025566"
-  integrity sha512-hB8cLSt4GdmOpcwRe2UzI5UWn6HHO/vLkr5OTuNvCJ5xGDwpPXelVkYW/0+C3g5axbDW2Tym4S+MQCkkH9QfWA==
+"@next/swc-linux-arm64-gnu@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-12.1.6.tgz#ac55c07bfabde378dfa0ce2b8fc1c3b2897e81ae"
+  integrity sha512-53QOvX1jBbC2ctnmWHyRhMajGq7QZfl974WYlwclXarVV418X7ed7o/EzGY+YVAEKzIVaAB9JFFWGXn8WWo0gQ==
 
-"@next/swc-linux-x64-gnu@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.1.0.tgz#67610e9be4fbc987de7535f1bcb17e45fe12f90e"
-  integrity sha512-OKO4R/digvrVuweSw/uBM4nSdyzsBV5EwkUeeG4KVpkIZEe64ZwRpnFB65bC6hGwxIBnTv5NMSnJ+0K/WmG78A==
+"@next/swc-linux-arm64-musl@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-12.1.6.tgz#e429f826279894be9096be6bec13e75e3d6bd671"
+  integrity sha512-CMWAkYqfGdQCS+uuMA1A2UhOfcUYeoqnTW7msLr2RyYAys15pD960hlDfq7QAi8BCAKk0sQ2rjsl0iqMyziohQ==
 
-"@next/swc-linux-x64-musl@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.1.0.tgz#ea19a23db08a9f2e34ac30401f774cf7d1669d31"
-  integrity sha512-JohhgAHZvOD3rQY7tlp7NlmvtvYHBYgY0x5ZCecUT6eCCcl9lv6iV3nfu82ErkxNk1H893fqH0FUpznZ/H3pSw==
+"@next/swc-linux-x64-gnu@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.1.6.tgz#1f276c0784a5ca599bfa34b2fcc0b38f3a738e08"
+  integrity sha512-AC7jE4Fxpn0s3ujngClIDTiEM/CQiB2N2vkcyWWn6734AmGT03Duq6RYtPMymFobDdAtZGFZd5nR95WjPzbZAQ==
 
-"@next/swc-win32-arm64-msvc@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-12.1.0.tgz#eadf054fc412085659b98e145435bbba200b5283"
-  integrity sha512-T/3gIE6QEfKIJ4dmJk75v9hhNiYZhQYAoYm4iVo1TgcsuaKLFa+zMPh4056AHiG6n9tn2UQ1CFE8EoybEsqsSw==
+"@next/swc-linux-x64-musl@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.1.6.tgz#1d9933dd6ba303dcfd8a2acd6ac7c27ed41e2eea"
+  integrity sha512-c9Vjmi0EVk0Kou2qbrynskVarnFwfYIi+wKufR9Ad7/IKKuP6aEhOdZiIIdKsYWRtK2IWRF3h3YmdnEa2WLUag==
 
-"@next/swc-win32-ia32-msvc@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-12.1.0.tgz"
-  integrity sha512-iwnKgHJdqhIW19H9PRPM9j55V6RdcOo6rX+5imx832BCWzkDbyomWnlzBfr6ByUYfhohb8QuH4hSGEikpPqI0Q==
+"@next/swc-win32-arm64-msvc@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-12.1.6.tgz#2ef9837f12ca652b1783d72ecb86208906042f02"
+  integrity sha512-3UTOL/5XZSKFelM7qN0it35o3Cegm6LsyuERR3/OoqEExyj3aCk7F025b54/707HTMAnjlvQK3DzLhPu/xxO4g==
 
-"@next/swc-win32-x64-msvc@12.1.0":
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.1.0.tgz#d27e7e76c87a460a4da99c5bfdb1618dcd6cd064"
-  integrity sha512-aBvcbMwuanDH4EMrL2TthNJy+4nP59Bimn8egqv6GHMVj0a44cU6Au4PjOhLNqEh9l+IpRGBqMTzec94UdC5xg==
+"@next/swc-win32-ia32-msvc@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-12.1.6.tgz#74003d0aa1c59dfa56cb15481a5c607cbc0027b9"
+  integrity sha512-8ZWoj6nCq6fI1yCzKq6oK0jE6Mxlz4MrEsRyu0TwDztWQWe7rh4XXGLAa2YVPatYcHhMcUL+fQQbqd1MsgaSDA==
+
+"@next/swc-win32-x64-msvc@12.1.6":
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.1.6.tgz#a350caf42975e7197b24b495b8d764eec7e6a36e"
+  integrity sha512-4ZEwiRuZEicXhXqmhw3+de8Z4EpOLQj/gp+D9fFWo6ii6W1kBkNNvvEx4A90ugppu+74pT1lIJnOuz3A9oQeJA==
 
 "@nivo/arcs@0.79.1":
   version "0.79.1"
@@ -1776,10 +1781,15 @@
   resolved "https://registry.npmjs.org/@types/mime/-/mime-1.3.2.tgz"
   integrity sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==
 
-"@types/node@*", "@types/node@^17.0.12":
+"@types/node@*":
   version "17.0.21"
   resolved "https://registry.npmjs.org/@types/node/-/node-17.0.21.tgz"
   integrity sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==
+
+"@types/node@^17.0.33":
+  version "17.0.33"
+  resolved "https://registry.npmjs.org/@types/node/-/node-17.0.33.tgz#3c1879b276dc63e73030bb91165e62a4509cd506"
+  integrity sha512-miWq2m2FiQZmaHfdZNcbpp9PuXg34W5JZ5CrJ/BaS70VuhoJENBEQybeiYSaPBRNq6KQGnjfEnc/F3PN++D+XQ==
 
 "@types/nookies@^2.0.3":
   version "2.0.3"
@@ -2577,10 +2587,15 @@ camelcase@^6.2.0:
   resolved "https://registry.npmjs.org/camelcase/-/camelcase-6.3.0.tgz"
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
-caniuse-lite@^1.0.30001283, caniuse-lite@^1.0.30001317:
+caniuse-lite@^1.0.30001317:
   version "1.0.30001317"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001317.tgz"
   integrity sha512-xIZLh8gBm4dqNX0gkzrBeyI86J2eCjWzYAs40q88smG844YIrN4tVQl/RhquHvKEKImWWFIVh1Lxe5n1G/N+GQ==
+
+caniuse-lite@^1.0.30001332:
+  version "1.0.30001340"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001340.tgz#029a2f8bfc025d4820fafbfaa6259fd7778340c7"
+  integrity sha512-jUNz+a9blQTQVu4uFcn17uAD8IDizPzQkIKh3LCJfg9BkyIqExYYdyc/ZSlWUSKb8iYiXxKsxbv4zYSvkqjrxw==
 
 chain-function@^1.0.0:
   version "1.0.1"
@@ -3115,35 +3130,7 @@ domutils@^2.5.2, domutils@^2.7.0, domutils@^2.8.0:
     domelementtype "^2.2.0"
     domhandler "^4.2.0"
 
-douhub-helper-util@1.0.70:
-  version "1.0.70"
-  resolved "https://registry.npmjs.org/douhub-helper-util/-/douhub-helper-util-1.0.70.tgz"
-  integrity sha512-MiuLtGCP3eQgB/5GtN6DW2O80tLzUM9kzQ4f97s0c/GbBtMzyzWpbvbdX+2D0klQmk4oQelOBTtKOZoitxx/9Q==
-  dependencies:
-    axios "^0.24.0"
-    csvtojson "^2.0.10"
-    is-url "^1.2.4"
-    js-base64 "^3.7.2"
-    libphonenumber-js "^1.9.42"
-    lodash "^4.17.21"
-    slugify "^1.6.4"
-    uuid "^8.3.2"
-
-douhub-helper-util@1.0.81, douhub-helper-util@^1.0.81:
-  version "1.0.81"
-  resolved "https://registry.npmjs.org/douhub-helper-util/-/douhub-helper-util-1.0.81.tgz"
-  integrity sha512-NhToHCEmaBIvYtbNVBm2U/I2II/Y4mLaVPCSJ9nnyA5A12QOzcay28r4scQOAd93sFjJcEY5stuwLSn3H/pqdQ==
-  dependencies:
-    axios "^0.24.0"
-    csvtojson "^2.0.10"
-    is-url "^1.2.4"
-    js-base64 "^3.7.2"
-    libphonenumber-js "^1.9.42"
-    lodash "^4.17.21"
-    slugify "^1.6.4"
-    uuid "^8.3.2"
-
-douhub-helper-util@1.0.85, douhub-helper-util@^1.0.85:
+douhub-helper-util@1.0.85:
   version "1.0.85"
   resolved "https://registry.npmjs.org/douhub-helper-util/-/douhub-helper-util-1.0.85.tgz"
   integrity sha512-DHMSgctz7uD6mqYNWaYq11yYspPqSRFW2J9T/UUZ2PZ8+Vgo4QsWipSxHkIIkA3ds3ktmGxlEi6iz3mlWoHCbg==
@@ -3157,7 +3144,7 @@ douhub-helper-util@1.0.85, douhub-helper-util@^1.0.85:
     slugify "^1.6.4"
     uuid "^8.3.2"
 
-douhub-helper-util@1.0.89:
+douhub-helper-util@1.0.89, douhub-helper-util@^1.0.89:
   version "1.0.89"
   resolved "https://registry.npmjs.org/douhub-helper-util/-/douhub-helper-util-1.0.89.tgz#b37c3cffbc7a59a746d243b118f702e24338ff58"
   integrity sha512-E7vkkT3iT9d4rNLjFhyva0Quu+rHJWeh3CAYRrpvdH9FyCtlC6fSB/tVMco0dI0AA8QjsuR9wTo9NAVKMG/uHg==
@@ -3171,57 +3158,18 @@ douhub-helper-util@1.0.89:
     slugify "^1.6.4"
     uuid "^8.3.2"
 
-douhub-ui-realtime@1.0.31:
-  version "1.0.31"
-  resolved "https://registry.npmjs.org/douhub-ui-realtime/-/douhub-ui-realtime-1.0.31.tgz"
-  integrity sha512-z8cDm8/XeFQUTQsApjoLxulLQ9uTi775yhKBLc5404oT+nBEaGZ6kQPPVImdiK8JZHqMqkLFfRieRpQGGM4Tug==
+douhub-ui-realtime@1.0.32:
+  version "1.0.32"
+  resolved "https://registry.npmjs.org/douhub-ui-realtime/-/douhub-ui-realtime-1.0.32.tgz#68a82a490c17c66fbdc88220bd44a40ed3cd76f0"
+  integrity sha512-EavlO8XGJ9lZxt6JbQr+Sv6FPjDQVHiGHfrRsnzrI6EZ/T0S0Xg1z3Gjz0B8BYbWgpexF63/ok4WyL6oG9kRZg==
   dependencies:
     axios "^0.25.0"
-    douhub-helper-util "^1.0.85"
-    douhub-ui-web-basic "^1.0.19"
+    douhub-helper-util "1.0.89"
+    douhub-ui-web-basic "1.0.59"
     lodash "^4.17.21"
-    react "^17.0.2"
-    twilio-sync "^3.0.6"
-
-douhub-ui-realtime@^1.0.28:
-  version "1.0.28"
-  resolved "https://registry.npmjs.org/douhub-ui-realtime/-/douhub-ui-realtime-1.0.28.tgz"
-  integrity sha512-aqo62oqhVhCIa4d5IN2HczXBPCO75il+fmEvN9DRUK2rAx803iTaJA11sqxC7Ab0cRQi7ZzS3dxPA2K9wM+2iA==
-  dependencies:
-    axios "^0.25.0"
-    douhub-helper-util "^1.0.81"
-    douhub-ui-web-basic "^1.0.5"
-    lodash "^4.17.21"
-    react "^17.0.2"
-    twilio-sync "^3.0.6"
-
-douhub-ui-store@1.0.51:
-  version "1.0.51"
-  resolved "https://registry.npmjs.org/douhub-ui-store/-/douhub-ui-store-1.0.51.tgz"
-  integrity sha512-iMrsmgAWLFUMHuzy05K846Rm4RDzWpEInLMnWn7GkhdSfd+O1bqYwYoH4hHr9Z1snnFb3lykUqWUdaxTTpEsBg==
-  dependencies:
-    douhub-helper-util "1.0.70"
-    lodash "^4.17.21"
-    mobx "^6.3.5"
-    mobx-react "^7.2.1"
-    mobx-react-lite "^3.2.1"
-    mobx-state-tree "^5.0.5"
     react "^17.0.2"
     react-dom "^17.0.2"
-
-douhub-ui-store@1.0.52:
-  version "1.0.52"
-  resolved "https://registry.npmjs.org/douhub-ui-store/-/douhub-ui-store-1.0.52.tgz"
-  integrity sha512-f9EBgGVwfYOstS8FgI3hG5eOIhpelNR3vOPNVD/6uZRJIwoTJ4rydV+X3vVU5ObkUCQFw513bb4tie3rTYfGZQ==
-  dependencies:
-    douhub-helper-util "1.0.85"
-    lodash "^4.17.21"
-    mobx "^6.3.5"
-    mobx-react "^7.2.1"
-    mobx-react-lite "^3.2.1"
-    mobx-state-tree "^5.0.5"
-    react "^17.0.2"
-    react-dom "^17.0.2"
+    twilio-sync "3.1.0"
 
 douhub-ui-store@1.0.53:
   version "1.0.53"
@@ -3237,50 +3185,24 @@ douhub-ui-store@1.0.53:
     react "^17.0.2"
     react-dom "^17.0.2"
 
-douhub-ui-web-basic@^1.0.19:
-  version "1.0.19"
-  resolved "https://registry.npmjs.org/douhub-ui-web-basic/-/douhub-ui-web-basic-1.0.19.tgz"
-  integrity sha512-gtoWJS65s+cEXLMWNG1fNeY/+Q42jdlRRHgI5gGWzw9AX2PsplfW2xrltxzcv2ei4Tl9N7N9S+kowOVSGAaoRg==
+douhub-ui-store@1.0.54:
+  version "1.0.54"
+  resolved "https://registry.npmjs.org/douhub-ui-store/-/douhub-ui-store-1.0.54.tgz#c8ae3b43c22174f35ceb0fe9abd566e85e6b1d79"
+  integrity sha512-tsN6a3igkQ9JdIkzLR+547IjVVZaDRujJrZk+cxpg0OkZ5rJhjGy5qJCMt9C9Sw/Ld4aoeYidPgAz6QzG/ZGrw==
   dependencies:
-    "@aws-amplify/auth" "^4.3.19"
-    "@headlessui/react" "^1.4.3"
-    antd "^4.18.4"
-    douhub-helper-util "1.0.85"
-    douhub-ui-store "1.0.52"
+    douhub-helper-util "1.0.89"
     lodash "^4.17.21"
-    marked "^4.0.7"
-    next "12.1.0"
-    nookies "^2.5.2"
+    mobx "^6.3.5"
+    mobx-react "^7.2.1"
+    mobx-react-lite "^3.2.1"
+    mobx-state-tree "^5.0.5"
     react "^17.0.2"
     react-dom "^17.0.2"
-    react-imask "^6.4.2"
-    react-svg "^14.1.9"
-    uuid "^8.3.2"
 
-douhub-ui-web-basic@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/douhub-ui-web-basic/-/douhub-ui-web-basic-1.0.5.tgz"
-  integrity sha512-+st+CfyYhnC7AkM30o16F9HXM8E/upL9A/h1Yp0jfOwH+Es2hYEv4y30Y461YhxjICF/YFcJPQDw5pldbu+alg==
-  dependencies:
-    "@aws-amplify/auth" "^4.3.19"
-    "@headlessui/react" "^1.4.3"
-    antd "^4.18.4"
-    douhub-helper-util "1.0.81"
-    douhub-ui-store "1.0.51"
-    lodash "^4.17.21"
-    marked "^4.0.7"
-    next "12.1.0"
-    nookies "^2.5.2"
-    react "^17.0.2"
-    react-dom "^17.0.2"
-    react-imask "^6.4.2"
-    react-svg "^14.1.9"
-    uuid "^8.3.2"
-
-douhub-ui-web-basic@^1.0.53:
-  version "1.0.53"
-  resolved "https://registry.npmjs.org/douhub-ui-web-basic/-/douhub-ui-web-basic-1.0.53.tgz#5c76da907891c4e1a9baa4d68e4ef2f8258f0cb2"
-  integrity sha512-n0VSYoSt4BmhanYyMjnRve3B3obgBGT5jzMAC0CicUJB5kuPVwGT1TDo6GiMSgX1oeEDwl/KF7P5okL5jyO0yQ==
+douhub-ui-web-basic@1.0.59:
+  version "1.0.59"
+  resolved "https://registry.npmjs.org/douhub-ui-web-basic/-/douhub-ui-web-basic-1.0.59.tgz#a666c4b1f5532bb71900b620ae090e24c1965e66"
+  integrity sha512-wAI/G+H6+rCc6Jw4P53iGpxjKEW4khRQueD/o9gmRPXIfHn+0egmHSGmouGk34i371S7FhbIGiS5wQHJc1w8rQ==
   dependencies:
     "@aws-amplify/auth" "^4.3.19"
     "@headlessui/react" "^1.4.3"
@@ -3289,7 +3211,7 @@ douhub-ui-web-basic@^1.0.53:
     douhub-ui-store "1.0.53"
     lodash "^4.17.21"
     marked "^4.0.7"
-    next "12.1.0"
+    next "12.1.6"
     nookies "^2.5.2"
     react "^17.0.2"
     react-dom "^17.0.2"
@@ -3297,60 +3219,20 @@ douhub-ui-web-basic@^1.0.53:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web-basic@^1.0.56:
-  version "1.0.56"
-  resolved "https://registry.npmjs.org/douhub-ui-web-basic/-/douhub-ui-web-basic-1.0.56.tgz#4c7475d9896775ba429850d5f27676ca7cfa092b"
-  integrity sha512-cenr9mIM6CYvrn1LLKsKOUY0mwZfu0uL2j5vW2hgPSAxrmKQ6SU/nhEoEBwkscnKud4KBj7EoltnDqWhwtMBGw==
-  dependencies:
-    "@aws-amplify/auth" "^4.3.19"
-    "@headlessui/react" "^1.4.3"
-    antd "^4.18.4"
-    douhub-helper-util "1.0.89"
-    douhub-ui-store "1.0.53"
-    lodash "^4.17.21"
-    marked "^4.0.7"
-    next "12.1.0"
-    nookies "^2.5.2"
-    react "^17.0.2"
-    react-dom "^17.0.2"
-    react-imask "^6.4.2"
-    react-svg "^14.1.9"
-    uuid "^8.3.2"
-
-douhub-ui-web-basic@^1.0.57:
-  version "1.0.57"
-  resolved "https://registry.npmjs.org/douhub-ui-web-basic/-/douhub-ui-web-basic-1.0.57.tgz#75e2c9cab8e105d241be60e89dee92445290816e"
-  integrity sha512-09Lp9nWmGpuD39wXmWBNQ1n4Oa8RUTLgvyKgA18H4BHFpi6qnMeis5LAB2Bn6RSVkrU4bW9+yYmuqwAsnuM3Tg==
-  dependencies:
-    "@aws-amplify/auth" "^4.3.19"
-    "@headlessui/react" "^1.4.3"
-    antd "^4.18.4"
-    douhub-helper-util "1.0.89"
-    douhub-ui-store "1.0.53"
-    lodash "^4.17.21"
-    marked "^4.0.7"
-    next "12.1.0"
-    nookies "^2.5.2"
-    react "^17.0.2"
-    react-dom "^17.0.2"
-    react-imask "^6.4.2"
-    react-svg "^14.1.9"
-    uuid "^8.3.2"
-
-douhub-ui-web-platform@^1.0.94:
-  version "1.0.94"
-  resolved "https://registry.npmjs.org/douhub-ui-web-platform/-/douhub-ui-web-platform-1.0.94.tgz#ddf9c0c0d21bb7591eb3da80b6134531572aa228"
-  integrity sha512-XYx+dt3NFf/iDQ8qbFc7XyjL+EsFl2YMDb6O075zV3BkNywiMi3fnInLHVn8St1OahnZ4LlqKwI1EekVNeTuRg==
+douhub-ui-web-platform@1.0.99:
+  version "1.0.99"
+  resolved "https://registry.npmjs.org/douhub-ui-web-platform/-/douhub-ui-web-platform-1.0.99.tgz#7550a208d66312dcf35be84343184e05788ff3fb"
+  integrity sha512-PJ5x2eCp3cFGWlJKbxqql75VHeXYMgMjDfQt/XJBTSHDx98cx+g1obOXpIDBCrPt4u+Tlg43iEZkGwDovXr9/A==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
     antd "4.19.3"
     axios "^0.25.0"
     douhub-helper-util "1.0.89"
-    douhub-ui-realtime "^1.0.28"
-    douhub-ui-store "1.0.53"
-    douhub-ui-web "^1.5.157"
-    douhub-ui-web-basic "^1.0.53"
+    douhub-ui-realtime "1.0.32"
+    douhub-ui-store "1.0.54"
+    douhub-ui-web "^1.5.164"
+    douhub-ui-web-basic "1.0.59"
     lodash "^4.17.21"
     marked "^4.0.7"
     nookies "^2.5.2"
@@ -3361,19 +3243,19 @@ douhub-ui-web-platform@^1.0.94:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web-premium@^1.0.69:
-  version "1.0.69"
-  resolved "https://registry.npmjs.org/douhub-ui-web-premium/-/douhub-ui-web-premium-1.0.69.tgz#951f7c1c855950bb5276453255570d56791d48e1"
-  integrity sha512-O+IlBsQVWl2RzhNLCVl+lmNDcPIc562rbtzHkaPK18egPhisu/Vg6Wt9Avks+Za7yaJLDV1DdPTT2uam/G8FiA==
+douhub-ui-web-premium@1.0.75:
+  version "1.0.75"
+  resolved "https://registry.npmjs.org/douhub-ui-web-premium/-/douhub-ui-web-premium-1.0.75.tgz#4afde50b936d65cc2920782ee7398805d4720120"
+  integrity sha512-89LoXNpv23uJ5Gw+mDVES3AyHbjXMJP7+8tVEYf6s2SGFL2s/uNr1yyR6T5+El9jz3lgsU9lM2q9amtJbge9+A==
   dependencies:
     "@headlessui/react" "^1.4.4"
     antd "4.19.3"
     axios "^0.25.0"
     douhub-helper-util "1.0.89"
-    douhub-ui-realtime "^1.0.28"
-    douhub-ui-store "1.0.53"
-    douhub-ui-web "^1.5.157"
-    douhub-ui-web-basic "^1.0.53"
+    douhub-ui-realtime "1.0.32"
+    douhub-ui-store "1.0.54"
+    douhub-ui-web "^1.5.165"
+    douhub-ui-web-basic "1.0.59"
     lodash "^4.17.21"
     marked "^4.0.7"
     nookies "^2.5.2"
@@ -3384,10 +3266,10 @@ douhub-ui-web-premium@^1.0.69:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web@^1.5.157:
-  version "1.5.157"
-  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.157.tgz#c33ffa52254f8d8f7dac85d822f6f3a68638eae1"
-  integrity sha512-8xHjo/1bGkOQlVNe+IW5kRgiyMZIC+Z0vZAmvFx9KGH+CZqri7OefLeeNfjUr7sBTjmtlwX133givF5A+Cz4aw==
+douhub-ui-web@^1.5.164:
+  version "1.5.164"
+  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.164.tgz#a957d7b118f3a55a628f63eb0b73f44b4c9fbeda"
+  integrity sha512-IpoiOlfQesuzF3TVdp3HaYHC99h+0jWwDVep77h/JWnXpG9Qech22UIS9R9KPMYbuDJBy07D2kBFX1lzNEHGzg==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
@@ -3410,12 +3292,12 @@ douhub-ui-web@^1.5.157:
     antd "4.19.3"
     axios "^0.25.0"
     douhub-helper-util "1.0.89"
-    douhub-ui-realtime "^1.0.28"
-    douhub-ui-store "1.0.53"
-    douhub-ui-web-basic "^1.0.53"
+    douhub-ui-realtime "1.0.32"
+    douhub-ui-store "1.0.54"
+    douhub-ui-web-basic "1.0.59"
     lodash "^4.17.21"
     marked "^4.0.7"
-    next "^12.1.0"
+    next "12.1.6"
     nookies "^2.5.2"
     react "^17.0.2"
     react-dom "^17.0.2"
@@ -3427,10 +3309,10 @@ douhub-ui-web@^1.5.157:
     sortablejs "^1.14.0"
     uuid "^8.3.2"
 
-douhub-ui-web@^1.5.158:
-  version "1.5.158"
-  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.158.tgz#378ef438cfb06b7a83b3d803145f8c2248323b98"
-  integrity sha512-d3B/Ex/1WlhHehheODJH0vj2zyopJBsaeNP+3GpJUW1zdkmYC+52S4i6YDWgOwiM2otRLhNxxIUg25namT5cTQ==
+douhub-ui-web@^1.5.165:
+  version "1.5.165"
+  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.165.tgz#1129ef81b0ab3a284846134c467b0a0bb996b850"
+  integrity sha512-H0W4LwPkkqYlnM0cHPKxvCrOk4LQ2IlkgSHcZsLsYVYs37Aj57Hn7vKOepbBwcCmhfVOu0LzAGsVAoJKPHuB9A==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
@@ -3453,12 +3335,12 @@ douhub-ui-web@^1.5.158:
     antd "4.19.3"
     axios "^0.25.0"
     douhub-helper-util "1.0.89"
-    douhub-ui-realtime "^1.0.28"
-    douhub-ui-store "1.0.53"
-    douhub-ui-web-basic "^1.0.56"
+    douhub-ui-realtime "1.0.32"
+    douhub-ui-store "1.0.54"
+    douhub-ui-web-basic "1.0.59"
     lodash "^4.17.21"
     marked "^4.0.7"
-    next "^12.1.0"
+    next "12.1.6"
     nookies "^2.5.2"
     react "^17.0.2"
     react-dom "^17.0.2"
@@ -5341,28 +5223,28 @@ natural-compare@^1.4.0:
   resolved "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-next@12.1.0, next@^12.1.0:
-  version "12.1.0"
-  resolved "https://registry.npmjs.org/next/-/next-12.1.0.tgz"
-  integrity sha512-s885kWvnIlxsUFHq9UGyIyLiuD0G3BUC/xrH0CEnH5lHEWkwQcHOORgbDF0hbrW9vr/7am4ETfX4A7M6DjrE7Q==
+next@12.1.6:
+  version "12.1.6"
+  resolved "https://registry.npmjs.org/next/-/next-12.1.6.tgz#eb205e64af1998651f96f9df44556d47d8bbc533"
+  integrity sha512-cebwKxL3/DhNKfg9tPZDQmbRKjueqykHHbgaoG4VBRH3AHQJ2HO0dbKFiS1hPhe1/qgc2d/hFeadsbPicmLD+A==
   dependencies:
-    "@next/env" "12.1.0"
-    caniuse-lite "^1.0.30001283"
+    "@next/env" "12.1.6"
+    caniuse-lite "^1.0.30001332"
     postcss "8.4.5"
-    styled-jsx "5.0.0"
-    use-subscription "1.5.1"
+    styled-jsx "5.0.2"
   optionalDependencies:
-    "@next/swc-android-arm64" "12.1.0"
-    "@next/swc-darwin-arm64" "12.1.0"
-    "@next/swc-darwin-x64" "12.1.0"
-    "@next/swc-linux-arm-gnueabihf" "12.1.0"
-    "@next/swc-linux-arm64-gnu" "12.1.0"
-    "@next/swc-linux-arm64-musl" "12.1.0"
-    "@next/swc-linux-x64-gnu" "12.1.0"
-    "@next/swc-linux-x64-musl" "12.1.0"
-    "@next/swc-win32-arm64-msvc" "12.1.0"
-    "@next/swc-win32-ia32-msvc" "12.1.0"
-    "@next/swc-win32-x64-msvc" "12.1.0"
+    "@next/swc-android-arm-eabi" "12.1.6"
+    "@next/swc-android-arm64" "12.1.6"
+    "@next/swc-darwin-arm64" "12.1.6"
+    "@next/swc-darwin-x64" "12.1.6"
+    "@next/swc-linux-arm-gnueabihf" "12.1.6"
+    "@next/swc-linux-arm64-gnu" "12.1.6"
+    "@next/swc-linux-arm64-musl" "12.1.6"
+    "@next/swc-linux-x64-gnu" "12.1.6"
+    "@next/swc-linux-x64-musl" "12.1.6"
+    "@next/swc-win32-arm64-msvc" "12.1.6"
+    "@next/swc-win32-ia32-msvc" "12.1.6"
+    "@next/swc-win32-x64-msvc" "12.1.6"
 
 node-fetch@^2.6.1:
   version "2.6.7"
@@ -6694,10 +6576,10 @@ strip-json-comments@^3.1.0, strip-json-comments@^3.1.1:
   resolved "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
 
-styled-jsx@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.0.0.tgz"
-  integrity sha512-qUqsWoBquEdERe10EW8vLp3jT25s/ssG1/qX5gZ4wu15OZpmSMFI2v+fWlRhLfykA5rFtlJ1ME8A8pm/peV4WA==
+styled-jsx@5.0.2:
+  version "5.0.2"
+  resolved "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.0.2.tgz#ff230fd593b737e9e68b630a694d460425478729"
+  integrity sha512-LqPQrbBh3egD57NBcHET4qcgshPks+yblyhPlH2GY8oaDgKs8SK4C3dBh3oSJjgzJ3G5t1SYEZGHkP+QEpX9EQ==
 
 superagent@^7.1.0:
   version "7.1.1"
@@ -6909,7 +6791,7 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
-twilio-sync@^3.0.6:
+twilio-sync@3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/twilio-sync/-/twilio-sync-3.1.0.tgz"
   integrity sha512-KNkbbnoBITpsmxV2UnmNDEot/Q5t7p5I1zP05oqj0OYT1kMcZq4nhiSNkcxkunfxINFSUzz8d/mUA82yWS7iLQ==
@@ -6976,10 +6858,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^4.5.2:
-  version "4.6.2"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.6.2.tgz"
-  integrity sha512-HM/hFigTBHZhLXshn9sN37H085+hQGeJHJ/X7LpBWLID/fbc2acUMfU+lGD98X81sKP+pFa9f0DZmCwB9GnbAg==
+typescript@^4.6.4:
+  version "4.6.4"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
+  integrity sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"
@@ -7023,13 +6905,6 @@ url@^0.11.0:
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
-
-use-subscription@1.5.1:
-  version "1.5.1"
-  resolved "https://registry.npmjs.org/use-subscription/-/use-subscription-1.5.1.tgz"
-  integrity sha512-Xv2a1P/yReAjAbhylMfFplFKj9GssgTwN7RlcTxBujFQcloStWNDQdc4g4NRWH9xS4i/FDk04vQBptAXoF3VcA==
-  dependencies:
-    object-assign "^4.1.1"
 
 utf-8-validate@^5.0.9:
   version "5.0.9"
