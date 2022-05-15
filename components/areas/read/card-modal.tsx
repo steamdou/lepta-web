@@ -23,8 +23,13 @@ const ReadCardModal = observer((props: Record<string, any>) => {
     }
 
     const renderContent = () => {
-        return <div className={`read-card w-full flex flex-row text-left`}>
-            <ReadCard record={record} wrapperStyle={{ padding: 0 }} />
+        return <div className={`read-card w-full flex flex-col md:flex-row text-left`}>
+            <div className="flex-1">
+                <ReadCard data={record} wrapperStyle={{ padding: 0 }} />
+            </div>
+            {/* <div className="bg-gray-100 mt-8 md:ml-8 md:mt-0" style={{minWidth:380, minHeight:50}}>
+
+            </div> */}
         </div>
     }
 
@@ -36,7 +41,7 @@ const ReadCardModal = observer((props: Record<string, any>) => {
             show={isNonEmptyString(showModal)}
             showCloseIcon={true}
             contentStyle={{ margin: 0 }}
-            maxWidth={900}
+            maxWidth={600}
             content={renderContent()}
         />
     </>
