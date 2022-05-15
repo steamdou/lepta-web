@@ -414,8 +414,6 @@ const ListBase = observer((props: Record<string, any>) => {
             })
     }
 
-    console.log({ currentReadRecord })
-
     const onClickRecord = (record: Record<string, any>, action: string) => {
         switch (action) {
             case 'read':
@@ -451,6 +449,7 @@ const ListBase = observer((props: Record<string, any>) => {
                         });
                     }
                     else {
+                        envStore.setValue('currentReadRecord', null);
                         updateCurrentRecord(record, action);
                     }
                     break;
@@ -846,7 +845,6 @@ const ListBase = observer((props: Record<string, any>) => {
     const renderReader = () => {
         if (!currentReadRecord) return null;
         if (isFunction(props.renderRead)) return props.renderRead(currentReadRecord);
-        console.log({ prop: currentReadRecord })
         return ListRead && <div className="relative h-full z-10" style={{ backgroundColor: '#fafafa', minHeight: height }}>
             <ListFormResizer
                 id={currentReadRecord.id}
@@ -907,5 +905,6 @@ const ListBase = observer((props: Record<string, any>) => {
         </div>
     </>
 });
+
 
 export default ListBase

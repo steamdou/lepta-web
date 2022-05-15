@@ -24,7 +24,7 @@ const ReadCardModal = observer((props: Record<string, any>) => {
 
     const renderContent = () => {
         return <div className={`read-card w-full flex flex-col md:flex-row text-left`}>
-            <div className="flex-1">
+            <div className="flex-1 text-xl">
                 <ReadCard data={record} wrapperStyle={{ padding: 0 }} />
             </div>
             {/* <div className="bg-gray-100 mt-8 md:ml-8 md:mt-0" style={{minWidth:380, minHeight:50}}>

@@ -26,9 +26,6 @@ export const ReadCard = (props: Record<string, any>) => {
         setReadCardHtmlReady(true);
     }
 
-
-    console.log({ loadReadCardHtmlReady, readCardHtmlReady })
-
     return !isEmpty(data) ? <div className="flex-1 flex flex-col mb-12 p-8" style={wrapperStyle}>
         {isNonEmptyString(media) && <Img src={media} alt="" />}
         <h1 className="w-full text-gray-900 " dangerouslySetInnerHTML={{ __html: title }} />
@@ -67,7 +64,7 @@ export const ReadCard = (props: Record<string, any>) => {
                 </div>
             </div>
         </div>}
-        <div className="article w-full text-xl">
+        <div className="article w-full">
             <ReadCardHtml data={data} onReady={onReady} />
         </div>
     </div> : <></>

@@ -98,7 +98,7 @@ const Read = (props: Record<string, any>) =>
         Header={Header}
         Footer={Footer}>
         {!isEmpty(pageRecord) && 
-        <div className={`read-card mx-auto w-full flex flex-row pt-6 max-w-4xl`} >
+        <div className={`read-card mx-auto w-full flex flex-row pt-6 max-w-4xl text-xl`} >
             <ReadCard data={pageRecord}/>
         </div>}
         <h2 className="sr-only">Related Knowledge Cards</h2>
