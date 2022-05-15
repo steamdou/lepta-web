@@ -3,7 +3,7 @@ import { isFunction, isArray, map, each, without, isNil } from 'lodash';
 import { Tags, _window, } from 'douhub-ui-web-basic';
 import { observer } from 'mobx-react-lite';
 import { isNonEmptyString } from 'douhub-helper-util';
-import { FullCard } from './card';
+import ReadCard from './read-card';
 //import BasicModal from './modal';
 import {BasicModal} from 'douhub-ui-web-basic';
 
@@ -24,7 +24,7 @@ const ReadCardModal = observer((props: Record<string, any>) => {
 
     const renderContent = () => {
         return <div className={`read-card w-full flex flex-row text-left`}>
-            <FullCard record={record} wrapperStyle={{ padding: 0 }} />
+            <ReadCard record={record} wrapperStyle={{ padding: 0 }} />
         </div>
     }
 

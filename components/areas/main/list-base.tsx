@@ -2,7 +2,6 @@ import {
     DEFAULT_COLUMNS, AlertField,
     Notification, DefaultForm,
     ListCategoriesTags, ListFilters,
-    ListFormHeader as IListFormHeader,
     Splitter as SplitterInternal, ListTable, LIST_CSS, ListFormResizer
 } from 'douhub-ui-web';
 import { notification as antNotification } from 'antd';
@@ -14,7 +13,18 @@ import { getRecordDisplay, isObject, isNonEmptyString, newGuid, setWebQueryValue
 import { without, throttle, debounce, isNumber, map, isFunction, isArray, find, isNil, each, cloneDeep } from 'lodash';
 import { useRouter } from 'next/router';
 import ReactResizeDetector from 'react-resize-detector';
+
+
+import { ListFormHeader as IListFormHeader } from 'douhub-ui-web';
+// import IListFormHeader from './list-form-header';
+
+import { ListReadHeader as IListReadHeader } from 'douhub-ui-web';
+// import IListReadHeader from './list-read-header';
+
 import { ListHeader as IListHeader } from 'douhub-ui-web';
+// import IListHeader from './list-header';
+
+
 import StackGrid from "react-stack-grid";
 
 const MESSAGE_TITLE_RECORD_CHANGED = 'Record has been changed';
@@ -70,13 +80,15 @@ const ListBase = observer((props: Record<string, any>) => {
         selectionType, FormFields,
         allowCreate, allowUpload, recordForMembership, lgScreen } = props;
     const ListFormHeader = props.ListFormHeader ? props.ListFormHeader : IListFormHeader;
+    const ListReadHeader = props.ListReadHeader ? props.ListReadHeader : IListReadHeader;
     const ListHeader = props.ListHeader ? props.ListHeader : IListHeader;
     const envStore = useEnvStore();
     const envData = JSON.parse(envStore.data);
-   
+
     const contextStore = useContextStore();
     const context = JSON.parse(contextStore.data);
-    const currentRecord = envData.currentRecord;
+    const currentEditRecord = envData.currentEditRecord;
+    const currentReadRecord = envData.currentReadRecord;
     const router = useRouter();
     const solution = _window.solution;
     const defaultFormWidth = isNumber(props.defaultFormWidth) ? props.defaultFormWidth : FORM_RESIZER_MIN_WIDTH;
@@ -97,12 +109,13 @@ const ListBase = observer((props: Record<string, any>) => {
     const [areaWidth, setAreaWidth] = useState<number>(0);
     const [width, setWidth] = useState(0);
     const [result, setResult] = useState<Record<string, any> | null>(null);
-    const [notification, setNotification] = useState<{ id: string, message: string, description: string, type: string } | null>(null);
+    const [notification, setNotification] = useState<{ id: string, message: string, description: string, type: string, placement?: string } | null>(null);
     const [oriCurrentRecord, setOriCurrentRecord] = useState<Record<string, any> | null>(null);
     const [selectedRecords, setSelectedRecords] = useState<Record<string, any>>([]);
     const [predefinedFormWidth, setPredefinedFormWidth] = useState(defaultFormWidth);
 
     const ListForm = props.Form ? props.Form : DefaultForm;
+    const ListRead = props.Read ? props.Read : null;
     const formHeightAdjust = isNumber(props.formHeightAdjust) ? props.formHeightAdjust : 70;
     const supportSlitter = props.supportSlitter == true
     const Splitter = supportSlitter ? SplitterInternal : NonSplitter;
@@ -125,12 +138,14 @@ const ListBase = observer((props: Record<string, any>) => {
     const giveRoomToRightArea = !lgScreen && openRightDrawer ? (areaWidth - 370 - currentFormWidth > 0 ? 370 : areaWidth - currentFormWidth) : 0;
 
 
-    const showSidePane = sidePaneKey && envData[sidePaneKey] && !hideListCategoriesTags && !currentRecord;
-    const currentRecordChanged = isObject(oriCurrentRecord) && isObject(currentRecord) && JSON.stringify(oriCurrentRecord) != JSON.stringify(currentRecord);
+    const showSidePane = sidePaneKey && envData[sidePaneKey] && !hideListCategoriesTags && !currentEditRecord;
+    const currentEditRecordChanged = envData['currentEditRecordChanged'] == true;
 
     useEffect(() => {
         const newEnvData = cloneDeep(envData);
-        delete newEnvData.currentRecord;
+        delete newEnvData.currentEditRecord;
+        delete newEnvData.currentReadRecord;
+        delete newEnvData.currentEditRecordChanged;
         delete newEnvData.search;
         delete newEnvData.tags;
         delete newEnvData.categories;
@@ -170,11 +185,10 @@ const ListBase = observer((props: Record<string, any>) => {
     useEffect(() => {
         //init form width from localstorage and props
         const cacheValue = getLocalStorage(formWidthCacheKey);
-        console.log({ cacheValue })
         if (isNumber(cacheValue)) {
             setPredefinedFormWidth(cacheValue);
         }
-    }, [formWidthCacheKey, currentRecord?.id])
+    }, [formWidthCacheKey, currentEditRecord?.id])
 
 
     const queries = isArray(predefinedQueries) && predefinedQueries.length > 0 ? without([
@@ -238,7 +252,7 @@ const ListBase = observer((props: Record<string, any>) => {
         setCurrentFormWidth(width ? width : 0);
     }
 
-    const apiCallTrigger = JSON.stringify({queryId, statusId, loadingType, entityName:entity?.entityName, entityType:entity?.entityType, tags, categories, search});
+    const apiCallTrigger = JSON.stringify({ queryId, statusId, loadingType, entityName: entity?.entityName, entityType: entity?.entityType, tags, categories, search });
 
     useEffect(() => {
         if (loadingType) {
@@ -288,7 +302,7 @@ const ListBase = observer((props: Record<string, any>) => {
                                 const newResult = {
                                     count: result?.count + r.count,
                                     continuation: r.continuation,
-                                    data: [...(result?result.data:{}), ...r.data]
+                                    data: [...(result ? result.data : {}), ...r.data]
                                 }
                                 setResult(cloneDeep(newResult));
                                 break;
@@ -314,7 +328,7 @@ const ListBase = observer((props: Record<string, any>) => {
     }, [apiCallTrigger])
 
     const onClickCreateRecord = () => {
-        if (currentRecordChanged) {
+        if (currentEditRecordChanged) {
             antNotification.warning({
                 message: MESSAGE_TITLE_RECORD_CHANGED,
                 description: MESSAGE_CONTENT_RECORD_CHANGED,
@@ -329,8 +343,8 @@ const ListBase = observer((props: Record<string, any>) => {
     }
 
     const onClickDeleteRecordFromForm = () => {
-        if (currentRecord) {
-            onClickDeleteRecord(cloneDeep(currentRecord));
+        if (currentEditRecord) {
+            onClickDeleteRecord(cloneDeep(currentEditRecord));
         }
     }
 
@@ -400,8 +414,27 @@ const ListBase = observer((props: Record<string, any>) => {
             })
     }
 
+    console.log({ currentReadRecord })
+
     const onClickRecord = (record: Record<string, any>, action: string) => {
         switch (action) {
+            case 'read':
+                {
+                    if (currentEditRecordChanged) {
+                        setNotification({
+                            id: newGuid(),
+                            type: 'warning',
+                            message: "Another card in the edit form",
+                            description: "To avoid losing your changes, we do not allow open edit form when there is another record in the edit form.",
+                            placement: 'top'
+                        });
+                    }
+                    else {
+                        updateCurrentRecord(null);
+                        envStore.setValue('currentReadRecord', record);
+                    }
+                    break;
+                }
             case 'delete':
                 {
                     onClickDeleteRecord(record);
@@ -410,7 +443,7 @@ const ListBase = observer((props: Record<string, any>) => {
             case 'create':
             case 'edit':
                 {
-                    if (currentRecordChanged) {
+                    if (currentEditRecordChanged) {
                         antNotification.warning({
                             message: MESSAGE_TITLE_RECORD_CHANGED,
                             description: MESSAGE_CONTENT_RECORD_CHANGED,
@@ -487,7 +520,7 @@ const ListBase = observer((props: Record<string, any>) => {
     }
 
     const renderTable = () => {
-        if (view == 'grid' && !currentRecord) return null;
+        if (view == 'grid' && !currentEditRecord) return null;
         if (loading == 'first' || isNonEmptyString(firstLoadError)) return null;
         if (isNil(result) || result?.data?.length == 0) return null;
 
@@ -510,7 +543,7 @@ const ListBase = observer((props: Record<string, any>) => {
             props.onClickGridCard(record);
         }
         else {
-            onClickRecord(record, 'edit');
+            onClickRecord(record, 'read');
         }
 
     }
@@ -520,7 +553,7 @@ const ListBase = observer((props: Record<string, any>) => {
     }, 200);
 
     const renderGrid = () => {
-        if (view == 'table' || currentRecord) return null;
+        if (view == 'table' || currentEditRecord) return null;
         if (loading == 'first' || isNonEmptyString(firstLoadError)) return null;
         if (isNil(result) || result?.data?.length == 0) return null;
 
@@ -568,11 +601,11 @@ const ListBase = observer((props: Record<string, any>) => {
 
     const onClickSaveRecord = (closeForm: any) => {
 
-        const op = !currentRecord?._rid ? 'create' : 'update'
+        const op = !currentEditRecord?._rid ? 'create' : 'update'
 
         if (isArray(entity.requiredFields) && entity.requiredFields.length > 0) {
             const fieldNeedValue = find(entity.requiredFields, (field) => {
-                return isNil(currentRecord?.[field.name]);
+                return isNil(currentEditRecord?.[field.name]);
             });
 
             if (fieldNeedValue) {
@@ -589,7 +622,7 @@ const ListBase = observer((props: Record<string, any>) => {
         const apiEndpoint = `${entity?.apis?.data ? entity?.apis?.data : solution.apis.data}${op}`;
 
 
-        callAPI(solution, apiEndpoint, { data: currentRecord }, op == 'create' ? 'post' : 'put')
+        callAPI(solution, apiEndpoint, { data: currentEditRecord }, op == 'create' ? 'post' : 'put')
             .then((newRecord: any) => {
                 const newResult: Record<string, any> = { ...result };
 
@@ -620,34 +653,40 @@ const ListBase = observer((props: Record<string, any>) => {
             })
     }
 
-    const updateCurrentRecord = (newRecord: Record<string, any> | null, type?: 'edit' | 'create' | 'save') => {
+    const updateCurrentRecord = (newRecord: Record<string, any> | null, type?: 'edit' | 'create' | 'save' | 'changed') => {
+
+        let newCurrentRecord: Record<string, any> | null = isNil(newRecord) ? null : cloneDeep(newRecord);
+        if (newCurrentRecord) newCurrentRecord.display = getRecordDisplay(newCurrentRecord);
+        let newOriCurrentRecord: Record<string, any> | null = cloneDeep(oriCurrentRecord);
+
         if (!isNil(newRecord)) {
-            const newCurrentRecord = cloneDeep(newRecord);
-            newCurrentRecord.display = getRecordDisplay(newCurrentRecord);
-            envStore.setValue('currentRecord', newCurrentRecord);
+
             switch (type) {
                 case 'create':
                     {
-                        setOriCurrentRecord({});
+                        newOriCurrentRecord = {};
                         break;
                     }
                 case 'edit':
                     {
-                        setOriCurrentRecord(newCurrentRecord);
+                        newOriCurrentRecord = newCurrentRecord;
                         break;
                     }
                 case 'save':
                     {
-                        setOriCurrentRecord(newCurrentRecord);
+                        newOriCurrentRecord = newCurrentRecord;
                         break;
                     }
             }
         }
         else {
-            envStore.setValue('currentRecord', null);
-            setOriCurrentRecord(null);
+            newCurrentRecord = null;
+            newOriCurrentRecord = null
         }
 
+        envStore.setValue('currentEditRecordChanged', isObject(newOriCurrentRecord) && isObject(newCurrentRecord) && JSON.stringify(newOriCurrentRecord) != JSON.stringify(newCurrentRecord));
+        envStore.setValue('currentEditRecord', newCurrentRecord);
+        setOriCurrentRecord(newOriCurrentRecord);
     }
 
     const onClickCloseForm = () => {
@@ -655,7 +694,7 @@ const ListBase = observer((props: Record<string, any>) => {
     }
 
     const onChangeCurrentRecord = (newData: Record<string, any>) => {
-        updateCurrentRecord(newData)
+        updateCurrentRecord(newData, 'changed')
     }
 
     const onRemoveFilter = (filter: Record<string, any>) => {
@@ -702,7 +741,6 @@ const ListBase = observer((props: Record<string, any>) => {
         return <div
             className={`w-full h-full flex-1 overflow-hidden  ${showSidePane ? 'border-l' : ''} ${maxListWidth != areaWidth ? 'pr-2 border-r' : ''}`}
         >
-            {notification && <Notification id={notification.id} message={notification.message} description={notification.description} type={notification.type} />}
             <ListHeader
                 {...props}
                 context={context}
@@ -710,8 +748,8 @@ const ListBase = observer((props: Record<string, any>) => {
                 // querySelectorMinWidth={props.querySelectorMinWidth}
                 statusSelectorMinWidth={props.statusSelectorMinWidth}
                 recordForMembership={recordForMembership}
-                currentRecord={currentRecord}
-                currentRecordChanged={currentRecordChanged}
+                currentEditRecord={currentEditRecord}
+                currentEditRecordChanged={currentEditRecordChanged}
                 allowCreate={allowCreate}
                 allowUpload={allowUpload}
                 statusCodes={statusCodes}
@@ -749,6 +787,99 @@ const ListBase = observer((props: Record<string, any>) => {
         </div>
     }
 
+    const renderForm = () => {
+        if (!currentEditRecord) return null;
+        if (isFunction(props.renderForm)) return props.renderForm(currentEditRecord);
+
+        return <div className="relative h-full z-10" style={{ backgroundColor: '#fafafa', minHeight: height }}>
+            <ListFormResizer
+                id={currentEditRecord.id}
+                onChangeSize={onUpdateFormWidth}
+                defaultWidth={formWidth > areaWidth ? areaWidth : formWidth}
+                className="absolute top-0 right-0"
+                style={{
+                    height, maxWidth: maxFormWidth, minWidth: FORM_RESIZER_MIN_WIDTH + 100,
+                    borderLeft: '100px solid rgba(255, 255, 255, 0.6)', borderImage: 'linear-gradient(to left,#ffffff,transparent) 10 100%',
+                    right: giveRoomToRightArea
+                }}>
+                <div className={`list-form w-full h-full overflow-hidden border border-0 border-l drop-shadow-lg bg-white`}>
+                    <ListFormHeader
+                        context={context}
+                        recordForMembership={recordForMembership}
+                        entity={entity}
+                        deleteButtonLabel={deleteButtonLabel}
+                        deleteConfirmationMessage={deleteConfirmationMessage}
+                        currentRecord={currentEditRecord}
+                        currentRecordChanged={currentEditRecordChanged}
+                        recordSaving={recordSaving}
+                        onClickClose={onClickCloseForm}
+                        onClickSaveRecord={onClickSaveRecord}
+                        onClickDeleteRecord={onClickDeleteRecordFromForm}
+                    />
+                    {isObject(currentEditRecord) && <div className="list-form-body w-full flex flex-row px-8 py-4 overflow-hidden overflow-y-auto"
+                        style={{ borderTop: 'solid 1rem #ffffff', borderBottom: 'solid 1rem #ffffff', height: height - formHeightAdjust }}>
+                        <ListForm
+                            context={context}
+                            Fields={FormFields}
+                            entity={entity}
+                            wrapperClassName="pb-20"
+                            data={currentEditRecord}
+                            onChange={onChangeCurrentRecord}
+                            recordForMembership={recordForMembership} />
+                    </div>}
+                    <ReactResizeDetector onResize={throttle(onResizeForm, 300)} />
+                </div>
+            </ListFormResizer>
+        </div>
+
+    }
+
+    const onClickEditRecord = () => {
+        updateCurrentRecord(currentReadRecord, 'edit');
+        envStore.setValue('currentReadRecord', null);
+    }
+
+    const onClickCloseRead = () => {
+        envStore.setValue('currentReadRecord', null);
+    }
+
+    const renderReader = () => {
+        if (!currentReadRecord) return null;
+        if (isFunction(props.renderRead)) return props.renderRead(currentReadRecord);
+        console.log({ prop: currentReadRecord })
+        return ListRead && <div className="relative h-full z-10" style={{ backgroundColor: '#fafafa', minHeight: height }}>
+            <ListFormResizer
+                id={currentReadRecord.id}
+                onChangeSize={onUpdateFormWidth}
+                defaultWidth={formWidth > areaWidth ? areaWidth : formWidth}
+                className="absolute top-0 right-0"
+                style={{
+                    height, maxWidth: maxFormWidth, minWidth: FORM_RESIZER_MIN_WIDTH + 100,
+                    borderLeft: '100px solid rgba(255, 255, 255, 0.6)', borderImage: 'linear-gradient(to left,#ffffff,transparent) 10 100%',
+                    right: giveRoomToRightArea
+                }}>
+                <div className={`list-read w-full h-full overflow-hidden border border-0 border-l drop-shadow-lg bg-white`}>
+                    <ListReadHeader
+                        context={context}
+                        entity={entity}
+                        currentRecord={currentReadRecord}
+                        onClickClose={onClickCloseRead}
+                        onClickEdit={onClickEditRecord}
+                    />
+                    {isObject(currentReadRecord) && <div className="list-read-body w-full flex flex-row px-8 py-4 overflow-hidden overflow-y-auto"
+                        style={{ borderTop: 'solid 1rem #ffffff', borderBottom: 'solid 1rem #ffffff', height: height - formHeightAdjust }}>
+                        <ListRead
+                            context={context}
+                            entity={entity}
+                            data={currentReadRecord}
+                            recordForMembership={recordForMembership} />
+                    </div>}
+                    <ReactResizeDetector onResize={throttle(onResizeForm, 300)} />
+                </div>
+            </ListFormResizer>
+        </div>
+
+    }
 
     return <>
         <CSS id={`list-css-${areaWidth == 0 ? 'server' : 'client'}`} content={`
@@ -769,51 +900,10 @@ const ListBase = observer((props: Record<string, any>) => {
                 {renderListCategoriesTags()}
                 {renderListSection()}
             </Splitter>
-
-            {currentRecord && <div className="relative h-full z-10" style={{ backgroundColor: '#fafafa', minHeight: height }}>
-                <ListFormResizer
-                    id={currentRecord.id}
-                    onChangeSize={onUpdateFormWidth}
-                    defaultWidth={formWidth > areaWidth ? areaWidth : formWidth}
-                    className="absolute top-0 right-0"
-                    style={{
-                        height, maxWidth: maxFormWidth, minWidth: FORM_RESIZER_MIN_WIDTH + 100,
-                        borderLeft: '100px solid rgba(255, 255, 255, 0.6)', borderImage: 'linear-gradient(to left,#ffffff,transparent) 10 100%',
-                        right: giveRoomToRightArea
-                    }}>
-                    <div className={`list-form w-full h-full overflow-hidden border border-0 border-l drop-shadow-lg bg-white`}>
-                        <ListFormHeader
-                            context={context}
-                            recordForMembership={recordForMembership}
-                            entity={entity}
-                            deleteButtonLabel={deleteButtonLabel}
-                            deleteConfirmationMessage={deleteConfirmationMessage}
-                            currentRecord={currentRecord}
-                            currentRecordChanged={currentRecordChanged}
-                            recordSaving={recordSaving}
-                            onClickClose={onClickCloseForm}
-                            onClickSaveRecord={onClickSaveRecord}
-                            onClickDeleteRecord={onClickDeleteRecordFromForm}
-                        />
-                        {isObject(currentRecord) && <div className="list-form-body w-full flex flex-row px-8 py-4 overflow-hidden overflow-y-auto"
-                            style={{ borderTop: 'solid 1rem #ffffff', borderBottom: 'solid 1rem #ffffff', height: height - formHeightAdjust }}>
-                            <ListForm
-                                context={context}
-                                Fields={FormFields}
-                                entity={entity}
-                                wrapperClassName="pb-20"
-                                data={currentRecord}
-                                onChange={onChangeCurrentRecord}
-                                recordForMembership={recordForMembership} />
-                        </div>}
-                        <ReactResizeDetector onResize={throttle(onResizeForm, 300)} />
-                    </div>
-                </ListFormResizer>
-            </div>
-            }
-
+            {renderForm()}
+            {renderReader()}
             <ReactResizeDetector onResize={throttle(onResizeAreaDetector, 300)} />
-
+            {notification && <Notification id={notification.id} message={notification.message} description={notification.description} type={notification.type} />}
         </div>
     </>
 });

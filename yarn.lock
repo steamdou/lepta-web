@@ -1186,7 +1186,7 @@
 
 "@next/env@12.1.6":
   version "12.1.6"
-  resolved "https://registry.npmjs.org/@next/env/-/env-12.1.6.tgz#5f44823a78335355f00f1687cfc4f1dafa3eca08"
+  resolved "https://registry.npmjs.org/@next/env/-/env-12.1.6.tgz"
   integrity sha512-Te/OBDXFSodPU6jlXYPAXpmZr/AkG6DCATAxttQxqOWaq6eDFX25Db3dK0120GZrSZmv4QCe9KsZmJKDbWs4OA==
 
 "@next/eslint-plugin-next@12.0.7":
@@ -1248,7 +1248,7 @@
 
 "@next/swc-win32-ia32-msvc@12.1.6":
   version "12.1.6"
-  resolved "https://registry.npmjs.org/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-12.1.6.tgz#74003d0aa1c59dfa56cb15481a5c607cbc0027b9"
+  resolved "https://registry.npmjs.org/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-12.1.6.tgz"
   integrity sha512-8ZWoj6nCq6fI1yCzKq6oK0jE6Mxlz4MrEsRyu0TwDztWQWe7rh4XXGLAa2YVPatYcHhMcUL+fQQbqd1MsgaSDA==
 
 "@next/swc-win32-x64-msvc@12.1.6":
@@ -1320,9 +1320,9 @@
     fastq "^1.6.0"
 
 "@popperjs/core@^2.9.0":
-  version "2.11.4"
-  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.4.tgz"
-  integrity sha512-q/ytXxO5NKvyT37pmisQAItCFqA7FD/vNb8dgaJy3/630Fsc+Mz9/9f2SziBoIZ30TJooXyTwZmhi1zjXmObYg==
+  version "2.11.5"
+  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.11.5.tgz"
+  integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
 
 "@react-spring/animated@~9.3.0":
   version "9.3.2"
@@ -1428,9 +1428,9 @@
   integrity sha512-pnO0I5sEQM3pmowjMGQ74adLzvc6HqGyLyqMizaGMicPu9uTYlSdId+qckYEEgPwPMaEShtv2Vg+ZHs7KVqfcg==
 
 "@tiptap/extension-bubble-menu@^2.0.0-beta.55":
-  version "2.0.0-beta.55"
-  resolved "https://registry.npmjs.org/@tiptap/extension-bubble-menu/-/extension-bubble-menu-2.0.0-beta.55.tgz"
-  integrity sha512-v32/QnwwRbepdbrho8mTYru1/XNW/rJi3Mjrgo3rrIs67R86aEPmhmdzD3QEQUJhAJkduuwdw8zElmVWqIJQ9w==
+  version "2.0.0-beta.56"
+  resolved "https://registry.npmjs.org/@tiptap/extension-bubble-menu/-/extension-bubble-menu-2.0.0-beta.56.tgz"
+  integrity sha512-nZozwauICdaNPmDPrSn1JFd/9/2rLtK8i2vBOcqxWHObVROvu8ZlJspnrJv23vS6P7/ZO3e/QLVHpnn+1yVq3g==
   dependencies:
     prosemirror-state "^1.3.4"
     prosemirror-view "^1.23.6"
@@ -1484,9 +1484,9 @@
     prosemirror-dropcursor "^1.4.0"
 
 "@tiptap/extension-floating-menu@^2.0.0-beta.50":
-  version "2.0.0-beta.50"
-  resolved "https://registry.npmjs.org/@tiptap/extension-floating-menu/-/extension-floating-menu-2.0.0-beta.50.tgz"
-  integrity sha512-aQu1HtthMIYEPylr6kzioLxMiObLbcgwx9xZzF03KwNnkjQLbjZOeJX2RwSYVpiVgtfPBGOm3N/br6NSYec4yQ==
+  version "2.0.0-beta.51"
+  resolved "https://registry.npmjs.org/@tiptap/extension-floating-menu/-/extension-floating-menu-2.0.0-beta.51.tgz"
+  integrity sha512-rEe7jADK9xr2n2LJsrGEN3Dz7sEGC1JT/7AdTdaZBxQRQvwxTjomqYGrt+LnX+v0MYggh6swMzj7upJosnKbBg==
   dependencies:
     prosemirror-state "^1.3.4"
     prosemirror-view "^1.23.6"
@@ -1788,7 +1788,7 @@
 
 "@types/node@^17.0.33":
   version "17.0.33"
-  resolved "https://registry.npmjs.org/@types/node/-/node-17.0.33.tgz#3c1879b276dc63e73030bb91165e62a4509cd506"
+  resolved "https://registry.npmjs.org/@types/node/-/node-17.0.33.tgz"
   integrity sha512-miWq2m2FiQZmaHfdZNcbpp9PuXg34W5JZ5CrJ/BaS70VuhoJENBEQybeiYSaPBRNq6KQGnjfEnc/F3PN++D+XQ==
 
 "@types/nookies@^2.0.3":
@@ -2594,7 +2594,7 @@ caniuse-lite@^1.0.30001317:
 
 caniuse-lite@^1.0.30001332:
   version "1.0.30001340"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001340.tgz#029a2f8bfc025d4820fafbfaa6259fd7778340c7"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001340.tgz"
   integrity sha512-jUNz+a9blQTQVu4uFcn17uAD8IDizPzQkIKh3LCJfg9BkyIqExYYdyc/ZSlWUSKb8iYiXxKsxbv4zYSvkqjrxw==
 
 chain-function@^1.0.0:
@@ -3144,10 +3144,24 @@ douhub-helper-util@1.0.85:
     slugify "^1.6.4"
     uuid "^8.3.2"
 
-douhub-helper-util@1.0.89, douhub-helper-util@^1.0.89:
+douhub-helper-util@1.0.89:
   version "1.0.89"
-  resolved "https://registry.npmjs.org/douhub-helper-util/-/douhub-helper-util-1.0.89.tgz#b37c3cffbc7a59a746d243b118f702e24338ff58"
+  resolved "https://registry.npmjs.org/douhub-helper-util/-/douhub-helper-util-1.0.89.tgz"
   integrity sha512-E7vkkT3iT9d4rNLjFhyva0Quu+rHJWeh3CAYRrpvdH9FyCtlC6fSB/tVMco0dI0AA8QjsuR9wTo9NAVKMG/uHg==
+  dependencies:
+    axios "^0.24.0"
+    csvtojson "^2.0.10"
+    is-url "^1.2.4"
+    js-base64 "^3.7.2"
+    libphonenumber-js "^1.9.42"
+    lodash "^4.17.21"
+    slugify "^1.6.4"
+    uuid "^8.3.2"
+
+douhub-helper-util@1.0.90, douhub-helper-util@^1.0.90:
+  version "1.0.90"
+  resolved "https://registry.npmjs.org/douhub-helper-util/-/douhub-helper-util-1.0.90.tgz"
+  integrity sha512-t7NiiQ8whyThjzshWSQr8bs2WPlSh48F1O8NuSXT31+ro+KOmSmjFNwM0v20oaMA3a+rMFxoXbEthhGkHV2atg==
   dependencies:
     axios "^0.24.0"
     csvtojson "^2.0.10"
@@ -3160,7 +3174,7 @@ douhub-helper-util@1.0.89, douhub-helper-util@^1.0.89:
 
 douhub-ui-realtime@1.0.32:
   version "1.0.32"
-  resolved "https://registry.npmjs.org/douhub-ui-realtime/-/douhub-ui-realtime-1.0.32.tgz#68a82a490c17c66fbdc88220bd44a40ed3cd76f0"
+  resolved "https://registry.npmjs.org/douhub-ui-realtime/-/douhub-ui-realtime-1.0.32.tgz"
   integrity sha512-EavlO8XGJ9lZxt6JbQr+Sv6FPjDQVHiGHfrRsnzrI6EZ/T0S0Xg1z3Gjz0B8BYbWgpexF63/ok4WyL6oG9kRZg==
   dependencies:
     axios "^0.25.0"
@@ -3187,7 +3201,7 @@ douhub-ui-store@1.0.53:
 
 douhub-ui-store@1.0.54:
   version "1.0.54"
-  resolved "https://registry.npmjs.org/douhub-ui-store/-/douhub-ui-store-1.0.54.tgz#c8ae3b43c22174f35ceb0fe9abd566e85e6b1d79"
+  resolved "https://registry.npmjs.org/douhub-ui-store/-/douhub-ui-store-1.0.54.tgz"
   integrity sha512-tsN6a3igkQ9JdIkzLR+547IjVVZaDRujJrZk+cxpg0OkZ5rJhjGy5qJCMt9C9Sw/Ld4aoeYidPgAz6QzG/ZGrw==
   dependencies:
     douhub-helper-util "1.0.89"
@@ -3201,7 +3215,7 @@ douhub-ui-store@1.0.54:
 
 douhub-ui-web-basic@1.0.59:
   version "1.0.59"
-  resolved "https://registry.npmjs.org/douhub-ui-web-basic/-/douhub-ui-web-basic-1.0.59.tgz#a666c4b1f5532bb71900b620ae090e24c1965e66"
+  resolved "https://registry.npmjs.org/douhub-ui-web-basic/-/douhub-ui-web-basic-1.0.59.tgz"
   integrity sha512-wAI/G+H6+rCc6Jw4P53iGpxjKEW4khRQueD/o9gmRPXIfHn+0egmHSGmouGk34i371S7FhbIGiS5wQHJc1w8rQ==
   dependencies:
     "@aws-amplify/auth" "^4.3.19"
@@ -3219,20 +3233,40 @@ douhub-ui-web-basic@1.0.59:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web-platform@1.0.99:
-  version "1.0.99"
-  resolved "https://registry.npmjs.org/douhub-ui-web-platform/-/douhub-ui-web-platform-1.0.99.tgz#7550a208d66312dcf35be84343184e05788ff3fb"
-  integrity sha512-PJ5x2eCp3cFGWlJKbxqql75VHeXYMgMjDfQt/XJBTSHDx98cx+g1obOXpIDBCrPt4u+Tlg43iEZkGwDovXr9/A==
+douhub-ui-web-basic@1.0.60:
+  version "1.0.60"
+  resolved "https://registry.npmjs.org/douhub-ui-web-basic/-/douhub-ui-web-basic-1.0.60.tgz"
+  integrity sha512-RUc/wjYbO0mCkzivhycVOMCKq8xxPmsaK2D8NovTkWM+MR6VIDXBJJ2px7qOfNFjJ0PnobwQ3E/tVCFLCUw24A==
+  dependencies:
+    "@aws-amplify/auth" "^4.3.19"
+    "@headlessui/react" "^1.4.3"
+    antd "^4.18.4"
+    douhub-helper-util "1.0.89"
+    douhub-ui-store "1.0.53"
+    lodash "^4.17.21"
+    marked "^4.0.7"
+    next "12.1.6"
+    nookies "^2.5.2"
+    react "^17.0.2"
+    react-dom "^17.0.2"
+    react-imask "^6.4.2"
+    react-svg "^14.1.9"
+    uuid "^8.3.2"
+
+douhub-ui-web-platform@1.0.100:
+  version "1.0.100"
+  resolved "https://registry.npmjs.org/douhub-ui-web-platform/-/douhub-ui-web-platform-1.0.100.tgz"
+  integrity sha512-MUJfsXxbuAfjm4nbQNyRDMpKelpLWlLaGwo0vfwem/lVPz/jYYNcrBEY+3/8t06oFEPIXgJnQN6365PYy2B2qQ==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
     antd "4.19.3"
     axios "^0.25.0"
-    douhub-helper-util "1.0.89"
+    douhub-helper-util "1.0.90"
     douhub-ui-realtime "1.0.32"
     douhub-ui-store "1.0.54"
-    douhub-ui-web "^1.5.164"
-    douhub-ui-web-basic "1.0.59"
+    douhub-ui-web "^1.5.166"
+    douhub-ui-web-basic "1.0.60"
     lodash "^4.17.21"
     marked "^4.0.7"
     nookies "^2.5.2"
@@ -3243,19 +3277,19 @@ douhub-ui-web-platform@1.0.99:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web-premium@1.0.75:
-  version "1.0.75"
-  resolved "https://registry.npmjs.org/douhub-ui-web-premium/-/douhub-ui-web-premium-1.0.75.tgz#4afde50b936d65cc2920782ee7398805d4720120"
-  integrity sha512-89LoXNpv23uJ5Gw+mDVES3AyHbjXMJP7+8tVEYf6s2SGFL2s/uNr1yyR6T5+El9jz3lgsU9lM2q9amtJbge9+A==
+douhub-ui-web-premium@1.0.76:
+  version "1.0.76"
+  resolved "https://registry.npmjs.org/douhub-ui-web-premium/-/douhub-ui-web-premium-1.0.76.tgz"
+  integrity sha512-XenH5NLUvcFgDcvFzMtxvBZNRiMzSroKpvbnuDDv7gMRv5/Fgav/tyWpChwIa4RXmPwk8B7/Fv2Oc/jBZHH2Hg==
   dependencies:
     "@headlessui/react" "^1.4.4"
     antd "4.19.3"
     axios "^0.25.0"
-    douhub-helper-util "1.0.89"
+    douhub-helper-util "1.0.90"
     douhub-ui-realtime "1.0.32"
     douhub-ui-store "1.0.54"
-    douhub-ui-web "^1.5.165"
-    douhub-ui-web-basic "1.0.59"
+    douhub-ui-web "^1.5.168"
+    douhub-ui-web-basic "1.0.60"
     lodash "^4.17.21"
     marked "^4.0.7"
     nookies "^2.5.2"
@@ -3266,10 +3300,10 @@ douhub-ui-web-premium@1.0.75:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web@^1.5.164:
-  version "1.5.164"
-  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.164.tgz#a957d7b118f3a55a628f63eb0b73f44b4c9fbeda"
-  integrity sha512-IpoiOlfQesuzF3TVdp3HaYHC99h+0jWwDVep77h/JWnXpG9Qech22UIS9R9KPMYbuDJBy07D2kBFX1lzNEHGzg==
+douhub-ui-web@^1.5.166, douhub-ui-web@^1.5.168:
+  version "1.5.168"
+  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.168.tgz#acb024ddb084ef8af5723941ae0ddd6775d39a09"
+  integrity sha512-iYsgSGCp6OSVRYUfj5Ik2K8efdX3drKd0GYB9fWzeNgM/sZrqwiqm00c4N5giH0v+mgw/YDrwOyj9nLYdsfAvQ==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
@@ -3291,10 +3325,10 @@ douhub-ui-web@^1.5.164:
     "@tiptap/starter-kit" "2.0.0-beta.176"
     antd "4.19.3"
     axios "^0.25.0"
-    douhub-helper-util "1.0.89"
+    douhub-helper-util "1.0.90"
     douhub-ui-realtime "1.0.32"
     douhub-ui-store "1.0.54"
-    douhub-ui-web-basic "1.0.59"
+    douhub-ui-web-basic "1.0.60"
     lodash "^4.17.21"
     marked "^4.0.7"
     next "12.1.6"
@@ -3309,10 +3343,10 @@ douhub-ui-web@^1.5.164:
     sortablejs "^1.14.0"
     uuid "^8.3.2"
 
-douhub-ui-web@^1.5.165:
-  version "1.5.165"
-  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.165.tgz#1129ef81b0ab3a284846134c467b0a0bb996b850"
-  integrity sha512-H0W4LwPkkqYlnM0cHPKxvCrOk4LQ2IlkgSHcZsLsYVYs37Aj57Hn7vKOepbBwcCmhfVOu0LzAGsVAoJKPHuB9A==
+douhub-ui-web@^1.5.170:
+  version "1.5.170"
+  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.170.tgz#d48ce77d4b0eb31d96adbe8e52e976e6faedc0a8"
+  integrity sha512-BgUdl8UIwgCNfSzFokHHr6mpHTsvgeatx7q6bz8ku8/6IrgHLgM/xSoYIsd9f1dXwM/wRflCTP17xnLpcOLqfA==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
@@ -3334,10 +3368,10 @@ douhub-ui-web@^1.5.165:
     "@tiptap/starter-kit" "2.0.0-beta.176"
     antd "4.19.3"
     axios "^0.25.0"
-    douhub-helper-util "1.0.89"
+    douhub-helper-util "1.0.90"
     douhub-ui-realtime "1.0.32"
     douhub-ui-store "1.0.54"
-    douhub-ui-web-basic "1.0.59"
+    douhub-ui-web-basic "1.0.60"
     lodash "^4.17.21"
     marked "^4.0.7"
     next "12.1.6"
@@ -5225,7 +5259,7 @@ natural-compare@^1.4.0:
 
 next@12.1.6:
   version "12.1.6"
-  resolved "https://registry.npmjs.org/next/-/next-12.1.6.tgz#eb205e64af1998651f96f9df44556d47d8bbc533"
+  resolved "https://registry.npmjs.org/next/-/next-12.1.6.tgz"
   integrity sha512-cebwKxL3/DhNKfg9tPZDQmbRKjueqykHHbgaoG4VBRH3AHQJ2HO0dbKFiS1hPhe1/qgc2d/hFeadsbPicmLD+A==
   dependencies:
     "@next/env" "12.1.6"
@@ -6578,7 +6612,7 @@ strip-json-comments@^3.1.0, strip-json-comments@^3.1.1:
 
 styled-jsx@5.0.2:
   version "5.0.2"
-  resolved "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.0.2.tgz#ff230fd593b737e9e68b630a694d460425478729"
+  resolved "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.0.2.tgz"
   integrity sha512-LqPQrbBh3egD57NBcHET4qcgshPks+yblyhPlH2GY8oaDgKs8SK4C3dBh3oSJjgzJ3G5t1SYEZGHkP+QEpX9EQ==
 
 superagent@^7.1.0:
@@ -6860,7 +6894,7 @@ typedarray-to-buffer@^3.1.5:
 
 typescript@^4.6.4:
   version "4.6.4"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-4.6.4.tgz"
   integrity sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==
 
 unbox-primitive@^1.0.1:

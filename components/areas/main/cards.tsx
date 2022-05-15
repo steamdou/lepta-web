@@ -1,67 +1,72 @@
 import React, { useState } from 'react';
 import { _window } from 'douhub-ui-web-basic';
 import { CardList } from 'douhub-ui-web-premium';
-import { Notification, ListBase } from 'douhub-ui-web';
+import { Notification } from 'douhub-ui-web';
 import ReadCardModal from '../../areas/read/card-modal';
-// import ListBase from './list-base';
-import { useEnvStore, useContextStore } from 'douhub-ui-store';
+import ReadCard from '../read/read-card';
+
+//import {ListBase}from 'douhub-ui-web';
+import ListBase from './list-base';
+import { useEnvStore } from 'douhub-ui-store';
 import { newGuid } from 'douhub-helper-util';
+
+const Read = (props: { data: Record<string, any> }) => {
+    return <div className={`read-card w-full flex flex-row text-left`}>
+        <ReadCard data={props.data} wrapperStyle={{ padding: 0 }} />
+    </div>
+}
+
 const ListMainArea = (props: Record<string, any>) => {
 
-    const [currentRecord, setCurrentRecord] = useState<Record<string, any> | null>(null);
+    const [currentReadRecord, setCurrentReadRecord] = useState<Record<string, any> | null>(null);
     const [notification, setNotification] = useState<Record<string, any> | null>(null);
     const envStore = useEnvStore();
     const envData = JSON.parse(envStore.data);
-    const currentEditRecord = envData.currentRecord;
+    const currentEditRecord = envData.currentEditRecord;
 
     const onCloseModal = () => {
-        setCurrentRecord(null);
+        setCurrentReadRecord(null);
     }
 
-    const onClickRecord = (newCurrentCard: Record<string, any>, action: string) => {
-        switch (action) {
-            case 'read':
-                {
-                    setCurrentRecord(newCurrentCard);
-                    break;
-                }
-        }
+    // const onClickRecord = (newCurrentCard: Record<string, any>, action: string) => {
+    //     switch (action) {
+    //         case 'read':
+    //             {
+    //                 setCurrentReadRecord(newCurrentCard);
+    //                 break;
+    //             }
+    //     }
 
-    }
+    // }
 
     const onClickEditCard = () => {
-        if (currentEditRecord) {
-            if (currentRecord && currentEditRecord.id !== currentRecord.id) {
-                setNotification({
-                    id: newGuid(),
-                    type: 'warning',
-                    message: "Another card in the edit form",
-                    description: "To avoid losing your changes, we do not allow open edit form when there is another record in the edit form.",
-                    placement: 'top'
-                });
-            }
-            else {
-                setCurrentRecord(null);
-            }
+        if (currentEditRecord && currentReadRecord && (currentEditRecord.id !== currentReadRecord.id)) {
+            setNotification({
+                id: newGuid(),
+                type: 'warning',
+                message: "Another card in the edit form",
+                description: "To avoid losing your changes, we do not allow open edit form when there is another record in the edit form.",
+                placement: 'top'
+            });
         }
         else {
-            envStore.setValue('currentRecord', currentRecord);
-            setCurrentRecord(null);
+            envStore.setValue('currentEditRecord', currentReadRecord);
+            setCurrentReadRecord(null);
         }
 
     }
 
     return (
         <>
-            <CardList {...props} onClickRecord={onClickRecord} ListBase={ListBase} />
+            <CardList {...props} ListBase={ListBase} Read={Read} />
             {notification && <Notification id={notification.id} {...notification} />}
-            {currentRecord && <ReadCardModal
-                record={currentRecord}
+            {currentReadRecord && <ReadCardModal
+                record={currentReadRecord}
                 onClose={onCloseModal}
                 show={true} buttons={
                     [
                         { text: "Edit Card", onClick: onClickEditCard },
-                        { type: "cancel", text: "Close", onClick: () => { setCurrentRecord(null) } }
+                        { type: "cancel", text: "Close", onClick: () => { setCurrentReadRecord(null) } }
                     ]
                 } />}
         </>

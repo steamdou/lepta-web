@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import { isEmpty, isArray } from 'lodash';
 import 'antd/dist/antd.css';
 import { getEntityBySlug, isObject, isNonEmptyString, getRecordDisplay, getRecordAbstract, getRecordMedia } from 'douhub-helper-util';
-import ReadCard from '../../../components/areas/read/card';
+import ReadCard from '../../../components/areas/read/read-card';
 import ReadCardModal from '../../../components/areas/read/card-modal';
 
 export const getServerSideProps = async (props: Record<string, any>): Promise<Record<string, any>> => {
@@ -69,7 +69,7 @@ const Read = (props: Record<string, any>) =>
     const {entity} = props;
 
     const [data, setData] = useState<any[]>([])
-    const [pageRrecord, setPageRecord] = useState<Record<string, any>>({});
+    const [pageRecord, setPageRecord] = useState<Record<string, any>>({});
     const [currentRecord, setCurrentRecord] = useState<Record<string, any>>({});
 
     useEffect(() => {
@@ -97,7 +97,10 @@ const Read = (props: Record<string, any>) =>
         {...props}
         Header={Header}
         Footer={Footer}>
-        {!isEmpty(pageRrecord) && <ReadCard record={pageRrecord} />}
+        {!isEmpty(pageRecord) && 
+        <div className={`read-card mx-auto w-full flex flex-row pt-6 max-w-4xl`} >
+            <ReadCard data={pageRecord}/>
+        </div>}
         <h2 className="sr-only">Related Knowledge Cards</h2>
         <Grid 
         data={data} 

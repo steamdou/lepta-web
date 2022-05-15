@@ -28,10 +28,10 @@ const ListPage = observer((props: Record<string, any>) => {
     const envStore = useEnvStore();
     const envData = JSON.parse(envStore.data);
     const entityName = entity && entity.entityName;
-    const currentRecord = envData?.currentRecord;
+    const currentRecord = envData?.currentEditRecord ? envData?.currentEditRecord : envData?.currentReadRecord;
     const rightAreaProps = {
-        roomId: isNonEmptyString(currentRecord?.id)? `${entityName}-${currentRecord?.id}` :
-        `${entityName}-${solution.id}`,
+        roomId: isNonEmptyString(currentRecord?.id) ? `${entityName}-${currentRecord?.id}` :
+            `${entityName}-${solution.id}`,
         subTitle: `Chat Room / ${entity && entity.uiName}`,
         title: isNonEmptyString(currentRecord?.id) ? getRecordDisplay({ ...(currentRecord ? currentRecord : {}), highlight: {} }) : 'General'
     }
@@ -51,7 +51,7 @@ const ListPage = observer((props: Record<string, any>) => {
                     sidePaneKey={sidePaneKey}
                     MainArea={MainArea}
                     LeftArea={DefaultLeftArea}
-                    RightArea={isNonEmptyString(entityName)?ChatRightArea:Nothing}
+                    RightArea={isNonEmptyString(entityName) ? ChatRightArea : Nothing}
                     rightAreaProps={rightAreaProps}
                 /> :
                     <div className="p-8 text-red-700">There&apos;s no entity defined for the page.</div>
