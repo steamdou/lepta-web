@@ -78,6 +78,7 @@ const SiteHeader = observer((props: Record<string, any>) => {
                                         name="search"
                                         className="block w-full pl-10 pr-3 py-2 text-lg border border-transparent rounded-md leading-5 bg-gray-50 text-gray-500 placeholder-gray-500 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900"
                                         placeholder="Search"
+                                        type="search"
                                     />
                                 </div>
                             </div>
