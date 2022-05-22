@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { _window } from 'douhub-ui-web-basic';
-import { CardList, ReadCardModal, ReadCard } from 'douhub-ui-web-premium';
+import {  ReadCardModal, ReadCard } from 'douhub-ui-web-premium';
 import { Notification } from 'douhub-ui-web';
 
 // import ReadCardModal from '../../areas/read/card-modal';
 // import ReadCard from '../read/read-card';
 
-
+import { CardList } from 'douhub-ui-web-premium';
+// import CardList from './card';
 
 import { ListBase } from 'douhub-ui-web';
 //import ListBase from './list-base';
