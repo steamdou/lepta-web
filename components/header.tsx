@@ -34,14 +34,14 @@ const SiteHeader = observer((props: Record<string, any>) => {
         if (!isEmpty(user)) return null;
         return <div className="flex items-center justify-end flex-1 mr-3">
             <Link href="/auth/sign-in">
-                <a className="cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-sm font-medium text-white bg-sky-500 hover:bg-sky-400 hover:shadow-lg">
+                <a className="cursor-pointer whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-base font-medium text-white bg-sky-600 hover:text-white hover:bg-sky-700 hover:shadow-lg">
                     Sign In
-        </a>
+                </a>
             </Link>
             {solution?.site?.supportSignUp != false && <Link href="/auth/sign-up">
-                <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-sm font-medium text-white bg-green-500 hover:bg-green-400 hover:shadow-lg">
-                    Sign up
-        </a>
+                <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-base font-medium text-white bg-green-600 hover:text-white hover:bg-green-700 hover:shadow-lg">
+                    Sign Up
+                </a>
             </Link>}
         </div>
     }
@@ -50,9 +50,9 @@ const SiteHeader = observer((props: Record<string, any>) => {
         if (isNil(user) || isEmpty(user)) return null;
         return <div className="flex items-center justify-end flex-1">
             <Link href="/card/list">
-                <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-sm font-medium text-white bg-sky-500 hover:bg-sky-400 hover:shadow-lg hover:text-white">
+                <a className="cursor-pointer ml-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 rounded-md shadow text-base font-medium text-white bg-sky-600 hover:bg-sky-700 hover:text-white hover:shadow-lg hover:text-white">
                     Manage Cards
-        </a>
+                </a>
             </Link>
         </div>
     }
@@ -62,7 +62,7 @@ const SiteHeader = observer((props: Record<string, any>) => {
             <Popover className="relative bg-white border border-gray-200 border-t-0 border-r-0 border-l-0">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <div className="flex justify-between items-center pb-4 pt-4 md:justify-start md:space-x-10 w-full">
-                        <Logo id="header_logo" textClassName="hidden sm:block" iconSize={32} color={color} text={solution?.site?.name} onClick={onClickLogo} textStyle={{fontSize:20, height:32, lineHeight:1.5}}/>
+                        <Logo id="header_logo" textClassName="hidden sm:block" iconSize={32} color={color} text={solution?.site?.name} onClick={onClickLogo} textStyle={{ fontSize: 20, height: 32, lineHeight: 1.5 }} />
                         {/* <div className="hidden sm:block">{renderMenuDesktopView()}</div> */}
                         <div className="visible flex-1 flex px-5 px-3 lg:ml-6">
                             <div className="max-w-xl w-full">
@@ -71,7 +71,7 @@ const SiteHeader = observer((props: Record<string, any>) => {
                                 </label>
                                 <div className="relative">
                                     <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none">
-                                        <SVG src="/icons/search.svg" style={{width: 20}}/>
+                                        <SVG src="/icons/search.svg" style={{ width: 20 }} />
                                     </div>
                                     <input
                                         id="search"

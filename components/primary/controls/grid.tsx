@@ -35,7 +35,6 @@ const Grid = (props: Record<string, any>) => {
     const themeColor = _window.solution?.theme?.color;
     const color = themeColor && isNonEmptyString(themeColor["500"]) ? themeColor["500"] : 'black';
 
-
     useEffect(() => {
         setData(isArray(props.data) ? props.data : [])
     }, [props.data])

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { isFunction, isArray, map, each, without, isNil } from 'lodash';
-import { Tags, _window, } from 'douhub-ui-web-basic';
+import { isFunction } from 'lodash';
+import { _window, BasicModal} from 'douhub-ui-web-basic';
 import { observer } from 'mobx-react-lite';
 import { isNonEmptyString } from 'douhub-helper-util';
 import ReadCard from './read-card';
-//import BasicModal from './modal';
-import {BasicModal} from 'douhub-ui-web-basic';
 
 const ReadCardModal = observer((props: Record<string, any>) => {
 
@@ -27,9 +25,6 @@ const ReadCardModal = observer((props: Record<string, any>) => {
             <div className="flex-1 text-xl">
                 <ReadCard data={record} wrapperStyle={{ padding: 0 }} />
             </div>
-            {/* <div className="bg-gray-100 mt-8 md:ml-8 md:mt-0" style={{minWidth:380, minHeight:50}}>
-
-            </div> */}
         </div>
     }
 

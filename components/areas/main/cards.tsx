@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { _window } from 'douhub-ui-web-basic';
-import { CardList } from 'douhub-ui-web-premium';
+import { CardList, ReadCardModal, ReadCard } from 'douhub-ui-web-premium';
 import { Notification } from 'douhub-ui-web';
-import ReadCardModal from '../../areas/read/card-modal';
-import ReadCard from '../read/read-card';
 
-import {ListBase}from 'douhub-ui-web';
+// import ReadCardModal from '../../areas/read/card-modal';
+// import ReadCard from '../read/read-card';
+
+
+
+import { ListBase } from 'douhub-ui-web';
 //import ListBase from './list-base';
 import { useEnvStore } from 'douhub-ui-store';
 import { newGuid } from 'douhub-helper-util';
 
 const Read = (props: { data: Record<string, any> }) => {
-    return <div className={`read-card w-full flex flex-row text-left text-lg`}>
-        <ReadCard data={props.data} wrapperStyle={{ padding: 0 }} />
+    return <div className={`w-full flex flex-row text-left text-lg`}>
+        <ReadCard data={props.data} wrapperStyle={{ padding: 0 }}/>
     </div>
 }
 

@@ -1,0 +1,11 @@
+call yarn upgrade antd --latest
+call yarn upgrade eslint-config-airbnb --latest
+call yarn upgrade react-svg --latest
+call yarn upgrade @headlessui/react --latest
+call yarn upgrade @lingui/react --latest
+call yarn upgrade @types/lodash --latest
+call yarn upgrade postcss --latest
+call yarn upgrade eslint --latest
+call yarn upgrade eslint-config-next --latest
+call yarn upgrade eslint-plugin-import --latest
+call yarn upgrade @types/node --latest

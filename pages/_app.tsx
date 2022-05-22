@@ -1,7 +1,6 @@
 import type { AppProps } from 'next/app';
 import { AppBase } from 'douhub-ui-web-basic';
 import '../styles/global.css';
-import '../styles/app.css';
 import {CssCenter} from 'douhub-ui-store';
 
 function App(appProps: AppProps) {

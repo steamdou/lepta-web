@@ -9,13 +9,17 @@ import { settings } from '../../../settings';
 
 import solutionProfile from '../../../metadata/solution.json';
 import solutionUIProfile from '../../../metadata/ui.json';
-import { callAPIBase } from 'douhub-ui-web-basic';
+import { callAPIBase, _window } from 'douhub-ui-web-basic';
 import { useEffect, useState } from 'react';
 import { isEmpty, isArray } from 'lodash';
 import 'antd/dist/antd.css';
-import { getEntityBySlug, isObject, isNonEmptyString, getRecordDisplay, getRecordAbstract, getRecordMedia } from 'douhub-helper-util';
-import ReadCard from '../../../components/areas/read/read-card';
-import ReadCardModal from '../../../components/areas/read/card-modal';
+import { getEntityBySlug, isObject,  getRecordDisplay, getRecordAbstract, getRecordMedia } from 'douhub-helper-util';
+import dynamic from 'next/dynamic';
+
+// import { ReadCard, ReadCardModal} from 'douhub-ui-web-premium';
+
+// import ReadCard from '../../../components/areas/read/read-card';
+// import ReadCardModal from '../../../components/areas/read/card-modal';
 
 export const getServerSideProps = async (props: Record<string, any>): Promise<Record<string, any>> => {
 
@@ -64,6 +68,9 @@ export const getServerSideProps = async (props: Record<string, any>): Promise<Re
     });
 }
 
+let ReadCardModal:any = null;
+let ReadCard:any = null;
+
 const Read = (props: Record<string, any>) => 
 {
     const {entity} = props;
@@ -72,11 +79,20 @@ const Read = (props: Record<string, any>) =>
     const [pageRecord, setPageRecord] = useState<Record<string, any>>({});
     const [currentRecord, setCurrentRecord] = useState<Record<string, any>>({});
 
+    console.log({pageRecord})
+
     useEffect(() => {
         const data = props.data;
         if (isArray(data) && data.length > 0) {
             setData(props.data);
         }
+        if (!_window.ReadCardModal) 
+        {
+            _window.ReadCardModal = dynamic(() => import("douhub-ui-web-premium/build/cjs/read/read-card-modal"), { ssr: false });
+            _window.ReadCard = dynamic(() => import("douhub-ui-web-premium/build/cjs/read/read-card"), { ssr: false });
+        }
+        ReadCardModal = _window.ReadCardModal;
+        ReadCard = _window.ReadCard;
     }, [props.data])
 
     useEffect(() => {
@@ -98,7 +114,7 @@ const Read = (props: Record<string, any>) =>
         Header={Header}
         Footer={Footer}>
         {!isEmpty(pageRecord) && 
-        <div className={`read-card mx-auto w-full flex flex-row pt-6 max-w-4xl text-xl`} >
+        <div className={`read-card mx-auto w-full flex flex-row pt-6 max-w-xl text-xl`} >
             <ReadCard data={pageRecord}/>
         </div>}
         <h2 className="sr-only">Related Knowledge Cards</h2>
