@@ -160,12 +160,12 @@ const ListBase = observer((props: Record<string, any>) => {
     useEffect(() => {
 
         const cacheValue = getLocalStorage(viewCacheKey);
-
         if (isNil(cacheValue)) {
-            setView(props.view == 'grid' ? 'grid' : 'table');
+            const defaultView = props.view ? props.view : entity.listView;
+            onChangeView(defaultView == 'grid' ? 'grid' : 'table');
         }
         else {
-            setView(cacheValue);
+            onChangeView(cacheValue);
         }
     }, [props.view])
 
@@ -226,10 +226,10 @@ const ListBase = observer((props: Record<string, any>) => {
     const tableHeaderHeight = 55;
     const tableHeight = height - listHeaderHeight - (filters.length == 0 ? 0 : filterSectionHeight);
 
-    const onUpdateFormWidth = (newWidth: number) => {
-        setPredefinedFormWidth(newWidth);
-        setLocalStorage(formWidthCacheKey, newWidth);
-    }
+    // const onUpdateFormWidth = (newWidth: number) => {
+    //     setPredefinedFormWidth(newWidth);
+    //     setLocalStorage(formWidthCacheKey, newWidth);
+    // }
 
 
     const onChangeQuery = (curQuery: Record<string, any>) => {
@@ -251,7 +251,11 @@ const ListBase = observer((props: Record<string, any>) => {
     }
 
     const onResizeForm = (width?: number) => {
-        setCurrentFormWidth(width ? width : 0);
+
+        const newWidth = isNumber(width) && width>0 ? width : 320;
+        setCurrentFormWidth(newWidth);
+        setPredefinedFormWidth(newWidth);
+        setLocalStorage(formWidthCacheKey, newWidth);
     }
 
     const apiCallTrigger = JSON.stringify({ queryId, statusId, loadingType, entityName: entity?.entityName, entityType: entity?.entityType, tags, categories, search });
@@ -831,7 +835,7 @@ const ListBase = observer((props: Record<string, any>) => {
         return <div className="relative h-full z-10" style={{ backgroundColor: '#fafafa', minHeight: height }}>
             <FormResizer
                 id={currentEditRecord.id}
-                onChangeSize={onUpdateFormWidth}
+                // onChangeSize={onUpdateFormWidth}
                 defaultWidth={formWidth > areaWidth ? areaWidth : formWidth}
                 className="absolute top-0 right-0"
                 minWidth={FORM_RESIZER_MIN_WIDTH + 100}
@@ -882,7 +886,7 @@ const ListBase = observer((props: Record<string, any>) => {
         if (isFunction(props.renderReadForm)) return props.renderReadForm(currentReadRecord);
         return <FormResizer
             id={currentReadRecord.id}
-            onChangeSize={onUpdateFormWidth}
+            // onChangeSize={onUpdateFormWidth}
             defaultWidth={formWidth > areaWidth ? areaWidth : formWidth}
             className="absolute top-0 right-0"
             minWidth={FORM_RESIZER_MIN_WIDTH + 100}
@@ -916,12 +920,13 @@ const ListBase = observer((props: Record<string, any>) => {
                     secondaryInitialSize={secondaryInitialSize}
                     primaryInitialSize={splitterWidth - secondaryInitialSize}
                 >
-                    <div style={{minWidth:320}}>
+                    <div style={{ minWidth: 320 }}>
                         {renderListSection()}
                     </div>
                     <div>
                         {renderEditForm(false)}
                         {renderReadForm(false)}
+                        <ReactResizeDetector onResize={throttle(onResizeForm, 300)} />
                     </div>
                 </Splitter>
             </div>}

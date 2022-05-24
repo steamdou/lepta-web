@@ -1,6 +1,6 @@
 {
     "id": "84ab4deb-55e2-492e-adc0-d32df8276ff9",
-    "contact":{
+    "contact": {
         "name": "Lepta Team",
         "email": "customer.service@douhub.com",
         "mobile": "+18186167266"
@@ -35,18 +35,21 @@
             "entityName": "Organization",
             "uiName": "Organization",
             "uiCollectionName": "Organizations",
+            "listView": "grid",
             "slug": "organization"
         },
         {
             "entityName": "Book",
             "uiName": "Book",
             "uiCollectionName": "Books",
+            "listView": "grid",
             "slug": "book"
         },
         {
             "entityName": "User",
             "uiName": "User",
             "uiCollectionName": "Users",
+            "listView": "grid",
             "slug": "user",
             "duplicationCheckPropName": "email",
             "requiredFields": [
@@ -162,11 +165,13 @@
             "entityName": "Card",
             "uiName": "Card",
             "uiCollectionName": "Cards",
+            "listView": "grid",
             "slug": "card"
         },
         {
             "entityName": "Page",
             "uiName": "Page",
+            "listView": "grid",
             "uiCollectionName": "Pages",
             "slug": "page"
         }

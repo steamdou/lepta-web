@@ -37,7 +37,7 @@ const CardList = observer((props: Record<string, any>) => {
                     const text = data.highlight?.searchDisplay ? data.highlight?.searchDisplay : v;
                     const searchDetail = data.highlight?.searchContent ? data.highlight?.searchContent : [];
                     return <div className="flex flex-col items-start">
-                        <div className="text-base font-semibold text-gray-900 cursor-pointer" dangerouslySetInnerHTML={{ __html: text }} onClick={() => { onClick(data, 'read') }}></div>
+                        <div className="text-base font-semibold text-gray-900 cursor-pointer mb-1" dangerouslySetInnerHTML={{ __html: text }} onClick={() => { onClick(data, 'read') }}></div>
                         {searchDetail.length > 0 && <div className="mt-1 text-sm text-gray-700" dangerouslySetInnerHTML={{ __html: searchDetail[0] }}></div>}
                         <Tags tags={data.tags} />
                     </div>
