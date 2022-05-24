@@ -6,7 +6,8 @@ import { find, isArray } from 'lodash';
 import { getEntityBySlug, hasAnyRole, isObject } from 'douhub-helper-util';
 import { useContextStore } from 'douhub-ui-store';
 import { observer } from 'mobx-react-lite';
-import { ListBase } from 'douhub-ui-web';
+
+import ListCategoriesTags from './list-categories-tags'
 
 let List: any = null;
 if (!_window.lists) {
@@ -64,7 +65,7 @@ const ListMainArea = observer((props: Record<string, any>) => {
             }
     }
 
-    return showNothing ? <Nothing /> : <List {...props} entity={entity} ListBase={ListBase} />
+    return showNothing ? <Nothing /> : <List {...props} entity={entity} ListCategoriesTags={ListCategoriesTags}/>
 });
 
 

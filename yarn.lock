@@ -3330,13 +3330,36 @@ douhub-ui-web-basic@1.0.66:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web-platform@1.0.113:
-  version "1.0.113"
-  resolved "https://registry.npmjs.org/douhub-ui-web-platform/-/douhub-ui-web-platform-1.0.113.tgz#b998cacb6cd6f465eec34c50be0c42f18bb28af0"
-  integrity sha512-lewXSB2E9MP0RifxoRAeWiM/HQ8wLzmG3eJwvVQpzIqBo9WONbZcFUeeECZx42v7XrKX3206L/aG67HlpmZbiA==
+douhub-ui-web-platform@1.0.115:
+  version "1.0.115"
+  resolved "https://registry.npmjs.org/douhub-ui-web-platform/-/douhub-ui-web-platform-1.0.115.tgz#cabf92eabbef01b3652ed203bb91b4bb8a197c51"
+  integrity sha512-etyPU2Xeur/neis9nwzcHFQCDuJkyqmUvpTqAHSHuMMPGiIlcWjwjetniDmTnI053IGGGqM9LaxyAHwj8tN+8Q==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
+    antd "4.20.5"
+    axios "^0.25.0"
+    douhub-helper-util "1.0.91"
+    douhub-ui-realtime "1.0.32"
+    douhub-ui-store "1.0.58"
+    douhub-ui-web "^1.5.196"
+    douhub-ui-web-basic "1.0.66"
+    lodash "^4.17.21"
+    marked "^4.0.7"
+    nookies "^2.5.2"
+    react "^17.0.2"
+    react-dom "^17.0.2"
+    react-imask "^6.4.2"
+    react-resize-detector "^7.0.0"
+    react-svg "^14.1.9"
+    uuid "^8.3.2"
+
+douhub-ui-web-premium@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.npmjs.org/douhub-ui-web-premium/-/douhub-ui-web-premium-1.1.2.tgz#f02b7ce697623f6b44812654ecfea15d61b1f174"
+  integrity sha512-9/AtarD1hwzXDQDNNfoitpxS+eDkimv9Mh2VNORkOIW4h23PqGTHpwJsZzGncHXZ4OsN51+APden8f75rme7hA==
+  dependencies:
+    "@headlessui/react" "^1.4.4"
     antd "4.20.5"
     axios "^0.25.0"
     douhub-helper-util "1.0.91"
@@ -3354,33 +3377,10 @@ douhub-ui-web-platform@1.0.113:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web-premium@1.0.94:
-  version "1.0.94"
-  resolved "https://registry.npmjs.org/douhub-ui-web-premium/-/douhub-ui-web-premium-1.0.94.tgz#becd37c242af59c8f62e7dd4bc9952d68cd894d4"
-  integrity sha512-D62WZJh3ybV9xQbzoambrUc9G2+BdavKhNa9kLOuqtz+cZpS65Ux38lEIGryDmyOptTDMNGp4sYn69MkfNls7Q==
-  dependencies:
-    "@headlessui/react" "^1.4.4"
-    antd "4.20.5"
-    axios "^0.25.0"
-    douhub-helper-util "1.0.91"
-    douhub-ui-realtime "1.0.32"
-    douhub-ui-store "1.0.58"
-    douhub-ui-web "^1.5.192"
-    douhub-ui-web-basic "1.0.66"
-    lodash "^4.17.21"
-    marked "^4.0.7"
-    nookies "^2.5.2"
-    react "^17.0.2"
-    react-dom "^17.0.2"
-    react-imask "^6.4.2"
-    react-resize-detector "^7.0.0"
-    react-svg "^14.1.9"
-    uuid "^8.3.2"
-
-douhub-ui-web@1.5.195, douhub-ui-web@^1.5.195:
-  version "1.5.195"
-  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.195.tgz#d28e927fe448e77e5c853ee11236e8b2348b4827"
-  integrity sha512-RkrMKdlY5w8qG1swQdl2paKSHJ7d3VLtxyg9m1d2auPm/j1uGpLcmPjvqejtIMVJfCzuUXnDRR5+aJ7MXuwNPA==
+douhub-ui-web@1.5.196, douhub-ui-web@^1.5.196:
+  version "1.5.196"
+  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.196.tgz#7066a95a86302222484254ba7ca457607514e2fc"
+  integrity sha512-wttYYsY6BXrDpdntbbXHk6CHCInL68fmRgtvlxANLibpiPA5S2Md28bPxETxkBRPGXygxQzTUsbFOx3BGvFiOQ==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
@@ -3420,10 +3420,10 @@ douhub-ui-web@1.5.195, douhub-ui-web@^1.5.195:
     sortablejs "^1.14.0"
     uuid "^8.3.2"
 
-douhub-ui-web@^1.5.192:
-  version "1.5.192"
-  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.192.tgz#36f9ce9d608c8a45cdad280c870b7c3955b802cc"
-  integrity sha512-QzT2z2k1rF8c4hW7lRnRyO8BZELxLIl7ljwkCu4pmxASfIBBghG+waoQHI7WzXuuL3XgzIawW3sIE53x2qtdtA==
+douhub-ui-web@^1.5.195:
+  version "1.5.195"
+  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.195.tgz#d28e927fe448e77e5c853ee11236e8b2348b4827"
+  integrity sha512-RkrMKdlY5w8qG1swQdl2paKSHJ7d3VLtxyg9m1d2auPm/j1uGpLcmPjvqejtIMVJfCzuUXnDRR5+aJ7MXuwNPA==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
