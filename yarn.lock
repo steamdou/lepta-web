@@ -3354,10 +3354,10 @@ douhub-ui-web-platform@1.0.115:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web-premium@1.1.2:
-  version "1.1.2"
-  resolved "https://registry.npmjs.org/douhub-ui-web-premium/-/douhub-ui-web-premium-1.1.2.tgz#f02b7ce697623f6b44812654ecfea15d61b1f174"
-  integrity sha512-9/AtarD1hwzXDQDNNfoitpxS+eDkimv9Mh2VNORkOIW4h23PqGTHpwJsZzGncHXZ4OsN51+APden8f75rme7hA==
+douhub-ui-web-premium@1.1.4:
+  version "1.1.4"
+  resolved "https://registry.npmjs.org/douhub-ui-web-premium/-/douhub-ui-web-premium-1.1.4.tgz#ed98796fd8ee4a3b14bd955c555224feca85b063"
+  integrity sha512-pyKqDuyy+dP5qTNUrR/9ZmDZcWbHRCtzQggASl5ZvX9RSJAinwr99CB3Nsp+FkFMARQX/X/EZehf+EdubVOP1Q==
   dependencies:
     "@headlessui/react" "^1.4.4"
     antd "4.20.5"
@@ -3365,7 +3365,7 @@ douhub-ui-web-premium@1.1.2:
     douhub-helper-util "1.0.91"
     douhub-ui-realtime "1.0.32"
     douhub-ui-store "1.0.58"
-    douhub-ui-web "^1.5.195"
+    douhub-ui-web "^1.5.197"
     douhub-ui-web-basic "1.0.66"
     lodash "^4.17.21"
     marked "^4.0.7"
@@ -3377,10 +3377,10 @@ douhub-ui-web-premium@1.1.2:
     react-svg "^14.1.9"
     uuid "^8.3.2"
 
-douhub-ui-web@1.5.196, douhub-ui-web@^1.5.196:
-  version "1.5.196"
-  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.196.tgz#7066a95a86302222484254ba7ca457607514e2fc"
-  integrity sha512-wttYYsY6BXrDpdntbbXHk6CHCInL68fmRgtvlxANLibpiPA5S2Md28bPxETxkBRPGXygxQzTUsbFOx3BGvFiOQ==
+douhub-ui-web@1.5.197, douhub-ui-web@^1.5.197:
+  version "1.5.197"
+  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.197.tgz#be595fc26a9dbdd13477648dff948e2318baa19a"
+  integrity sha512-bnTjc69WvYjuA8M4o5e5+xO5brj/QDEg2d8veIGUOTmTh/V1R1dVOQXGdt5jqsFvuGWQdSapE0AL8KAyvn6zvA==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
@@ -3420,10 +3420,10 @@ douhub-ui-web@1.5.196, douhub-ui-web@^1.5.196:
     sortablejs "^1.14.0"
     uuid "^8.3.2"
 
-douhub-ui-web@^1.5.195:
-  version "1.5.195"
-  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.195.tgz#d28e927fe448e77e5c853ee11236e8b2348b4827"
-  integrity sha512-RkrMKdlY5w8qG1swQdl2paKSHJ7d3VLtxyg9m1d2auPm/j1uGpLcmPjvqejtIMVJfCzuUXnDRR5+aJ7MXuwNPA==
+douhub-ui-web@^1.5.196:
+  version "1.5.196"
+  resolved "https://registry.npmjs.org/douhub-ui-web/-/douhub-ui-web-1.5.196.tgz#7066a95a86302222484254ba7ca457607514e2fc"
+  integrity sha512-wttYYsY6BXrDpdntbbXHk6CHCInL68fmRgtvlxANLibpiPA5S2Md28bPxETxkBRPGXygxQzTUsbFOx3BGvFiOQ==
   dependencies:
     "@aws-amplify/auth" "^4.4.3"
     "@headlessui/react" "^1.4.3"
